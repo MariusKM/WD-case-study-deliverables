@@ -1,0 +1,464 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/hsbr-pilot/schema.json",
+  "title": "Normalized Campaign Dataset — Head & Shoulders Brasil Pilot",
+  "description": "Schema for dataset.json (normalized entities, rules, claims, findings) and prompt_outputs.json (generated outputs). Subtask A deliverable + bonus item.",
+  "type": "object",
+  "required": ["_meta", "codes", "brand", "markets", "audiences", "personas", "product_lines", "platforms", "generation_models", "claims", "rules", "taxonomy", "prompt_templates", "validation_findings"],
+  "properties": {
+    "_meta": { "$ref": "#/$defs/Meta" },
+    "codes": { "$ref": "#/$defs/Codes" },
+    "brand": { "$ref": "#/$defs/Brand" },
+    "markets": { "type": "array", "items": { "$ref": "#/$defs/Market" }, "minItems": 1 },
+    "audiences": { "type": "array", "items": { "$ref": "#/$defs/Audience" }, "minItems": 1 },
+    "personas": { "type": "array", "items": { "$ref": "#/$defs/Persona" }, "minItems": 1 },
+    "product_lines": { "type": "array", "items": { "$ref": "#/$defs/ProductLine" }, "minItems": 1 },
+    "platforms": { "type": "array", "items": { "$ref": "#/$defs/Platform" }, "minItems": 1 },
+    "generation_models": { "type": "array", "items": { "$ref": "#/$defs/GenerationModel" }, "minItems": 1 },
+    "claims": { "type": "array", "items": { "$ref": "#/$defs/Claim" } },
+    "rules": { "type": "array", "items": { "$ref": "#/$defs/Rule" }, "minItems": 1 },
+    "taxonomy": { "$ref": "#/$defs/Taxonomy" },
+    "prompt_templates": { "type": "array", "items": { "$ref": "#/$defs/PromptTemplate" } },
+    "content_banks": { "$ref": "#/$defs/ContentBanks" },
+    "prompt_outputs_ref": { "type": "object" },
+    "prompt_outputs": { "type": "array", "items": { "$ref": "#/$defs/PromptOutput" } },
+    "validation_findings": { "type": "array", "items": { "$ref": "#/$defs/ValidationFinding" } }
+  },
+
+  "$defs": {
+    "EntityStatus": {
+      "type": "string",
+      "enum": ["active", "pending_confirmation", "retired", "draft", "proposed", "informational"]
+    },
+
+    "Meta": {
+      "type": "object",
+      "required": ["dataset_id", "version", "status", "normalized_from"],
+      "properties": {
+        "dataset_id": { "type": "string", "pattern": "^DS-[A-Z0-9-]+$" },
+        "version": { "type": "string" },
+        "status": { "type": "string", "enum": ["RAW_UNVALIDATED", "NORMALIZED", "VALIDATED", "RELEASED"] },
+        "normalized_from": { "type": "array", "items": { "type": "string" } },
+        "source_provenance": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "Codes": {
+      "type": "object",
+      "required": ["markets", "audiences", "platforms", "prompt_id_format"],
+      "properties": {
+        "markets": { "type": "object", "additionalProperties": { "type": "string", "pattern": "^[A-Z]{2,4}$" } },
+        "audiences": { "type": "object", "additionalProperties": { "type": "string", "pattern": "^[A-Z]$" } },
+        "platforms": { "type": "object", "additionalProperties": { "type": "string", "pattern": "^[A-Z]{2,4}$" } },
+        "prompt_id_format": { "type": "string" }
+      }
+    },
+
+    "Brand": {
+      "type": "object",
+      "required": ["brand_id", "name", "primary_language", "voice_attributes", "status"],
+      "properties": {
+        "brand_id": { "type": "string", "pattern": "^BRD-[A-Z0-9-]+$" },
+        "name": { "type": "string" },
+        "parent_company": { "type": "string" },
+        "region": { "type": "string" },
+        "primary_language": { "type": "string", "enum": ["pt-BR"] },
+        "secondary_language": { "type": "string" },
+        "founded": { "type": "integer" },
+        "guidelines_url": { "type": "string" },
+        "voice_attributes": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "status": { "$ref": "#/$defs/EntityStatus" }
+      }
+    },
+
+    "Market": {
+      "type": "object",
+      "required": ["market_id", "code", "name", "region", "socioeconomic_classes", "audience_ids", "status"],
+      "properties": {
+        "market_id": { "type": "string", "pattern": "^MKT-[A-Z]{2,4}$" },
+        "code": { "type": "string", "pattern": "^[A-Z]{2,4}$" },
+        "name": { "type": "string" },
+        "region": { "type": "string" },
+        "socioeconomic_classes": { "type": "array", "items": { "type": "string", "enum": ["A", "B", "C", "D", "E"] }, "minItems": 1 },
+        "audience_ids": { "type": "array", "items": { "$ref": "#/$defs/AudienceId" }, "minItems": 1 },
+        "notes": { "type": "string" },
+        "status": { "$ref": "#/$defs/EntityStatus" }
+      }
+    },
+
+    "AudienceId": { "type": "string", "pattern": "^AUD-[A-Z]$" },
+    "PersonaId": { "type": "string", "pattern": "^PERS-[A-Z]-[0-9]{2}$" },
+    "ProductId": { "type": "string", "pattern": "^PL-[0-9]{3}(-[A-Z]+)?$" },
+    "PlatformId": { "type": "string", "pattern": "^PLAT-[A-Z]{2,4}$" },
+    "ModelId": { "type": "string", "pattern": "^MODEL-(VID|IMG)-[A-Z0-9-]+$" },
+    "ClaimId": { "type": "string", "pattern": "^CLM-[A-Z0-9]+-(0|R[0-9]+)$" },
+    "RuleId": { "type": "string", "pattern": "^RULE-([A-Z]{3,4}-[0-9]{3}|404)$" },
+
+    "ReferenceAsset": {
+      "type": "object",
+      "required": ["asset_id", "kind", "uri", "status"],
+      "properties": {
+        "asset_id": { "type": "string", "pattern": "^AST-[A-Z0-9-]+$" },
+        "kind": { "type": "string", "enum": ["pack_shot", "persona_sheet", "talent_photo", "brand_mark"] },
+        "uri": { "type": "string", "description": "DAM locator. status 'placeholder' marks fictional R&D entries awaiting real client assets." },
+        "status": { "type": "string", "enum": ["approved", "placeholder", "pending_signoff"] }
+      }
+    },
+
+    "Persona": {
+      "type": "object",
+      "required": ["persona_id", "name", "audience_id", "description_pt", "description_en", "reference_assets", "status"],
+      "properties": {
+        "persona_id": { "$ref": "#/$defs/PersonaId" },
+        "name": { "type": "string" },
+        "audience_id": { "$ref": "#/$defs/AudienceId" },
+        "apparent_age": { "type": "string", "description": "Must read clearly adult and sit inside the audience's age band." },
+        "description_pt": { "type": "string", "description": "Locked visual descriptor (Decision D9) — injected verbatim into the entities block by the assembler, never LLM-authored (same principle as render-time claim binding)." },
+        "description_en": { "type": "string" },
+        "reference_assets": { "type": "array", "items": { "$ref": "#/$defs/ReferenceAsset" }, "description": "Empty = descriptor-only fallback; populated + model supports references = @ref handle emitted alongside the descriptor (hybrid strategy, D9)." },
+        "status": { "type": "string", "enum": ["approved", "pending_signoff", "retired"], "description": "Same sign-off lifecycle as claims: client approves a persona once; every output referencing it inherits the approval." },
+        "notes": { "type": "string" }
+      }
+    },
+
+    "GenerationModel": {
+      "type": "object",
+      "required": ["model_id", "name", "modality", "max_clip_s", "supports_reference_images", "status"],
+      "properties": {
+        "model_id": { "$ref": "#/$defs/ModelId" },
+        "name": { "type": "string" },
+        "modality": { "type": "string", "enum": ["video", "image"] },
+        "max_clip_s": { "type": ["integer", "null"], "description": "Longest single generation the endpoint accepts; null for image modality. Drives deterministic clip segmentation (Decision D9) and RULE-TECH-002." },
+        "supports_reference_images": { "type": "boolean", "description": "Capability gate for the entity reference strategy: true + assets present → @ref handles; otherwise descriptor-only fallback." },
+        "native_audio": { "type": "boolean" },
+        "status": { "$ref": "#/$defs/EntityStatus" },
+        "notes": { "type": "string" }
+      }
+    },
+
+    "Audience": {
+      "type": "object",
+      "required": ["audience_id", "code", "label", "market_id", "age_min", "age_max", "lifestyle_tags", "pain_points", "preferred_product_ids", "platform_ids", "tone_attributes", "status"],
+      "properties": {
+        "audience_id": { "$ref": "#/$defs/AudienceId" },
+        "code": { "type": "string", "pattern": "^[A-Z]$" },
+        "label": { "type": "string" },
+        "market_id": { "type": "string", "pattern": "^MKT-[A-Z]{2,4}$" },
+        "age_min": { "type": "integer", "minimum": 18, "description": "RULE-EXCL-012: audiences below 18 are not modelable in this system." },
+        "age_max": { "type": "integer" },
+        "gender_split": { "type": "string", "description": "Kept unstructured — descriptive, not rule-bearing." },
+        "lifestyle_tags": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "pain_points": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "preferred_product_ids": { "type": "array", "items": { "$ref": "#/$defs/ProductId" }, "minItems": 1 },
+        "platform_ids": { "type": "array", "items": { "$ref": "#/$defs/PlatformId" }, "minItems": 1 },
+        "tone_attributes": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "persona_names": { "type": "array", "items": { "type": "string" } },
+        "age_gate_required": { "type": "boolean", "description": "OPTIONAL — present only where the source data specifies it (AUD-F). Absent = unspecified, per the absent/null/value discipline; RULE-COMP-004 fires only on an explicit false." },
+        "content_rating": { "type": "string", "enum": ["general", "mature"], "description": "OPTIONAL — present only where the source data specifies it." },
+        "status": { "$ref": "#/$defs/EntityStatus" },
+        "compliance_watch": { "type": "string" }
+      }
+    },
+
+    "ProductLine": {
+      "type": "object",
+      "required": ["product_id", "name", "parent_product_id", "focus_tags", "target_pain_point", "visual_cues", "status"],
+      "properties": {
+        "product_id": { "$ref": "#/$defs/ProductId" },
+        "name": { "type": "string" },
+        "parent_product_id": { "oneOf": [{ "$ref": "#/$defs/ProductId" }, { "type": "null" }], "description": "Variant-child link (Decision D5). Rules bound to the parent cascade to variants unless overridden." },
+        "focus_tags": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "target_pain_point": { "type": "string" },
+        "visual_cues": { "type": "array", "items": { "type": "string" } },
+        "visual_description_pt": { "type": ["string", "null"], "description": "Locked pack/trade-dress descriptor (Decision D9) — injected verbatim into the entities block; null only for quarantined entities pending confirmation." },
+        "visual_description_en": { "type": ["string", "null"] },
+        "reference_assets": { "type": "array", "items": { "$ref": "#/$defs/ReferenceAsset" }, "description": "Pack shots etc. — emitted as @ref handles when the target model supports reference images (hybrid strategy, D9)." },
+        "status": { "$ref": "#/$defs/EntityStatus" },
+        "notes": { "type": "string" }
+      }
+    },
+
+    "Platform": {
+      "type": "object",
+      "required": ["platform_id", "code", "name", "format", "aspect_ratio", "resolution", "max_duration_s", "platform_min_age", "default_tone", "hook_requirement", "cta_placement", "cta_category", "content_style", "status"],
+      "properties": {
+        "platform_id": { "$ref": "#/$defs/PlatformId" },
+        "code": { "type": "string", "pattern": "^[A-Z]{2,4}$" },
+        "name": { "type": "string" },
+        "format": { "type": "string", "description": "Human-readable source label; machine parameters live in aspect_ratio/resolution (Decision D9)." },
+        "aspect_ratio": { "type": "string", "pattern": "^[0-9]+:[0-9]+$", "description": "Canonical pick where the source lists options — documented in the platform's notes; alternates are a data change." },
+        "resolution": { "type": "string", "pattern": "^[0-9]+x[0-9]+$" },
+        "max_duration_s": { "type": ["integer", "null"], "description": "null requires an entry in the null-policy findings (FND-006)." },
+        "platform_min_age": { "type": ["integer", "null"], "description": "null requires an entry in the null-policy findings (FND-006); distinguish not_applicable (OOH) from unknown (RET)." },
+        "default_tone": { "type": "string" },
+        "hook_requirement": { "type": "string" },
+        "cta_placement": { "type": "string" },
+        "cta_category": { "type": "string", "enum": ["engagement", "conversion", "shareable", "brand"], "description": "Normalized from RULE-INCL-005's note; drives the deterministic CTA check." },
+        "content_style": { "type": "string" },
+        "status": { "$ref": "#/$defs/EntityStatus" },
+        "notes": { "type": "string" }
+      }
+    },
+
+    "Claim": {
+      "type": "object",
+      "required": ["claim_id", "product_id", "parent_claim_id", "claim_type", "text_en", "text_pt_br", "status", "is_default"],
+      "properties": {
+        "claim_id": { "$ref": "#/$defs/ClaimId" },
+        "product_id": { "$ref": "#/$defs/ProductId" },
+        "parent_claim_id": { "oneOf": [{ "$ref": "#/$defs/ClaimId" }, { "type": "null" }], "description": "Rewrites are children of the claim they replace (Decision D4)." },
+        "claim_type": { "type": "string", "enum": ["efficacy", "sensory", "quality"] },
+        "text_en": { "type": "string" },
+        "text_pt_br": { "type": ["string", "null"], "description": "null permitted only for claims that cannot currently be used (blocked product or claim)." },
+        "status": { "type": "string", "enum": ["approved", "pending_signoff", "blocked_pending_signoff", "blocked"] },
+        "is_default": { "type": "boolean", "description": "Exactly one default per (product_id, parent_claim_id) family — checked by the validator, not expressible in JSON Schema." },
+        "rule_refs": { "type": "array", "items": { "$ref": "#/$defs/RuleId" } },
+        "rationale": { "type": "string" },
+        "residual_risk": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    },
+
+    "RuleCheck": {
+      "type": "object",
+      "required": ["kind", "engine", "spec"],
+      "properties": {
+        "kind": { "type": "string", "enum": ["deterministic_pattern", "deterministic_structural", "llm_judgment", "process_gate", "none"] },
+        "engine": { "type": "string", "enum": ["deterministic", "llm", "process", "none"] },
+        "spec": { "type": "string" },
+        "secondary": {
+          "type": "object",
+          "required": ["kind", "spec"],
+          "properties": {
+            "kind": { "type": "string", "enum": ["deterministic_pattern", "deterministic_structural", "llm_judgment", "process_gate"] },
+            "spec": { "type": "string" }
+          }
+        }
+      }
+    },
+
+    "Rule": {
+      "type": "object",
+      "required": ["rule_id", "rule_class", "source_type", "category", "description", "applies_to", "enforcement_level", "conflicts_with", "check", "status", "source"],
+      "properties": {
+        "rule_id": { "$ref": "#/$defs/RuleId" },
+        "rule_class": { "type": "string", "enum": ["content_rule", "claim_rule", "taxonomy_rule", "meta"], "description": "The briefing's content_rule/claim_rule split: claim_rules evaluate claim text; content_rules evaluate everything else; taxonomy_rules are output-contract checks." },
+        "source_type": { "type": "string", "enum": ["include", "exclude", "compliance", "taxonomy"] },
+        "category": { "type": "string" },
+        "description": { "type": "string" },
+        "applies_to": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "['ALL'], [] (NONE), or entity ID list. Unresolvable IDs generate findings, never crashes (RULE-404 lesson). Rules bound to a parent product cascade to its variants."
+        },
+        "enforcement_level": { "type": "string", "enum": ["required", "recommended", "hard_block", "soft_flag", "informational"] },
+        "conflicts_with": { "type": "array", "items": { "type": "string" }, "description": "Rule IDs or claim IDs (prefix-disambiguated: RULE- / CLM-)." },
+        "escalation": { "type": "string", "enum": ["senior_review"] },
+        "check": { "$ref": "#/$defs/RuleCheck" },
+        "notes": { "type": "string" },
+        "status": { "type": "string", "enum": ["active", "proposed", "informational", "retired"] },
+        "source": { "type": "string" }
+      }
+    },
+
+    "Taxonomy": {
+      "type": "object",
+      "required": ["taxonomy_id", "tags", "min_tags_per_output", "compliance_levels"],
+      "properties": {
+        "taxonomy_id": { "type": "string" },
+        "source_rule": { "$ref": "#/$defs/RuleId" },
+        "tags": { "type": "array", "items": { "type": "string" }, "minItems": 1, "uniqueItems": true },
+        "min_tags_per_output": { "type": "integer", "minimum": 1 },
+        "compliance_levels": {
+          "type": "object",
+          "required": ["green", "yellow", "red"],
+          "properties": {
+            "green": { "type": "string" },
+            "yellow": { "type": "string" },
+            "red": { "type": "string" }
+          }
+        }
+      }
+    },
+
+    "ContentProvenance": {
+      "type": "string",
+      "enum": ["client_provided", "localization", "authored_pending_signoff", "derived"],
+      "description": "Decision D10. client_provided = in the source briefing; localization = pt-BR translation of a canonical attribute; authored_pending_signoff = pipeline-authored to fill a gap, surfaced for sign-off (FND-013); derived = compiled from canonical rules/findings."
+    },
+
+    "ContentBank": {
+      "type": "object",
+      "required": ["provenance", "consumer_facing"],
+      "properties": {
+        "provenance": { "$ref": "#/$defs/ContentProvenance" },
+        "consumer_facing": { "type": "boolean", "description": "true = literal copy a consumer reads (taglines); these soft-flag affected outputs via RULE-COMP-005. false = generation direction or internal mapping; finding-only." },
+        "note": { "type": "string" },
+        "source": { "type": "string", "description": "For derived banks: the canonical rule/finding the content is compiled from." },
+        "map": { "type": "object", "description": "key → pt-BR string (or nested entity → tag for tag_hints)." },
+        "values": { "type": "array", "items": { "type": "string" } },
+        "text": { "type": "string" },
+        "product": { "type": "object" },
+        "audience": { "type": "object" }
+      },
+      "description": "One authored/localized/derived content bank used by the deterministic stub. The live LLM path reads NONE of these (Decision D10)."
+    },
+
+    "ContentBanks": {
+      "type": "object",
+      "description": "pt-BR content banks for the stub generator, relocated out of pipeline/content.py so no consumer-relevant data point lives in code (Decision D10). Every bank carries provenance; nothing authored is treated as canonical silently.",
+      "properties": {
+        "_meta": { "type": "object" }
+      },
+      "additionalProperties": { "$ref": "#/$defs/ContentBank" }
+    },
+
+    "PromptTemplate": {
+      "type": "object",
+      "required": ["template_id", "name", "status", "platform_ids", "input_variables", "slots", "output_contract", "modality", "default_model_id", "target_duration_s", "sections"],
+      "properties": {
+        "template_id": { "type": "string", "pattern": "^TPL-[A-Z0-9-]+$" },
+        "name": { "type": "string" },
+        "status": { "$ref": "#/$defs/EntityStatus" },
+        "platform_ids": { "type": "array", "items": { "$ref": "#/$defs/PlatformId" }, "minItems": 1 },
+        "input_variables": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "slots": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["slot", "source", "constraint"],
+            "properties": {
+              "slot": { "type": "string" },
+              "source": { "type": "string", "enum": ["generated_llm", "render_time_binding", "static"] },
+              "constraint": { "type": "string" }
+            }
+          }
+        },
+        "output_contract": { "type": "string" },
+        "modality": { "type": "string", "enum": ["video", "image"], "description": "Template family owns the modality; the platform record owns aspect/resolution/caps (Decision D9)." },
+        "default_model_id": { "$ref": "#/$defs/ModelId", "description": "FK into generation_models; swapping the target endpoint is a data change." },
+        "target_duration_s": { "type": ["integer", "null"], "description": "Family's creative duration target; effective target = min(this, platform.max_duration_s). null for image modality." },
+        "sections": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["key", "label", "source", "timed"],
+            "properties": {
+              "key": { "type": "string" },
+              "label": { "type": "string", "description": "Canonical pt-BR section label rendered into creative_prompt — format drift is structurally impossible because the renderer owns layout (Decision D9)." },
+              "source": { "type": "string", "enum": ["deterministic", "generated_llm", "render_time_binding"], "description": "deterministic = entities block assembled from the registries; render_time_binding = claim slot; generated_llm = creative shot/section text." },
+              "timed": { "type": "boolean", "description": "Timed sections carry duration_s (video modality) bounded by the target model's max_clip_s (RULE-TECH-002)." }
+            }
+          },
+          "description": "Canonical prompt layout, in order — entities always first (context dilution: identity anchors lose weight when appended last)."
+        },
+        "notes": { "type": "string" }
+      }
+    },
+
+    "TechnicalSpec": {
+      "type": "object",
+      "required": ["modality", "aspect_ratio", "resolution", "target_model_id"],
+      "properties": {
+        "modality": { "type": "string", "enum": ["video", "image"] },
+        "aspect_ratio": { "type": "string", "pattern": "^[0-9]+:[0-9]+$" },
+        "resolution": { "type": "string", "pattern": "^[0-9]+x[0-9]+$" },
+        "target_duration_s": { "type": "integer", "description": "REQUIRED for video modality (effective target = min(template.target_duration_s, platform.max_duration_s)); absent for image." },
+        "max_duration_s": { "type": ["integer", "null"], "description": "Platform cap, carried for audit; distinct from the creative target." },
+        "max_clip_s": { "type": "integer", "description": "REQUIRED for video modality — copied from the target model; the clip segmenter packs shots into ≤ this many seconds per generation request (Decision D9)." },
+        "target_model_id": { "$ref": "#/$defs/ModelId" },
+        "references": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["handle", "asset_id", "entity_id"],
+            "properties": {
+              "handle": { "type": "string", "pattern": "^@ref[0-9]+$", "description": "The handle used inside creative_prompt text (e.g. 'o frasco (@ref1)')." },
+              "asset_id": { "type": "string", "pattern": "^AST-[A-Z0-9-]+$" },
+              "entity_id": { "type": "string", "description": "Persona or product the asset grounds (prefix-disambiguated: PERS- / PL-)." }
+            }
+          },
+          "description": "Reference-image bindings emitted only when the target model supports them AND assets exist — the hybrid entity-grounding strategy (D9)."
+        }
+      },
+      "description": "Machine-readable generation parameters (Decision D9). These are API arguments, not prompt text — RULE-TECH-001 audits that they never leak into creative_prompt."
+    },
+
+    "CreativeSection": {
+      "type": "object",
+      "required": ["key", "label", "source", "text"],
+      "properties": {
+        "key": { "type": "string" },
+        "label": { "type": "string" },
+        "source": { "type": "string", "enum": ["deterministic", "generated_llm", "render_time_binding"] },
+        "duration_s": { "type": "integer", "description": "Present on timed sections (video modality); each ≤ technical_spec.max_clip_s (RULE-TECH-002)." },
+        "time_start_s": { "type": "integer", "description": "Computed cumulatively by the renderer — display/choreography metadata, never authored." },
+        "time_end_s": { "type": "integer" },
+        "text": { "type": "string" }
+      }
+    },
+
+    "PromptOutput": {
+      "type": "object",
+      "required": ["prompt_id", "base_prompt_id", "language", "platform_id", "format", "audience_id", "market_id", "product_id", "template_id", "claim_variant_id", "pain_point_ref", "technical_spec", "creative_sections", "creative_prompt", "negative_prompt", "cta", "compliance_notes", "compliance_level", "tags", "status"],
+      "properties": {
+        "prompt_id": { "type": "string", "pattern": "^[A-Z]{2,4}-[A-F]-[A-Z]{2,4}-[0-9]{3}(-c[0-9]+)?$", "description": "{market_code}-{audience_code}-{platform_code}-{seq}[-c{claim_variant}]" },
+        "base_prompt_id": { "type": "string", "pattern": "^[A-Z]{2,4}-[A-F]-[A-Z]{2,4}-[0-9]{3}$", "description": "Shared by sibling claim-variants of one creative shell (Decision D4)." },
+        "language": { "type": "string", "enum": ["pt-BR"] },
+        "platform_id": { "$ref": "#/$defs/PlatformId" },
+        "format": { "type": "string" },
+        "audience_id": { "$ref": "#/$defs/AudienceId" },
+        "market_id": { "type": "string", "pattern": "^MKT-[A-Z]{2,4}$" },
+        "product_id": { "$ref": "#/$defs/ProductId" },
+        "template_id": { "type": "string", "pattern": "^TPL-[A-Z0-9-]+$" },
+        "claim_variant_id": { "oneOf": [{ "$ref": "#/$defs/ClaimId" }, { "type": "null" }], "description": "Claim bound at render time from the registry; null only for claim-free formulations." },
+        "pain_point_ref": { "type": "string", "description": "Must be an element of the audience's pain_points (RULE-INCL-008)." },
+        "persona_id": { "oneOf": [{ "$ref": "#/$defs/PersonaId" }, { "type": "null" }], "description": "FK into personas — null for product-only families (display). The persona's locked descriptor is injected into the entities block (Decision D9)." },
+        "technical_spec": { "$ref": "#/$defs/TechnicalSpec" },
+        "creative_sections": { "type": "array", "items": { "$ref": "#/$defs/CreativeSection" }, "minItems": 1, "description": "Structured form of the prompt — the renderer derives creative_prompt from this in canonical section order (entities first). Converters and the clip segmenter consume this, never the prose." },
+        "creative_prompt": { "type": "string", "description": "pt-BR generation prompt (RULE-INCL-003), written natively — not translated. RENDERED deterministically from creative_sections; never free-formatted by the LLM (Decision D9)." },
+        "creative_prompt_en": { "type": "string", "description": "OPTIONAL — English companion rendering of the same concept, for reviewer use only (bilingual seam); never a translation source." },
+        "cta_en": { "type": "string", "description": "OPTIONAL — English companion of the CTA (bilingual seam)." },
+        "negative_prompt": { "type": "string", "description": "May be English (generation-internal, not consumer-facing)." },
+        "cta": { "type": "string", "description": "pt-BR (RULE-INCL-003); category must match platform.cta_category (RULE-INCL-005)." },
+        "compliance_notes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["rule_id", "result"],
+            "properties": {
+              "rule_id": { "$ref": "#/$defs/RuleId" },
+              "result": { "type": "string", "enum": ["pass", "fail", "hard_block", "soft_flag", "note", "not_applicable", "skipped_red", "skipped_offline"] },
+              "detail": { "type": "string" }
+            }
+          },
+          "description": "Full evaluation trace — every applied rule with its result (audit trail)."
+        },
+        "compliance_level": { "type": "string", "enum": ["green", "yellow", "red"], "description": "DERIVED (RULE-TAG-002): red if any hard_block or required-include unmet; yellow if any soft_flag; green otherwise." },
+        "tags": { "type": "array", "items": { "type": "string" }, "minItems": 3, "description": "Elements must come from taxonomy.tags (RULE-TAG-001); enum membership checked by the validator against the dataset." },
+        "status": { "type": "string", "enum": ["generated", "in_review", "approved", "rejected", "exported", "blocked"] },
+        "curation": { "type": "string", "enum": ["curated_proof_set", "raw_pipeline_output"], "description": "Decision D2: curated prompts are hand-reviewed; raw batch is spot-checked only." },
+        "generation_meta": { "type": "object", "description": "Model, template version, generation parameters — for audit and cost tracking." }
+      }
+    },
+
+    "ValidationFinding": {
+      "type": "object",
+      "required": ["finding_id", "severity", "detected_by", "affected", "summary", "resolution_queue", "resolution_path", "status"],
+      "properties": {
+        "finding_id": { "type": "string", "pattern": "^FND-[0-9]{3}$" },
+        "severity": { "type": "string", "enum": ["blocker", "high", "medium", "low", "info"] },
+        "detected_by": { "type": "string", "description": "Which validation check produced this finding." },
+        "affected": { "type": "array", "items": { "type": "string" }, "minItems": 1, "description": "Entity/rule/claim/field references (polymorphic, prefix-disambiguated)." },
+        "summary": { "type": "string" },
+        "detail": { "type": "string" },
+        "resolution_queue": { "type": "string", "enum": ["data_clarification", "content_review", "none"], "description": "The two human-in-the-loop queues (cross-cutting principle); 'none' = resolved mechanically or acknowledged." },
+        "resolution_path": { "type": "string" },
+        "status": { "type": "string", "enum": ["open", "mitigated", "resolved", "acknowledged"] },
+        "decision_ref": { "type": ["string", "null"], "pattern": "^D[0-9]+$", "description": "Link into the Decision Log (task_overview.md § 10)." }
+      }
+    }
+  }
+}

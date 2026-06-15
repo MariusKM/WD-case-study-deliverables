@@ -1,0 +1,1361 @@
+{
+  "_meta": {
+    "dataset_id": "DS-HSBR-PILOT-001",
+    "version": "1.2.0",
+    "status": "NORMALIZED",
+    "schema_ref": "schema.json",
+    "generated_at": "2026-06-11",
+    "updated_at": "2026-06-13",
+    "changelog_1_1_0": "Prompt-output feedback round (Decision D9): generation_models registry; platform aspect_ratio/resolution; template modality/default_model_id/target_duration_s/sections (canonical layout, entities first); personas registry (locked descriptors, sign-off lifecycle); product visual_description_pt/_en + reference_assets; RULE-TECH-001/002/003.",
+    "changelog_1_2_0": "Content-provenance audit (Decision D10): authored pt-BR content relocated from pipeline/content.py into content_banks (provenance-tagged); the live LLM brief now renders from canonical entity data only (no authored sensory/flavor; market_notes firewalled — competitor mention); FND-013 surfaces authored content; RULE-COMP-005 soft-flags un-signed-off consumer-facing copy.",
+    "normalized_from": ["raw_briefing.json", "rules_matrix.csv"],
+    "source_provenance": [
+      "briefing_call_recording_sep12.mp3",
+      "valentinas_notes_final_FINAL_v3.xlsx",
+      "whatsapp_export_client_thread.txt"
+    ],
+    "source_status": "RAW_UNVALIDATED",
+    "ingestion_notes": "Internal fields ('_'-prefixed, TODO) were stripped from entity records at ingestion and logged as findings (see FND-007). All normalization transforms are recorded as validation findings. Source data derives from unvalidated human inputs; confidence is per-entity, not global.",
+    "language_policy": "Structural and data fields in English; all consumer-facing copy in pt-BR (RULE-INCL-003)."
+  },
+
+  "codes": {
+    "markets": { "MKT-SP": "SP", "MKT-RJ": "RJ", "MKT-REC": "REC" },
+    "audiences": { "AUD-A": "A", "AUD-B": "B", "AUD-C": "C", "AUD-D": "D", "AUD-E": "E", "AUD-F": "F" },
+    "platforms": {
+      "PLAT-IGR": "IGR", "PLAT-TIK": "TIK", "PLAT-META": "META", "PLAT-YTS": "YTS",
+      "PLAT-YTL": "YTL", "PLAT-WA": "WA", "PLAT-RET": "RET", "PLAT-OOH": "OOH",
+      "PLAT-IGS": "IGS", "PLAT-PIN": "PIN"
+    },
+    "prompt_id_format": "{market_code}-{audience_code}-{platform_code}-{seq:03d}[-c{claim_variant}]"
+  },
+
+  "brand": {
+    "brand_id": "BRD-HS-BR",
+    "name": "Head & Shoulders Brasil",
+    "parent_company": "Procter & Gamble",
+    "region": "LATAM",
+    "primary_language": "pt-BR",
+    "secondary_language": "en",
+    "founded": 1961,
+    "guidelines_url": "internal://guidelines/h-and-s-brasil-2025",
+    "voice_attributes": ["confident", "trustworthy", "fresh", "science-backed"],
+    "status": "active"
+  },
+
+  "markets": [
+    {
+      "market_id": "MKT-SP",
+      "code": "SP",
+      "name": "São Paulo Metropolitan Area",
+      "region": "Southeast Brazil",
+      "socioeconomic_classes": ["A", "B"],
+      "audience_ids": ["AUD-A", "AUD-B"],
+      "notes": "Highest digital penetration; competitive environment; Unilever strong here",
+      "status": "active"
+    },
+    {
+      "market_id": "MKT-RJ",
+      "code": "RJ",
+      "name": "Rio de Janeiro",
+      "region": "Southeast Brazil",
+      "socioeconomic_classes": ["A", "B", "C"],
+      "audience_ids": ["AUD-C", "AUD-D"],
+      "notes": "Beach and outdoor culture dominant; strong influencer ecosystem",
+      "status": "active"
+    },
+    {
+      "market_id": "MKT-REC",
+      "code": "REC",
+      "name": "Recife / Northeast Brazil",
+      "region": "Northeast Brazil",
+      "socioeconomic_classes": ["B", "C", "D"],
+      "audience_ids": ["AUD-E", "AUD-F"],
+      "notes": "Price sensitivity higher; WhatsApp critical channel; strong brand loyalty once established",
+      "status": "active"
+    }
+  ],
+
+  "audiences": [
+    {
+      "audience_id": "AUD-A",
+      "code": "A",
+      "label": "Young Professionals",
+      "market_id": "MKT-SP",
+      "age_min": 18,
+      "age_max": 34,
+      "gender_split": "all genders",
+      "lifestyle_tags": ["urban", "digital-native", "career-focused", "fitness", "social-media-heavy"],
+      "pain_points": ["visible dandruff in professional settings", "stress-related hair issues", "no time for complex routines"],
+      "preferred_product_ids": ["PL-001", "PL-003"],
+      "platform_ids": ["PLAT-IGR", "PLAT-TIK", "PLAT-YTS"],
+      "tone_attributes": ["direct", "fresh", "self-assured", "peer-to-peer"],
+      "persona_names": ["Lucas", "Beatriz"],
+      "status": "active"
+    },
+    {
+      "audience_id": "AUD-B",
+      "code": "B",
+      "label": "Millennial Families",
+      "market_id": "MKT-SP",
+      "age_min": 28,
+      "age_max": 44,
+      "gender_split": "primary buyer often female, household decision maker",
+      "lifestyle_tags": ["family-first", "routine", "supermarket-shopper", "value-for-money", "time-efficient"],
+      "pain_points": ["reliable care for whole family", "building trusted hair routines", "skeptical of hype"],
+      "preferred_product_ids": ["PL-001", "PL-002"],
+      "platform_ids": ["PLAT-META", "PLAT-YTL", "PLAT-RET"],
+      "tone_attributes": ["trustworthy", "practical", "warm", "reassuring"],
+      "persona_names": ["Camila", "Rodrigo"],
+      "status": "active"
+    },
+    {
+      "audience_id": "AUD-C",
+      "code": "C",
+      "label": "Active Lifestyle Consumers",
+      "market_id": "MKT-RJ",
+      "age_min": 18,
+      "age_max": 39,
+      "gender_split": "all genders",
+      "lifestyle_tags": ["outdoor", "beach", "sport", "sun-exposed", "social-events"],
+      "pain_points": ["sweating during activity", "freshness after beach or gym", "visible scalp care in social settings"],
+      "preferred_product_ids": ["PL-003", "PL-002"],
+      "platform_ids": ["PLAT-TIK", "PLAT-IGS", "PLAT-OOH"],
+      "tone_attributes": ["energetic", "light", "positive", "celebratory"],
+      "persona_names": ["Gabriela", "Felipe"],
+      "status": "active"
+    },
+    {
+      "audience_id": "AUD-D",
+      "code": "D",
+      "label": "Beauty & Care Explorers",
+      "market_id": "MKT-RJ",
+      "age_min": 21,
+      "age_max": 34,
+      "gender_split": "predominantly female, 18-34 beauty consumers",
+      "lifestyle_tags": ["beauty-routine", "self-care", "influencer-content", "premium-adjacent", "sensory-driven"],
+      "pain_points": ["achieving healthy-looking hair", "fragrance as experience", "confidence through care"],
+      "preferred_product_ids": ["PL-002", "PL-001"],
+      "platform_ids": ["PLAT-IGR", "PLAT-PIN", "PLAT-YTS"],
+      "tone_attributes": ["inspiring", "sensory", "modern", "aspirational"],
+      "persona_names": ["Isabela"],
+      "status": "active"
+    },
+    {
+      "audience_id": "AUD-E",
+      "code": "E",
+      "label": "Value Conscious Shoppers",
+      "market_id": "MKT-REC",
+      "age_min": 25,
+      "age_max": 49,
+      "gender_split": "primary household buyer",
+      "lifestyle_tags": ["price-sensitive", "family-focused", "local-retail", "promotion-responsive"],
+      "pain_points": ["proven efficacy at accessible price", "price-performance ratio", "product availability"],
+      "preferred_product_ids": ["PL-001", "PL-002"],
+      "platform_ids": ["PLAT-WA", "PLAT-META", "PLAT-RET"],
+      "tone_attributes": ["clear", "benefit-focused", "accessible", "direct"],
+      "persona_names": ["Dona Maria", "Seu Carlos"],
+      "status": "active"
+    },
+    {
+      "audience_id": "AUD-F",
+      "code": "F",
+      "label": "Gen Z Students",
+      "market_id": "MKT-REC",
+      "age_min": 18,
+      "age_max": 24,
+      "gender_split": "all genders",
+      "lifestyle_tags": ["university-life", "peer-social", "music", "mobile-first", "trend-aware"],
+      "pain_points": ["dandruff causing social embarrassment", "self-confidence and appearance", "style and identity"],
+      "preferred_product_ids": ["PL-001", "PL-003"],
+      "platform_ids": ["PLAT-TIK", "PLAT-IGR"],
+      "tone_attributes": ["casual", "fast", "humorous but never dismissive"],
+      "persona_names": ["João", "Ana"],
+      "age_gate_required": false,
+      "content_rating": "general",
+      "status": "active",
+      "compliance_watch": "age_gate_required:false is a suspected data error (FND-003, RULE-COMP-004); pain points trigger RULE-COMP-003 (empowering-not-exploitative tone mandatory)."
+    }
+  ],
+
+  "personas": [
+    {
+      "persona_id": "PERS-A-01", "name": "Lucas", "audience_id": "AUD-A", "apparent_age": "28",
+      "description_pt": "homem de 28 anos, pele parda, cabelo escuro curto e bem cuidado, visual profissional urbano — camisa social leve ou blazer casual, postura confiante e natural",
+      "description_en": "28-year-old man, medium-brown skin, short well-kept dark hair, urban professional look — light dress shirt or casual blazer, confident natural posture",
+      "reference_assets": [], "status": "approved",
+      "notes": "Locked text descriptor (Decision D9). reference_assets empty: persona identity ships descriptor-only until client-approved talent or persona sheets land in the DAM; the assembler falls back to the descriptor automatically."
+    },
+    {
+      "persona_id": "PERS-A-02", "name": "Beatriz", "audience_id": "AUD-A", "apparent_age": "30",
+      "description_pt": "mulher de 30 anos, pele clara, cabelo castanho na altura dos ombros, estilo executivo descontraído — blusa de trabalho moderna, expressão decidida e simpática",
+      "description_en": "30-year-old woman, light skin, shoulder-length brown hair, relaxed executive style — modern work blouse, decisive friendly expression",
+      "reference_assets": [], "status": "approved"
+    },
+    {
+      "persona_id": "PERS-B-01", "name": "Camila", "audience_id": "AUD-B", "apparent_age": "35",
+      "description_pt": "mulher de 35 anos, pele morena, cabelo escuro liso ou levemente ondulado preso de forma prática, roupa casual de dia a dia em casa — camiseta limpa e confortável, presença acolhedora e organizada",
+      "description_en": "35-year-old woman, tan skin, dark straight or slightly wavy hair tied back practically, everyday casual home outfit — clean comfortable t-shirt, warm organized presence",
+      "reference_assets": [], "status": "approved"
+    },
+    {
+      "persona_id": "PERS-B-02", "name": "Rodrigo", "audience_id": "AUD-B", "apparent_age": "38",
+      "description_pt": "homem de 38 anos, pele clara, cabelo curto grisalho nas têmporas, visual de pai prático — polo ou camiseta lisa, jeito tranquilo e confiável",
+      "description_en": "38-year-old man, light skin, short hair greying at the temples, practical dad look — polo or plain t-shirt, calm dependable manner",
+      "reference_assets": [], "status": "approved"
+    },
+    {
+      "persona_id": "PERS-C-01", "name": "Gabriela", "audience_id": "AUD-C", "apparent_age": "27",
+      "description_pt": "mulher de 27 anos, pele negra, cabelo cacheado volumoso, corpo ativo e atlético, roupa esportiva leve ou saída de praia, energia alta e sorriso aberto",
+      "description_en": "27-year-old woman, Black skin, voluminous curly hair, active athletic build, light sportswear or beach cover-up, high energy and an open smile",
+      "reference_assets": [], "status": "approved"
+    },
+    {
+      "persona_id": "PERS-C-02", "name": "Felipe", "audience_id": "AUD-C", "apparent_age": "30",
+      "description_pt": "homem de 30 anos, pele bronzeada, cabelo escuro médio com movimento, físico esportivo, camiseta regata ou camisa aberta de verão, jeito leve e festivo",
+      "description_en": "30-year-old man, sun-tanned skin, mid-length dark hair with movement, sporty build, tank top or open summer shirt, light celebratory manner",
+      "reference_assets": [], "status": "approved"
+    },
+    {
+      "persona_id": "PERS-D-01", "name": "Isabela", "audience_id": "AUD-D", "apparent_age": "26",
+      "description_pt": "mulher de 26 anos, pele clara levemente dourada, cabelo castanho longo, solto e brilhante, estética de criadora de conteúdo de beleza — peças modernas em tons neutros, gestos suaves e sensoriais",
+      "description_en": "26-year-old woman, lightly golden skin, long loose shiny brown hair, beauty-creator aesthetic — modern pieces in neutral tones, soft sensory gestures",
+      "reference_assets": [], "status": "approved"
+    },
+    {
+      "persona_id": "PERS-E-01", "name": "Dona Maria", "audience_id": "AUD-E", "apparent_age": "48",
+      "description_pt": "mulher de 48 anos, pele morena, cabelo escuro com fios grisalhos preso em coque baixo, roupa simples e bem cuidada de uso diário, expressão firme e acolhedora de quem decide as compras da casa",
+      "description_en": "48-year-old woman, tan skin, dark hair with grey strands in a low bun, simple well-kept everyday clothes, firm welcoming expression of the household decision maker",
+      "reference_assets": [], "status": "approved"
+    },
+    {
+      "persona_id": "PERS-E-02", "name": "Seu Carlos", "audience_id": "AUD-E", "apparent_age": "49",
+      "description_pt": "homem de 49 anos, pele parda, cabelo curto grisalho, camisa simples de botão, jeito direto e cordial de comerciante de bairro",
+      "description_en": "49-year-old man, medium-brown skin, short grey hair, simple button-down shirt, direct cordial manner of a neighborhood shopkeeper",
+      "reference_assets": [], "status": "approved"
+    },
+    {
+      "persona_id": "PERS-F-01", "name": "João", "audience_id": "AUD-F", "apparent_age": "21",
+      "description_pt": "homem jovem de 21 anos (aparência claramente adulta), pele parda, cabelo escuro despojado, visual universitário autêntico — camiseta gráfica, mochila, energia espontânea de criador de conteúdo",
+      "description_en": "21-year-old young man (clearly adult appearance), medium-brown skin, relaxed dark hair, authentic university look — graphic tee, backpack, spontaneous creator energy",
+      "reference_assets": [], "status": "approved",
+      "notes": "AUD-F personas must read clearly adult on screen (RULE-EXCL-002 adjacency; content_rating general)."
+    },
+    {
+      "persona_id": "PERS-F-02", "name": "Ana", "audience_id": "AUD-F", "apparent_age": "22",
+      "description_pt": "mulher jovem de 22 anos (aparência claramente adulta), pele clara, cabelo castanho na altura do queixo, estilo universitário expressivo — jaqueta jeans, fones no pescoço, atitude bem-humorada",
+      "description_en": "22-year-old young woman (clearly adult appearance), light skin, chin-length brown hair, expressive student style — denim jacket, headphones around the neck, good-humored attitude",
+      "reference_assets": [], "status": "approved",
+      "notes": "AUD-F personas must read clearly adult on screen (RULE-EXCL-002 adjacency; content_rating general)."
+    }
+  ],
+
+  "product_lines": [
+    {
+      "product_id": "PL-001",
+      "name": "H&S Controle da Caspa",
+      "parent_product_id": null,
+      "focus_tags": ["anti-dandruff", "efficacy", "daily-use", "trusted"],
+      "target_pain_point": "visible dandruff",
+      "visual_cues": ["clean scalp", "confident look", "white shirt no flakes"],
+      "visual_description_pt": "frasco branco arredondado com tampa azul-escura, logotipo Head & Shoulders em azul, faixa 'Controle da Caspa' no rótulo",
+      "visual_description_en": "rounded white bottle with dark-blue cap, blue Head & Shoulders logo, 'Controle da Caspa' band on the label",
+      "reference_assets": [
+        { "asset_id": "AST-PL001-PACK-01", "kind": "pack_shot", "uri": "dam://hsbr/packshots/pl001_front.png", "status": "placeholder" }
+      ],
+      "status": "active",
+      "notes": "Hero product. Original key_claim moved to claim registry as CLM-PL001-0 (blocked pending sign-off, see FND-002 / Decision D4)."
+    },
+    {
+      "product_id": "PL-002",
+      "name": "H&S Hidratação",
+      "parent_product_id": null,
+      "focus_tags": ["moisture", "hair-care", "freshness", "nourishment"],
+      "target_pain_point": "dry and dull hair",
+      "visual_cues": ["shiny hair", "movement", "natural light", "before-after texture"],
+      "visual_description_pt": "frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo",
+      "visual_description_en": "rounded white bottle with light-blue cap and turquoise accents, blue Head & Shoulders logo, 'Hidratação' band on the label",
+      "reference_assets": [
+        { "asset_id": "AST-PL002-PACK-01", "kind": "pack_shot", "uri": "dam://hsbr/packshots/pl002_front.png", "status": "placeholder" }
+      ],
+      "status": "active",
+      "notes": "Visual cue 'before-after texture' conflicts with RULE-EXCL-006 — see FND-004. Cue retained as source fact; generation must not use it until resolved."
+    },
+    {
+      "product_id": "PL-003",
+      "name": "H&S Menthol Fresh",
+      "parent_product_id": null,
+      "focus_tags": ["freshness", "cooling", "active-lifestyle", "sport"],
+      "target_pain_point": "heat, sweating, lack of scalp freshness",
+      "visual_cues": ["outdoor activity", "post-workout", "menthol swirl", "blue tones"],
+      "visual_description_pt": "frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo",
+      "visual_description_en": "rounded white bottle with vibrant blue cap, blue-and-white menthol swirl graphic, blue Head & Shoulders logo, 'Menthol Fresh' band on the label",
+      "reference_assets": [
+        { "asset_id": "AST-PL003-PACK-01", "kind": "pack_shot", "uri": "dam://hsbr/packshots/pl003_front.png", "status": "placeholder" }
+      ],
+      "status": "active",
+      "notes": "Canonical resolution target for all ambiguous PL-003 references (Decision D5)."
+    },
+    {
+      "product_id": "PL-003-PRO",
+      "name": "H&S Menthol Fresh Pro",
+      "parent_product_id": "PL-003",
+      "focus_tags": ["freshness", "sport", "premium", "cooling-plus"],
+      "target_pain_point": "intense activity, heat exposure",
+      "visual_cues": ["premium athlete", "performance", "blue-white", "stadium or gym"],
+      "visual_description_pt": null,
+      "visual_description_en": null,
+      "reference_assets": [],
+      "status": "pending_confirmation",
+      "notes": "Source shared duplicate ID PL-003 with base product; modeled as variant child per Decision D5 (FND-001). Quarantined from generation until client confirms ID and market positioning. Inherits parent-bound rules (e.g. RULE-INCL-009) by cascade."
+    }
+  ],
+
+  "platforms": [
+    {
+      "platform_id": "PLAT-IGR", "code": "IGR", "name": "Instagram Reels",
+      "format": "9:16 vertical video", "aspect_ratio": "9:16", "resolution": "1080x1920", "max_duration_s": 90, "platform_min_age": 13,
+      "default_tone": "fresh, direct",
+      "hook_requirement": "strong visual or audio hook in first 2-3 seconds",
+      "cta_placement": "mid-to-end", "cta_category": "engagement",
+      "content_style": "native, slightly polished, authentic", "status": "active"
+    },
+    {
+      "platform_id": "PLAT-TIK", "code": "TIK", "name": "TikTok",
+      "format": "9:16 vertical video", "aspect_ratio": "9:16", "resolution": "1080x1920", "max_duration_s": 60, "platform_min_age": 13,
+      "default_tone": "casual, native, trend-aware",
+      "hook_requirement": "sound-on hook within first 1-2 seconds",
+      "cta_placement": "end", "cta_category": "engagement",
+      "content_style": "lo-fi to mid-fi, trend-adjacent, entertaining", "status": "active"
+    },
+    {
+      "platform_id": "PLAT-META", "code": "META", "name": "Meta Feed (Facebook & Instagram)",
+      "format": "1:1 or 4:5 static or video", "aspect_ratio": "4:5", "resolution": "1080x1350", "max_duration_s": 120, "platform_min_age": 13,
+      "default_tone": "trustworthy, informative",
+      "hook_requirement": "strong headline or opening frame",
+      "cta_placement": "below-asset", "cta_category": "engagement",
+      "content_style": "clean, benefit-led, scroll-stopping", "status": "active",
+      "notes": "Source format lists options (1:1 or 4:5, static or video); aspect_ratio/resolution carry the canonical pick (4:5 feed-optimal, static per TPL-STATIC-FEED-01 modality). Alternates are a data change, not a template change."
+    },
+    {
+      "platform_id": "PLAT-YTS", "code": "YTS", "name": "YouTube Shorts",
+      "format": "9:16 short video", "aspect_ratio": "9:16", "resolution": "1080x1920", "max_duration_s": 60, "platform_min_age": 13,
+      "default_tone": "engaging, watch-through-optimised",
+      "hook_requirement": "curiosity gap or relatable problem in first 3s",
+      "cta_placement": "end-card or end-screen", "cta_category": "engagement",
+      "content_style": "educational or entertainment, no skippable intro", "status": "active"
+    },
+    {
+      "platform_id": "PLAT-YTL", "code": "YTL", "name": "YouTube (Long-form)",
+      "format": "16:9 standard video", "aspect_ratio": "16:9", "resolution": "1920x1080", "max_duration_s": 600, "platform_min_age": 13,
+      "default_tone": "informative, authentic, relationship-building",
+      "hook_requirement": "problem-solution narrative arc",
+      "cta_placement": "mid-roll or end", "cta_category": "engagement",
+      "content_style": "storytelling, educational, or lifestyle", "status": "active"
+    },
+    {
+      "platform_id": "PLAT-WA", "code": "WA", "name": "WhatsApp Shareables",
+      "format": "1:1 image or short video under 30s", "aspect_ratio": "1:1", "resolution": "1080x1080", "max_duration_s": 30, "platform_min_age": 16,
+      "default_tone": "conversational, peer-to-peer, shareable",
+      "hook_requirement": "instantly readable benefit or offer",
+      "cta_placement": "inline with content", "cta_category": "shareable",
+      "content_style": "low-production, chat-native, easily forwardable", "status": "active"
+    },
+    {
+      "platform_id": "PLAT-RET", "code": "RET", "name": "Retail Media",
+      "format": "banner, product page tile, or in-app unit", "aspect_ratio": "1:1", "resolution": "1080x1080", "max_duration_s": null, "platform_min_age": null,
+      "default_tone": "benefit-first, conversion-focused",
+      "hook_requirement": "product name and key benefit in headline",
+      "cta_placement": "prominent above fold", "cta_category": "conversion",
+      "content_style": "product-centric, clean, action-oriented", "status": "active",
+      "notes": "platform_min_age and max_duration_s are null in source — see FND-006 for null policy. aspect_ratio/resolution are a canonical 1:1 tile pick (source names three unit types); per-placement sizes are a delivery-spec concern, resolved at export."
+    },
+    {
+      "platform_id": "PLAT-OOH", "code": "OOH", "name": "OOH Digital (Out-of-Home Screens)",
+      "format": "16:9 or 9:16 static or looped animation", "aspect_ratio": "16:9", "resolution": "3840x2160", "max_duration_s": 15, "platform_min_age": null,
+      "default_tone": "bold, brief, single-message",
+      "hook_requirement": "single strong visual with max 7-word tagline",
+      "cta_placement": "tagline or brand mark only", "cta_category": "brand",
+      "content_style": "high-contrast, readable at distance, brand-first", "status": "active",
+      "notes": "platform_min_age is null in source — see FND-006. OOH is unaddressable; age gating is not applicable, which the null policy must distinguish from 'unknown'. aspect_ratio/resolution carry the canonical pick (16:9 landscape screen, static per template modality); 9:16 portrait screens are a per-site variant resolved at export."
+    },
+    {
+      "platform_id": "PLAT-IGS", "code": "IGS", "name": "Instagram Stories",
+      "format": "9:16 vertical", "aspect_ratio": "9:16", "resolution": "1080x1920", "max_duration_s": 15, "platform_min_age": 13,
+      "default_tone": "authentic, casual, ephemeral",
+      "hook_requirement": "immediate visual engagement",
+      "cta_placement": "link sticker or swipe-up", "cta_category": "engagement",
+      "content_style": "raw or semi-produced, interactive elements welcome", "status": "active"
+    },
+    {
+      "platform_id": "PLAT-PIN", "code": "PIN", "name": "Pinterest",
+      "format": "2:3 static or Idea Pin", "aspect_ratio": "2:3", "resolution": "1000x1500", "max_duration_s": 60, "platform_min_age": 13,
+      "default_tone": "aspirational, visually rich, instructional",
+      "hook_requirement": "inspiring image or how-to opener",
+      "cta_placement": "pin title or linked destination", "cta_category": "engagement",
+      "content_style": "evergreen, save-worthy, step-by-step or mood-driven", "status": "active"
+    }
+  ],
+
+  "generation_models": [
+    {
+      "model_id": "MODEL-VID-SEEDANCE-2", "name": "Seedance 2.0", "modality": "video",
+      "max_clip_s": 15, "supports_reference_images": true, "native_audio": true,
+      "status": "active",
+      "notes": "Placeholder SOTA enum value — the registry exists so prompts target a concrete endpoint; swapping models is a data change. max_clip_s drives deterministic clip segmentation; supports_reference_images drives the entity reference strategy."
+    },
+    {
+      "model_id": "MODEL-VID-GVO-1", "name": "GoogleVideoOmni", "modality": "video",
+      "max_clip_s": 15, "supports_reference_images": true, "native_audio": true,
+      "status": "active",
+      "notes": "Placeholder SOTA enum value. Default for long-form: multi-clip narratives are compiled by the clip segmenter (Decision D9), one ≤15s generation per clip with continuity references."
+    },
+    {
+      "model_id": "MODEL-IMG-NANOBANANA-PRO", "name": "Nano Banana Pro", "modality": "image",
+      "max_clip_s": null, "supports_reference_images": true, "native_audio": false,
+      "status": "active",
+      "notes": "Placeholder SOTA enum value. Strong character/reference consistency — default for lifestyle stills."
+    },
+    {
+      "model_id": "MODEL-IMG-GPTIMAGE-2", "name": "GPT-Image-2", "modality": "image",
+      "max_clip_s": null, "supports_reference_images": true, "native_audio": false,
+      "status": "active",
+      "notes": "Placeholder SOTA enum value. Strong text/typography rendering — default for display units carrying headlines."
+    }
+  ],
+
+  "claims": [
+    {
+      "claim_id": "CLM-PL001-0",
+      "product_id": "PL-001",
+      "parent_claim_id": null,
+      "claim_type": "efficacy",
+      "text_en": "clinically proven anti-dandruff protection",
+      "text_pt_br": "proteção anticaspa clinicamente comprovada",
+      "status": "blocked_pending_signoff",
+      "is_default": false,
+      "rule_refs": ["RULE-EXCL-004"],
+      "notes": "Original source claim. Violates RULE-EXCL-004 (clinical language; cosmetic, not medication). Quarantined per Decision D4 — never reaches a prompt verbatim. Escalated via data clarification queue with rewrites R1-R3 as candidates."
+    },
+    {
+      "claim_id": "CLM-PL001-R1",
+      "product_id": "PL-001",
+      "parent_claim_id": "CLM-PL001-0",
+      "claim_type": "efficacy",
+      "text_en": "visibly reduces dandruff with regular use",
+      "text_pt_br": "reduz visivelmente a caspa com o uso regular",
+      "status": "pending_signoff",
+      "is_default": true,
+      "rule_refs": [],
+      "rationale": "Observable, specific, non-clinical. Satisfies RULE-INCL-001 specificity without clinical register.",
+      "residual_risk": "low"
+    },
+    {
+      "claim_id": "CLM-PL001-R2",
+      "product_id": "PL-001",
+      "parent_claim_id": "CLM-PL001-0",
+      "claim_type": "efficacy",
+      "text_en": "effective anti-dandruff protection, wash after wash",
+      "text_pt_br": "proteção anticaspa eficaz, lavagem após lavagem",
+      "status": "pending_signoff",
+      "is_default": false,
+      "rule_refs": [],
+      "rationale": "Category-idiomatic continuity claim; avoids both clinical register and time-bound promises.",
+      "residual_risk": "low"
+    },
+    {
+      "claim_id": "CLM-PL001-R3",
+      "product_id": "PL-001",
+      "parent_claim_id": "CLM-PL001-0",
+      "claim_type": "efficacy",
+      "text_en": "dermatologically tested anti-dandruff protection",
+      "text_pt_br": "proteção anticaspa dermatologicamente testada",
+      "status": "pending_signoff",
+      "is_default": false,
+      "rule_refs": ["RULE-EXCL-011"],
+      "rationale": "Retains scientific authority closest to the original claim's intent.",
+      "residual_risk": "medium — requires substantiation documentation; lexically adjacent to RULE-EXCL-011 (dermatology), needs LLM disambiguation between testing claim and advice-replacement claim."
+    },
+    {
+      "claim_id": "CLM-PL002-0",
+      "product_id": "PL-002",
+      "parent_claim_id": null,
+      "claim_type": "efficacy",
+      "text_en": "visibly healthier hair from first use",
+      "text_pt_br": "cabelo visivelmente mais saudável desde a primeira lavagem",
+      "status": "approved",
+      "is_default": true,
+      "rule_refs": [],
+      "notes": "'From first use' is a time-bound efficacy promise — passes current rules but flagged as reviewer attention point in combination with transformation imagery (RULE-EXCL-006 adjacency)."
+    },
+    {
+      "claim_id": "CLM-PL003-0",
+      "product_id": "PL-003",
+      "parent_claim_id": null,
+      "claim_type": "sensory",
+      "text_en": "instant cooling freshness that lasts",
+      "text_pt_br": "frescor gelado instantâneo e duradouro",
+      "status": "approved",
+      "is_default": true,
+      "rule_refs": []
+    },
+    {
+      "claim_id": "CLM-PL003PRO-0",
+      "product_id": "PL-003-PRO",
+      "parent_claim_id": null,
+      "claim_type": "quality",
+      "text_en": "professional-grade cooling freshness for active lifestyles",
+      "text_pt_br": null,
+      "status": "pending_signoff",
+      "is_default": true,
+      "rule_refs": ["RULE-COMP-001"],
+      "notes": "Unusable regardless of claim status while product PL-003-PRO is pending_confirmation (D5). 'Professional-grade' pre-logged as borderline RULE-COMP-001 (quality-superiority assertion) — see FND-012. pt-BR rendering deferred until product confirmation."
+    }
+  ],
+
+  "rules": [
+    {
+      "rule_id": "RULE-INCL-001", "rule_class": "claim_rule", "source_type": "include", "category": "efficacy",
+      "description": "Communicate product benefit and efficacy clearly and specifically",
+      "applies_to": ["ALL"], "enforcement_level": "required", "conflicts_with": ["RULE-EXCL-001"],
+      "check": {
+        "kind": "deterministic_structural", "engine": "deterministic",
+        "spec": "prompt_output.claim_variant_id must resolve to a claim of the featured product_line with status approved, or pending_signoff when it is the designated default rewrite (D4). Outputs with no claim binding fail.",
+        "secondary": { "kind": "llm_judgment", "spec": "Verify claim is rendered specifically to the product line, not as a generic benefit." }
+      },
+      "notes": "Must be specific to the product line — generic claims are not compliant. Conflict with RULE-EXCL-001 resolved via claim registry (FND-005).",
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-INCL-002", "rule_class": "content_rule", "source_type": "include", "category": "tone",
+      "description": "Use the audience-specific tone as defined in the audience record",
+      "applies_to": ["ALL"], "enforcement_level": "required", "conflicts_with": [],
+      "check": {
+        "kind": "deterministic_structural", "engine": "deterministic",
+        "spec": "prompt_output tone metadata must equal audience.tone_attributes; audience tone overrides platform default_tone when both are defined.",
+        "secondary": { "kind": "llm_judgment", "spec": "Verify the pt-BR copy actually carries the audience tone, not just the metadata." }
+      },
+      "notes": "Tone must match audience_id — do not apply default platform tone when audience tone is defined.",
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-INCL-003", "rule_class": "content_rule", "source_type": "include", "category": "language",
+      "description": "All consumer-facing copy must be in Brazilian Portuguese (pt-BR)",
+      "applies_to": ["ALL"], "enforcement_level": "required", "conflicts_with": [],
+      "check": {
+        "kind": "deterministic_pattern", "engine": "deterministic",
+        "spec": "Language detection on creative_prompt and cta fields must yield pt-BR. Structural/data fields and negative_prompt may be English."
+      },
+      "notes": "Structural and data fields may use English.",
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-INCL-004", "rule_class": "content_rule", "source_type": "include", "category": "hook",
+      "description": "Include a platform-appropriate hook within the first 2-3 seconds of video content",
+      "applies_to": ["PLAT-IGR", "PLAT-TIK", "PLAT-YTS", "PLAT-IGS"], "enforcement_level": "required", "conflicts_with": [],
+      "check": {
+        "kind": "deterministic_structural", "engine": "deterministic",
+        "spec": "Hook slot must be non-empty and positioned first; timing parameter from platform.hook_requirement.",
+        "secondary": { "kind": "llm_judgment", "spec": "Verify hook style matches platform spec (e.g. sound-on for TikTok, curiosity gap for Shorts)." }
+      },
+      "notes": "See platform data for hook style requirements.",
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-INCL-005", "rule_class": "content_rule", "source_type": "include", "category": "cta",
+      "description": "Include a clear action-oriented CTA appropriate to the platform",
+      "applies_to": ["ALL"], "enforcement_level": "required", "conflicts_with": [],
+      "check": {
+        "kind": "deterministic_structural", "engine": "deterministic",
+        "spec": "cta field non-empty AND cta category matches platform.cta_category (WA: shareable; RET: conversion; OOH: brand; social: engagement)."
+      },
+      "notes": "WhatsApp: shareable-first CTA; Retail: conversion CTA; Social: engagement CTA.",
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-INCL-006", "rule_class": "content_rule", "source_type": "include", "category": "context",
+      "description": "Show or reference realistic everyday usage scenarios relevant to the audience",
+      "applies_to": ["ALL"], "enforcement_level": "required", "conflicts_with": [],
+      "check": {
+        "kind": "llm_judgment", "engine": "llm",
+        "spec": "Judge whether the scene feels true to audience lifestyle_tags and pain_points — not generic or aspirational-only."
+      },
+      "notes": "Must feel true to the audience lifestyle.",
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-INCL-007", "rule_class": "content_rule", "source_type": "include", "category": "regional",
+      "description": "Reference regional context where meaningful (beach, urban rhythm, family life, northeast culture)",
+      "applies_to": ["ALL"], "enforcement_level": "recommended", "conflicts_with": [],
+      "check": {
+        "kind": "llm_judgment", "engine": "llm",
+        "spec": "Judge whether regional context is present and authentic; do not force where inauthentic. Unmet => note only (recommended)."
+      },
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-INCL-008", "rule_class": "content_rule", "source_type": "include", "category": "pain_point",
+      "description": "Address at least one pain point from the audience pain_points array",
+      "applies_to": ["ALL"], "enforcement_level": "required", "conflicts_with": [],
+      "check": {
+        "kind": "deterministic_structural", "engine": "deterministic",
+        "spec": "prompt_output.pain_point_ref must be an element of audience.pain_points.",
+        "secondary": { "kind": "llm_judgment", "spec": "Verify the referenced pain point is actually addressed in the copy." }
+      },
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-INCL-009", "rule_class": "content_rule", "source_type": "include", "category": "product_specific",
+      "description": "Describe freshness and cooling sensation for Menthol product line",
+      "applies_to": ["PL-003"], "enforcement_level": "required", "conflicts_with": [],
+      "check": {
+        "kind": "deterministic_pattern", "engine": "deterministic",
+        "spec": "Sensory lexicon must be present in creative_prompt (pt-BR): frescor, refrescante, gelado, mentol, sensação de frescor, refrescância.",
+        "secondary": { "kind": "llm_judgment", "spec": "Sensory language strongly preferred — verify it reads as sensation, not specification." }
+      },
+      "notes": "Cascades to variant PL-003-PRO via parent_product_id (Decision D5).",
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-INCL-010", "rule_class": "content_rule", "source_type": "include", "category": "product_specific",
+      "description": "Reference moisture and hair texture improvement for Hidratação line",
+      "applies_to": ["PL-002"], "enforcement_level": "recommended", "conflicts_with": [],
+      "check": {
+        "kind": "deterministic_pattern", "engine": "deterministic",
+        "spec": "Moisture lexicon presence in creative_prompt (pt-BR): hidratação, maciez, brilho, textura, nutrição. Unmet => note only (recommended)."
+      },
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-EXCL-001", "rule_class": "claim_rule", "source_type": "exclude", "category": "medical",
+      "description": "Prohibit medical claims: 'heals', 'treats', 'cures', 'eliminates'",
+      "applies_to": ["ALL"], "enforcement_level": "hard_block", "conflicts_with": ["RULE-INCL-001"],
+      "check": {
+        "kind": "deterministic_pattern", "engine": "deterministic",
+        "spec": "Blocked terms (en): heals, heal, treats, treat, cures, cure, eliminates, eliminate, therapeutic, medication. Blocked terms (pt-BR): cura, curar, trata, tratar, tratamento, elimina, eliminar, sara, sarar, remédio, medicamento, terapêutico."
+      },
+      "notes": "Will trigger mandatory human review. Product is a cosmetic, not a therapeutic device. Conflict with RULE-INCL-001 resolved via approved claim vocabulary in the claim registry (FND-005).",
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-EXCL-002", "rule_class": "content_rule", "source_type": "exclude", "category": "minors",
+      "description": "Prohibit content targeting or featuring minors as primary subjects or protagonists",
+      "applies_to": ["ALL"], "enforcement_level": "hard_block", "conflicts_with": [],
+      "check": {
+        "kind": "llm_judgment", "engine": "llm",
+        "spec": "Judge apparent age of depicted subjects; must be consistent with audience.age_min."
+      },
+      "notes": "Age shown in content must be consistent with audience age_min.",
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-EXCL-003", "rule_class": "content_rule", "source_type": "exclude", "category": "discrimination",
+      "description": "Prohibit language or imagery implying judgment of appearance, hygiene, or social class",
+      "applies_to": ["ALL"], "enforcement_level": "hard_block", "conflicts_with": [],
+      "escalation": "senior_review",
+      "check": {
+        "kind": "llm_judgment", "engine": "llm",
+        "spec": "Judge for implied judgment of appearance, hygiene, or social class — including subtext."
+      },
+      "notes": "Zero tolerance — any violation escalates to senior review.",
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-EXCL-004", "rule_class": "claim_rule", "source_type": "exclude", "category": "clinical",
+      "description": "Prohibit clinical treatment language — this product is a cosmetic not a medication",
+      "applies_to": ["ALL"], "enforcement_level": "hard_block", "conflicts_with": ["CLM-PL001-0"],
+      "check": {
+        "kind": "deterministic_pattern", "engine": "deterministic",
+        "spec": "Blocked terms: clinically, clinical, clinically proven, clinicamente, clínico, clínica, comprovado clinicamente, comprovada clinicamente."
+      },
+      "notes": "Source conflict_with referenced 'PL-001 key_claim' — normalized to claim ref CLM-PL001-0. Engineering decision taken: two-track quarantine + rewrite + sign-off (Decision D4, FND-002).",
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-EXCL-005", "rule_class": "content_rule", "source_type": "exclude", "category": "shame",
+      "description": "Prohibit fear or shame as the primary communication mechanism",
+      "applies_to": ["ALL"], "enforcement_level": "hard_block", "conflicts_with": [],
+      "check": {
+        "kind": "llm_judgment", "engine": "llm",
+        "spec": "Judge whether fear or shame is the PRIMARY mechanism (semantic — pattern matching cannot determine 'primary'). Aspirational framing required."
+      },
+      "notes": "Product must be aspirational not fear-based — AUD-F pain point 'embarrassment' must be handled carefully (see RULE-COMP-003).",
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-EXCL-006", "rule_class": "content_rule", "source_type": "exclude", "category": "transformation",
+      "description": "Prohibit unrealistic before-and-after beauty transformation claims or imagery",
+      "applies_to": ["ALL"], "enforcement_level": "hard_block", "conflicts_with": [],
+      "check": {
+        "kind": "deterministic_pattern", "engine": "deterministic",
+        "spec": "Trigger terms: antes e depois, antes/depois, transformação, before and after, before/after, transformation.",
+        "secondary": { "kind": "llm_judgment", "spec": "On trigger, judge whether the transformation depiction is unrealistic (the blocked case) or a realistic texture/condition comparison." }
+      },
+      "notes": "PL-002 visual cue 'before-after texture' collides with this rule — see FND-004 (open).",
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-EXCL-007", "rule_class": "content_rule", "source_type": "exclude", "category": "competitor",
+      "description": "Prohibit competitor brand names or implicit comparative superiority claims",
+      "applies_to": ["ALL"], "enforcement_level": "hard_block", "conflicts_with": [],
+      "check": {
+        "kind": "deterministic_pattern", "engine": "deterministic",
+        "spec": "Competitor name list (config, requires client confirmation): Clear, Dove, Seda, TRESemmé, Elseve. Ambiguous brand tokens that collide with common words (Seda=silk, Clear, Dove) match case-sensitively as proper nouns — the capitalized brand trips, lowercase common-noun usage ('como seda viva') does not; residual ambiguous-position cases fall to the LLM secondary.",
+        "secondary": { "kind": "llm_judgment", "spec": "Judge implicit comparative superiority without naming ('better than your current shampoo'), and disambiguate a capitalized ambiguous token in proper-noun position (brand 'Seda' vs sentence-initial 'silk')." }
+      },
+      "notes": "Sister P&G brands (e.g. Pantene) are not competitors but cross-brand comparison is equally prohibited — kept out of the competitor list, covered by the implicit-comparison check. Trigger-precision tuning (parked idea 3): case-sensitive matching for brand/common-noun collisions removes the dominant false-positive class without touching coverage.",
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-EXCL-008", "rule_class": "content_rule", "source_type": "exclude", "category": "pricing",
+      "description": "Prohibit price promises or specific offers without an approved and dated data source",
+      "applies_to": ["ALL"], "enforcement_level": "hard_block", "conflicts_with": [],
+      "check": {
+        "kind": "process_gate", "engine": "process",
+        "spec": "Price/offer content requires an approved and dated source artifact attached to the output; absent artifact => block.",
+        "secondary": { "kind": "deterministic_pattern", "spec": "Trigger terms for gate: R$, %, desconto, promoção, oferta, grátis, preço." }
+      },
+      "notes": "Not evaluable from content alone — workflow state (source approval) decides. Relevant for AUD-E (promotion-responsive).",
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-EXCL-009", "rule_class": "claim_rule", "source_type": "exclude", "category": "guarantee",
+      "description": "Prohibit absolute guarantee language including '100% guaranteed' or 'guaranteed results'",
+      "applies_to": ["ALL"], "enforcement_level": "hard_block", "conflicts_with": [],
+      "check": {
+        "kind": "deterministic_pattern", "engine": "deterministic",
+        "spec": "Blocked terms: 100%, garantido, garantia de resultados, resultados garantidos, guaranteed, 100% guaranteed."
+      },
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-EXCL-010", "rule_class": "content_rule", "source_type": "exclude", "category": "sexual",
+      "description": "Prohibit sexual or suggestive content of any kind",
+      "applies_to": ["ALL"], "enforcement_level": "hard_block", "conflicts_with": [],
+      "check": {
+        "kind": "llm_judgment", "engine": "llm",
+        "spec": "Judge for sexual or suggestive content including innuendo; zero tolerance."
+      },
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-EXCL-011", "rule_class": "claim_rule", "source_type": "exclude", "category": "dermatology",
+      "description": "Prohibit any claim suggesting the product replaces or equals dermatological advice or treatment",
+      "applies_to": ["ALL"], "enforcement_level": "hard_block", "conflicts_with": [],
+      "check": {
+        "kind": "deterministic_pattern", "engine": "deterministic",
+        "spec": "Trigger terms: dermatologista, dermatológico, dermatologically.",
+        "secondary": { "kind": "llm_judgment", "spec": "On trigger, distinguish advice-replacement claims (blocked) from testing/substantiation claims (allowed with documentation — see CLM-PL001-R3)." }
+      },
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-EXCL-012", "rule_class": "content_rule", "source_type": "exclude", "category": "age_restriction",
+      "description": "Prohibit prompt outputs for any audience with age_min below 18",
+      "applies_to": ["ALL"], "enforcement_level": "hard_block", "conflicts_with": [],
+      "check": {
+        "kind": "deterministic_structural", "engine": "deterministic",
+        "spec": "audience.age_min >= 18 required for any output."
+      },
+      "notes": "Source note flags AUD-F gap: age_gate_required:false + 13+ platforms means 18+-targeted content is accessible to minors despite this rule passing. Gap is covered by proposed RULE-COMP-004 (Decision D6, FND-003).",
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-COMP-001", "rule_class": "claim_rule", "source_type": "compliance", "category": "review_trigger",
+      "description": "Soft flag for human review when superlative language is used ('best', 'only', 'number one', 'most effective')",
+      "applies_to": ["ALL"], "enforcement_level": "soft_flag", "conflicts_with": [],
+      "check": {
+        "kind": "deterministic_pattern", "engine": "deterministic",
+        "spec": "Trigger terms (en): best, only, number one, most effective. Trigger terms (pt-BR): melhor, o melhor, único, número um, nº 1, mais eficaz."
+      },
+      "notes": "Quality-superiority assertions outside the literal list (e.g. 'professional-grade', CLM-PL003PRO-0) route to LLM secondary judgment — see FND-012.",
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-COMP-002", "rule_class": "content_rule", "source_type": "compliance", "category": "review_trigger",
+      "description": "Soft flag for human review when content addresses sensitive themes: mental health, body image, social pressure, identity",
+      "applies_to": ["ALL"], "enforcement_level": "soft_flag", "conflicts_with": [],
+      "check": {
+        "kind": "llm_judgment", "engine": "llm",
+        "spec": "Judge for presence of sensitive themes (mental health, body image, social pressure, identity) including implicit framing."
+      },
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-COMP-003", "rule_class": "content_rule", "source_type": "compliance", "category": "review_trigger",
+      "description": "Soft flag when audience age_min is under 25 AND pain_point references 'embarrassment' or 'self-confidence' — ensure tone is empowering not exploitative",
+      "applies_to": ["ALL"], "enforcement_level": "soft_flag", "conflicts_with": [],
+      "check": {
+        "kind": "deterministic_structural", "engine": "deterministic",
+        "spec": "Trigger: audience.age_min < 25 AND any pain_point contains 'embarrassment' or 'self-confidence' (exact). Exact matches: AUD-F.",
+        "secondary": { "kind": "llm_judgment", "spec": "Fuzzy semantic match for near-misses ('confidence through care', AUD-D) — see FND-009. On trigger, verify tone is empowering, not exploitative." }
+      },
+      "notes": "Source provenance comment preserved: rule added after the 'Caspa Gate incident of Q2' (rejected AUD-F campaign, social shame mechanics); referenced lessons-learned doc not in package — see FND-010.",
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-TAG-001", "rule_class": "taxonomy_rule", "source_type": "taxonomy", "category": "tagging",
+      "description": "Each prompt output must include a minimum of 3 tags from the brand taxonomy",
+      "applies_to": ["ALL"], "enforcement_level": "required", "conflicts_with": [],
+      "check": {
+        "kind": "deterministic_structural", "engine": "deterministic",
+        "spec": "len(prompt_output.tags) >= 3 AND every tag is an element of taxonomy.tags."
+      },
+      "notes": "Tagging enables downstream filtering and batch analysis.",
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-TAG-002", "rule_class": "taxonomy_rule", "source_type": "taxonomy", "category": "tagging",
+      "description": "Prompts must include a compliance_level tag: green / yellow / red",
+      "applies_to": ["ALL"], "enforcement_level": "required", "conflicts_with": [],
+      "check": {
+        "kind": "deterministic_structural", "engine": "deterministic",
+        "spec": "compliance_level is DERIVED, never authored: red if any hard_block hit or required include unmet; yellow if any soft_flag hit; green otherwise."
+      },
+      "status": "active", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-404", "rule_class": "meta", "source_type": "compliance", "category": "special",
+      "description": "Easter egg / design lesson: 'a missing rule is often more dangerous than a broken one'",
+      "applies_to": [], "enforcement_level": "informational", "conflicts_with": [],
+      "check": { "kind": "none", "engine": "none", "spec": "Not evaluable; applies_to NONE." },
+      "notes": "Retained deliberately. The lesson is implemented as engine behavior: unknown rule types, malformed rows, and unresolvable applies_to references never crash and are never silently skipped — they generate validation findings (see FND-008).",
+      "status": "informational", "source": "rules_matrix.csv"
+    },
+    {
+      "rule_id": "RULE-COMP-004", "rule_class": "content_rule", "source_type": "compliance", "category": "review_trigger",
+      "description": "Soft flag on audience/platform age-consistency mismatch: audience targets adults but platform admits younger users without an age gate",
+      "applies_to": ["ALL"], "enforcement_level": "soft_flag", "conflicts_with": [],
+      "check": {
+        "kind": "deterministic_structural", "engine": "deterministic",
+        "spec": "Trigger: audience.age_min > platform.platform_min_age AND audience.age_gate_required is EXPLICITLY false (field present in source data; absent = unspecified per the absent/null/value discipline — no fire). Null platform_min_age => emit finding per null policy (FND-006), do not silently pass. Current hits: AUD-F x PLAT-TIK, AUD-F x PLAT-IGR."
+      },
+      "notes": "PROPOSED rule — added during normalization to close the gap documented in RULE-EXCL-012's source note (Decision D6, FND-003). Resolution path: enable platform-native 18+ delivery restriction, flip age_gate_required to true, combos re-grade green. Goes red only if the content category itself is age-restricted (not the case for cosmetics).",
+      "status": "proposed", "source": "proposed_normalization (D6)"
+    },
+    {
+      "rule_id": "RULE-TECH-001", "rule_class": "content_rule", "source_type": "exclude", "category": "technical_quality",
+      "description": "Meta-language leak: API-parameter information (platform names, aspect ratios, resolutions, duration caps) must not appear inside creative_prompt body text",
+      "applies_to": ["ALL"], "enforcement_level": "soft_flag", "conflicts_with": [],
+      "check": {
+        "kind": "deterministic_pattern", "engine": "deterministic",
+        "spec": "Negation-blind lexicon over creative_prompt ONLY (cta excluded — platform-native CTA mechanics like 'link na bio' are consumer copy, not meta-language). Trigger terms: platform names (Instagram, Reels, Stories, TikTok, YouTube, Shorts, Pinterest, WhatsApp, retail media, OOH), aspect tokens (9:16, 16:9, 1:1, 4:5, 2:3), resolution tokens (1080, 1920, 4K), duration-cap phrasing (até Ns, max Ns), and 'vídeo vertical/horizontal para'. Channel rule: anything that is an API parameter lives in technical_spec; anything directing what happens inside the frame belongs in the prompt. In-scene beat timing (GANCHO 0–2s) is choreography and stays."
+      },
+      "notes": "PROPOSED extension (Decision D9, prompt-output feedback round): the generation model has no use for delivery metadata — it dilutes the prompt and wastes attention. Same channel-discipline lesson as the negated-mention collision (D8): prevented at the generation layer (renderer + system prompt), audited deterministically here.",
+      "status": "proposed", "source": "proposed_extension (D9)"
+    },
+    {
+      "rule_id": "RULE-TECH-002", "rule_class": "content_rule", "source_type": "compliance", "category": "technical_quality",
+      "description": "Clip segmentation integrity: every timed creative section must fit the target model's max clip length, and section durations must sum to the effective duration target",
+      "applies_to": ["ALL"], "enforcement_level": "soft_flag", "conflicts_with": [],
+      "check": {
+        "kind": "deterministic_structural", "engine": "deterministic",
+        "spec": "Video modality only (not_applicable for image). For every timed section in creative_sections: duration_s ≤ generation_models[technical_spec.target_model_id].max_clip_s. Sum of timed durations ≤ technical_spec.target_duration_s (effective target = min(template.target_duration_s, platform.max_duration_s)). Violations soft-flag for review or automatic re-split — the prompt cannot be submitted to the endpoint as-is."
+      },
+      "notes": "PROPOSED extension (Decision D9): most video endpoints cap single generations at ~15s; shot structure bounded at write time is what makes deterministic clip compilation possible downstream.",
+      "status": "proposed", "source": "proposed_extension (D9)"
+    },
+    {
+      "rule_id": "RULE-TECH-003", "rule_class": "taxonomy_rule", "source_type": "taxonomy", "category": "technical_quality",
+      "description": "Technical spec completeness: every output carries a machine-readable technical_spec sufficient to call a generation endpoint",
+      "applies_to": ["ALL"], "enforcement_level": "required", "conflicts_with": [],
+      "check": {
+        "kind": "deterministic_structural", "engine": "deterministic",
+        "spec": "technical_spec present with modality, aspect_ratio, resolution, target_model_id (resolvable to an active generation_models entry whose modality matches). Video modality additionally requires target_duration_s and max_clip_s. Output-contract check, same class as RULE-TAG-001."
+      },
+      "notes": "PROPOSED extension (Decision D9): the prompt text alone is not a generation request — endpoints need explicit parameters. Missing spec = required include unmet = red (the output is unshippable, not merely review-worthy).",
+      "status": "proposed", "source": "proposed_extension (D9)"
+    },
+    {
+      "rule_id": "RULE-COMP-005", "rule_class": "content_rule", "source_type": "compliance", "category": "review_trigger",
+      "description": "Soft flag on un-signed-off authored consumer-facing copy: an output carries literal pt-BR copy (headline/tagline) the pipeline authored to fill a source gap, which the client has not approved",
+      "applies_to": ["ALL"], "enforcement_level": "soft_flag", "conflicts_with": [],
+      "check": {
+        "kind": "deterministic_structural", "engine": "deterministic",
+        "spec": "Trigger: output.generation_meta.authored_copy_pending lists one or more content_banks entries with provenance 'authored_pending_signoff' AND consumer_facing true (currently only ooh_tagline_pt). Direction-level authored content (sensory, market flavor, pain phrasings) is NOT consumer-facing and is surfaced as a finding (FND-013) without a per-output flag — flagging it would outage the batch (Decision D10). The live LLM creative path uses NO authored banks, so it never triggers this rule; only the deterministic stub does."
+      },
+      "notes": "PROPOSED rule (Decision D10): closes the integrity gap where the pipeline authored pt-BR content not present in the source and treated it as canonical. Resolution path: client signs off the authored tagline (or replaces it) → content_banks entry flips to client_provided → affected outputs re-grade green, no regeneration (mirrors D4). Block was rejected: every output would flag, an outage.",
+      "status": "proposed", "source": "proposed_extension (D10)"
+    }
+  ],
+
+  "taxonomy": {
+    "taxonomy_id": "TAX-HSBR-001",
+    "source_rule": "RULE-TAG-001",
+    "tags": ["anti-dandruff", "freshness", "moisture", "care", "confidence", "family", "active-lifestyle", "self-care", "value", "efficacy"],
+    "min_tags_per_output": 3,
+    "compliance_levels": {
+      "green": "no flags — auto-approvable",
+      "yellow": "soft_flag triggered — human review required before release",
+      "red": "hard_block triggered or required include unmet — blocked from export"
+    }
+  },
+
+  "content_banks": {
+    "_meta": {
+      "description": "Authored / localized pt-BR content for the DETERMINISTIC STUB generator only. The live LLM creative path does NOT read these — it renders pt-BR natively from canonical entity data (product.focus_tags + visual_cues, audience.lifestyle_tags + tone_attributes, market.name + region). Relocated out of pipeline/content.py so no consumer-relevant data point lives in code (Decision D10). Each bank carries a provenance marker.",
+      "provenance_legend": {
+        "localization": "pt-BR translation of a canonical English attribute (tone, cues); verify pt-BR quality via the QA harness — no content sign-off needed",
+        "authored_pending_signoff": "pt-BR content authored to fill a source gap; surfaced to the client via FND-013. consumer_facing entries additionally soft-flag affected outputs (RULE-COMP-005); direction-level entries are finding-only",
+        "derived": "mechanically compiled from canonical rules/findings; traceable to a source, no sign-off"
+      }
+    },
+    "tone_pt": {
+      "provenance": "localization", "consumer_facing": false,
+      "map": {
+        "direct": "direto", "fresh": "fresco", "self-assured": "seguro de si", "peer-to-peer": "de igual para igual",
+        "trustworthy": "confiável", "practical": "prático", "warm": "acolhedor", "reassuring": "tranquilizador",
+        "energetic": "energético", "light": "leve", "positive": "positivo", "celebratory": "festivo",
+        "inspiring": "inspirador", "sensory": "sensorial", "modern": "moderno", "aspirational": "aspiracional",
+        "clear": "claro", "benefit-focused": "focado no benefício", "accessible": "acessível",
+        "casual": "descontraído", "fast": "ágil", "humorous but never dismissive": "bem-humorado, nunca debochado"
+      }
+    },
+    "cue_pt": {
+      "provenance": "localization", "consumer_facing": false,
+      "map": {
+        "clean scalp": "couro cabeludo limpo em close", "confident look": "olhar confiante",
+        "white shirt no flakes": "camisa branca impecável, sem flocos", "shiny hair": "cabelo com brilho",
+        "movement": "movimento natural do cabelo", "natural light": "luz natural",
+        "outdoor activity": "atividade ao ar livre", "post-workout": "pós-treino",
+        "menthol swirl": "espiral de mentol", "blue tones": "tons de azul"
+      }
+    },
+    "pain_scene_pt": {
+      "provenance": "authored_pending_signoff", "consumer_facing": false,
+      "map": {
+        "visible dandruff in professional settings": "ombros impecáveis antes da reunião importante",
+        "stress-related hair issues": "cuidado simples para o cabelo que enfrenta a rotina intensa",
+        "no time for complex routines": "cuidado rápido que funciona, sem rotina complicada",
+        "reliable care for whole family": "cuidado confiável para a família toda, todos os dias",
+        "building trusted hair routines": "uma rotina capilar de confiança que se constrói lavagem a lavagem",
+        "skeptical of hype": "sem promessa exagerada — resultado que aparece no dia a dia",
+        "sweating during activity": "suor do treino sem abrir mão do couro cabeludo cuidado",
+        "freshness after beach or gym": "aquela sensação de frescor depois da praia ou da academia",
+        "visible scalp care in social settings": "couro cabeludo cuidado em qualquer encontro",
+        "achieving healthy-looking hair": "cabelo com aparência saudável de verdade",
+        "fragrance as experience": "a fragrância como parte da experiência de cuidado",
+        "confidence through care": "a confiança que nasce do cuidado diário",
+        "proven efficacy at accessible price": "eficácia de verdade, acessível para a sua família",
+        "price-performance ratio": "render que vale cada lavagem",
+        "product availability": "fácil de encontrar no mercado do bairro",
+        "dandruff causing social embarrassment": "liberdade para chegar perto, sem se preocupar com caspa",
+        "self-confidence and appearance": "autoconfiança no visual, do seu jeito",
+        "style and identity": "estilo e identidade do seu jeito"
+      }
+    },
+    "market_flavor_pt": {
+      "provenance": "authored_pending_signoff", "consumer_facing": false,
+      "map": {
+        "MKT-SP": "rotina urbana acelerada de São Paulo",
+        "MKT-RJ": "clima de praia e ar livre do Rio de Janeiro",
+        "MKT-REC": "o dia a dia vibrante de Recife, no Nordeste"
+      }
+    },
+    "product_sensory_pt": {
+      "provenance": "authored_pending_signoff", "consumer_facing": false,
+      "note": "Paraphrase of canonical focus_tags + visual_cues; retained for the stub only. The LLM path drops it and renders sensory from the canonical attributes directly (Decision D10).",
+      "map": {
+        "PL-001": "couro cabeludo limpo e equilibrado",
+        "PL-002": "hidratação e brilho visíveis, maciez ao toque",
+        "PL-003": "sensação de frescor gelado de mentol que dura"
+      }
+    },
+    "ooh_tagline_pt": {
+      "provenance": "authored_pending_signoff", "consumer_facing": true,
+      "note": "Literal brand headline copy — the one bank that soft-flags affected outputs (RULE-COMP-005). The LLM path generates the headline itself (TPL-DISPLAY-01 headline slot is generated_llm), so only the stub uses these.",
+      "map": {
+        "PL-001": "Caspa sob controle, confiança à vista",
+        "PL-002": "Hidratação que se vê no brilho",
+        "PL-003": "Frescor instantâneo para o seu dia"
+      }
+    },
+    "cta_templates_pt": {
+      "provenance": "authored_pending_signoff", "consumer_facing": false,
+      "note": "Functional boilerplate CTA patterns ({name}/{brand} interpolated) — surfaced in FND-013 but not sign-off-gated (generic, not brand-specific creative). The LLM path writes its own CTA.",
+      "map": {
+        "engagement": "Conheça {name} — link na bio.",
+        "conversion": "Adicione {name} ao carrinho agora.",
+        "shareable": "Compartilhe com quem faz parte do seu dia — {name} na rotina de todos.",
+        "brand": "{brand}."
+      }
+    },
+    "cta_templates_en": {
+      "provenance": "localization", "consumer_facing": false,
+      "map": {
+        "engagement": "Discover {name} — link in bio.",
+        "conversion": "Add {name} to your cart now.",
+        "shareable": "Share with the people in your day — {name} in everyone's routine.",
+        "brand": "{brand}."
+      }
+    },
+    "tag_hints": {
+      "provenance": "derived", "consumer_facing": false,
+      "source": "selection over canonical taxonomy.tags using entity focus/lifestyle; fallback only when LLM tag selection is below minimum",
+      "product": {
+        "PL-001": ["anti-dandruff", "efficacy"],
+        "PL-002": ["moisture", "care"],
+        "PL-003": ["freshness", "active-lifestyle"]
+      },
+      "audience": {
+        "AUD-A": "confidence", "AUD-B": "family", "AUD-C": "active-lifestyle",
+        "AUD-D": "self-care", "AUD-E": "value", "AUD-F": "confidence"
+      }
+    },
+    "blocked_cues": {
+      "provenance": "derived", "consumer_facing": false, "source": "FND-004",
+      "values": ["before-after texture"]
+    },
+    "global_negative": {
+      "provenance": "derived", "consumer_facing": false, "source": "compiled view of the EXCL rules (RULE-EXCL-001/004/006/007/008/009/011 + COMP-001)",
+      "text": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing."
+    }
+  },
+
+  "prompt_templates": [
+    {
+      "template_id": "TPL-VID-VERT-01",
+      "name": "Vertical short-form video concept",
+      "status": "active",
+      "platform_ids": ["PLAT-IGR", "PLAT-TIK", "PLAT-YTS", "PLAT-IGS"],
+      "input_variables": ["brand_voice", "market_context", "audience_tone", "audience_lifestyle", "pain_point", "product_focus_tags", "product_visual_cues_allowed", "platform_format", "platform_max_duration_s", "platform_hook_requirement", "platform_cta_category", "claim_variant_id", "exclusion_digest", "taxonomy_tags"],
+      "slots": [
+        { "slot": "hook", "source": "generated_llm", "constraint": "first 1-3s per platform.hook_requirement (RULE-INCL-004); sound-on for TIK, curiosity gap for YTS" },
+        { "slot": "scene", "source": "generated_llm", "constraint": "audience lifestyle + realistic usage (RULE-INCL-006); regional context where authentic (RULE-INCL-007)" },
+        { "slot": "product_moment", "source": "generated_llm", "constraint": "product visual_cues minus finding-blocked cues (FND-004)" },
+        { "slot": "claim", "source": "render_time_binding", "constraint": "claim registry via claim_variant_id; approved or designated default rewrite (Decision D4)" },
+        { "slot": "cta", "source": "generated_llm", "constraint": "platform.cta_placement + platform.cta_category (RULE-INCL-005)" }
+      ],
+      "output_contract": "prompt_output (see schema.json)",
+      "modality": "video",
+      "default_model_id": "MODEL-VID-SEEDANCE-2",
+      "target_duration_s": 30,
+      "sections": [
+        { "key": "entities", "label": "REFERÊNCIAS VISUAIS", "source": "deterministic", "timed": false },
+        { "key": "hook", "label": "GANCHO", "source": "generated_llm", "timed": true },
+        { "key": "scene", "label": "CENA", "source": "generated_llm", "timed": true },
+        { "key": "product_moment", "label": "MOMENTO DO PRODUTO", "source": "generated_llm", "timed": true },
+        { "key": "claim", "label": "CLAIM (texto em tela)", "source": "render_time_binding", "timed": false },
+        { "key": "closing", "label": "ENCERRAMENTO", "source": "generated_llm", "timed": true }
+      ],
+      "notes": "Hook timing, duration and CTA style are injected from the platform record, not hardcoded — one shell serves four platforms. target_duration_s is the family's creative target; the effective target is min(target, platform.max_duration_s). sections define the canonical prompt layout (Decision D9): entities always first, rendered deterministically; timed sections carry per-shot durations bounded by the target model's max_clip_s."
+    },
+    {
+      "template_id": "TPL-VID-LONG-01",
+      "name": "Long-form video narrative",
+      "status": "active",
+      "platform_ids": ["PLAT-YTL"],
+      "input_variables": ["brand_voice", "market_context", "audience_tone", "audience_lifestyle", "pain_point", "product_focus_tags", "product_visual_cues_allowed", "platform_format", "platform_max_duration_s", "platform_hook_requirement", "platform_cta_category", "claim_variant_id", "exclusion_digest", "taxonomy_tags"],
+      "slots": [
+        { "slot": "cold_open", "source": "generated_llm", "constraint": "relatable problem moment, no skippable intro; problem-solution arc per platform.hook_requirement" },
+        { "slot": "narrative", "source": "generated_llm", "constraint": "story arc routine -> friction (pain point) -> resolution; storytelling/educational style (RULE-INCL-006)" },
+        { "slot": "product_integration", "source": "generated_llm", "constraint": "organic in-routine placement; product visual_cues minus finding-blocked cues" },
+        { "slot": "claim", "source": "render_time_binding", "constraint": "claim registry via claim_variant_id (Decision D4)" },
+        { "slot": "cta", "source": "generated_llm", "constraint": "mid-roll or end placement (RULE-INCL-005)" }
+      ],
+      "output_contract": "prompt_output (see schema.json)",
+      "modality": "video",
+      "default_model_id": "MODEL-VID-GVO-1",
+      "target_duration_s": 75,
+      "sections": [
+        { "key": "entities", "label": "REFERÊNCIAS VISUAIS", "source": "deterministic", "timed": false },
+        { "key": "cold_open", "label": "ABERTURA FRIA", "source": "generated_llm", "timed": true },
+        { "key": "narrative", "label": "NARRATIVA", "source": "generated_llm", "timed": true },
+        { "key": "product_integration", "label": "INTEGRAÇÃO DO PRODUTO", "source": "generated_llm", "timed": true },
+        { "key": "claim", "label": "CLAIM (texto em tela)", "source": "render_time_binding", "timed": false },
+        { "key": "resolution", "label": "RESOLUÇÃO", "source": "generated_llm", "timed": true }
+      ],
+      "notes": "Only template with a multi-act structure; duration ceiling (600s) injected from platform record. target_duration_s 75 keeps the narrative compact; the clip segmenter (Decision D9) compiles multi-clip generation requests of ≤ max_clip_s each."
+    },
+    {
+      "template_id": "TPL-STATIC-FEED-01",
+      "name": "Static feed / pin visual concept",
+      "status": "active",
+      "platform_ids": ["PLAT-META", "PLAT-PIN"],
+      "input_variables": ["brand_voice", "market_context", "audience_tone", "audience_lifestyle", "pain_point", "product_focus_tags", "product_visual_cues_allowed", "platform_format", "platform_cta_category", "claim_variant_id", "exclusion_digest", "taxonomy_tags"],
+      "slots": [
+        { "slot": "headline_hook", "source": "generated_llm", "constraint": "META: strong headline / opening frame; PIN: inspiring or how-to opener (platform.hook_requirement)" },
+        { "slot": "scene_still", "source": "generated_llm", "constraint": "single benefit-led frame; audience lifestyle, realistic (RULE-INCL-006); save-worthy for PIN" },
+        { "slot": "product_presence", "source": "generated_llm", "constraint": "product visual_cues minus finding-blocked cues" },
+        { "slot": "claim", "source": "render_time_binding", "constraint": "claim registry via claim_variant_id (Decision D4)" },
+        { "slot": "cta", "source": "generated_llm", "constraint": "META: below-asset; PIN: pin title / linked destination (RULE-INCL-005)" }
+      ],
+      "output_contract": "prompt_output (see schema.json)",
+      "modality": "image",
+      "default_model_id": "MODEL-IMG-NANOBANANA-PRO",
+      "target_duration_s": null,
+      "sections": [
+        { "key": "entities", "label": "REFERÊNCIAS VISUAIS", "source": "deterministic", "timed": false },
+        { "key": "headline_hook", "label": "TÍTULO", "source": "generated_llm", "timed": false },
+        { "key": "scene_still", "label": "CENA ESTÁTICA", "source": "generated_llm", "timed": false },
+        { "key": "product_presence", "label": "PRESENÇA DO PRODUTO", "source": "generated_llm", "timed": false },
+        { "key": "claim", "label": "CLAIM (texto em tela)", "source": "render_time_binding", "timed": false },
+        { "key": "composition", "label": "COMPOSIÇÃO E LUZ", "source": "generated_llm", "timed": false }
+      ],
+      "notes": "Aspect ratio (1:1 / 4:5 / 2:3) injected from platform record (aspect_ratio/resolution fields). sections define the canonical prompt layout (Decision D9): entities always first."
+    },
+    {
+      "template_id": "TPL-DISPLAY-01",
+      "name": "Display unit (retail media / OOH)",
+      "status": "active",
+      "platform_ids": ["PLAT-RET", "PLAT-OOH"],
+      "input_variables": ["brand_voice", "market_context", "audience_tone", "pain_point", "product_focus_tags", "product_visual_cues_allowed", "platform_format", "platform_cta_category", "claim_variant_id", "exclusion_digest", "taxonomy_tags"],
+      "slots": [
+        { "slot": "headline", "source": "generated_llm", "constraint": "RET: product name + key benefit in headline; OOH: max 7-word tagline (platform.hook_requirement)" },
+        { "slot": "product_shot", "source": "generated_llm", "constraint": "product-centric, high-contrast, readable at distance; visual_cues minus finding-blocked cues" },
+        { "slot": "claim", "source": "render_time_binding", "constraint": "OPTIONAL — claim-free brand-first formulation allowed (claim_variant_id null), typical for OOH" },
+        { "slot": "cta", "source": "generated_llm", "constraint": "RET: conversion CTA above fold; OOH: tagline or brand mark only (RULE-INCL-005)" }
+      ],
+      "output_contract": "prompt_output (see schema.json)",
+      "modality": "image",
+      "default_model_id": "MODEL-IMG-GPTIMAGE-2",
+      "target_duration_s": null,
+      "sections": [
+        { "key": "entities", "label": "REFERÊNCIAS VISUAIS", "source": "deterministic", "timed": false },
+        { "key": "headline", "label": "TÍTULO", "source": "generated_llm", "timed": false },
+        { "key": "product_shot", "label": "PRODUTO", "source": "generated_llm", "timed": false },
+        { "key": "claim", "label": "CLAIM (texto em tela)", "source": "render_time_binding", "timed": false },
+        { "key": "composition", "label": "COMPOSIÇÃO", "source": "generated_llm", "timed": false }
+      ],
+      "notes": "The two display platforms differ only in fields the template reads from the platform record (cta_category: conversion vs brand) — same shell. Product-centric family: the entities block carries the product pack reference only (no persona) — lifestyle persona work belongs to the feed/video families."
+    },
+    {
+      "template_id": "TPL-SHARE-WA-01",
+      "name": "WhatsApp shareable",
+      "status": "active",
+      "platform_ids": ["PLAT-WA"],
+      "input_variables": ["brand_voice", "market_context", "audience_tone", "audience_lifestyle", "pain_point", "product_focus_tags", "product_visual_cues_allowed", "platform_format", "platform_max_duration_s", "platform_cta_category", "claim_variant_id", "exclusion_digest", "taxonomy_tags"],
+      "slots": [
+        { "slot": "opener", "source": "generated_llm", "constraint": "instantly readable benefit (platform.hook_requirement); chat-native register" },
+        { "slot": "relatable_moment", "source": "generated_llm", "constraint": "low-production, forwardable, peer-to-peer (RULE-INCL-006); family/value context for AUD-E" },
+        { "slot": "product_presence", "source": "generated_llm", "constraint": "product visual_cues minus finding-blocked cues" },
+        { "slot": "claim", "source": "render_time_binding", "constraint": "claim registry via claim_variant_id (Decision D4)" },
+        { "slot": "cta", "source": "generated_llm", "constraint": "inline, shareable-first (RULE-INCL-005); no pricing without approved source (RULE-EXCL-008)" }
+      ],
+      "output_contract": "prompt_output (see schema.json)",
+      "modality": "image",
+      "default_model_id": "MODEL-IMG-NANOBANANA-PRO",
+      "target_duration_s": null,
+      "sections": [
+        { "key": "entities", "label": "REFERÊNCIAS VISUAIS", "source": "deterministic", "timed": false },
+        { "key": "opener", "label": "ABERTURA", "source": "generated_llm", "timed": false },
+        { "key": "relatable_moment", "label": "MOMENTO", "source": "generated_llm", "timed": false },
+        { "key": "product_presence", "label": "PRESENÇA DO PRODUTO", "source": "generated_llm", "timed": false },
+        { "key": "claim", "label": "CLAIM (texto em tela)", "source": "render_time_binding", "timed": false }
+      ],
+      "notes": "Highest forwardability risk: content travels beyond the targeted audience by design — exclusion digest applied at full strictness. Modality pinned to static image (canonical pick from the source's 'image or short video under 30s'): chat-native shareables forward best as stills; a video variant would be a new template-family decision, not a data flip."
+    }
+  ],
+
+  "prompt_outputs_ref": {
+    "file": "prompt_outputs.json",
+    "note": "Generated outputs are downstream artifacts (subtask D) and live in a separate file validated against the same schema."
+  },
+
+  "validation_findings": [
+    {
+      "finding_id": "FND-001",
+      "severity": "blocker",
+      "detected_by": "id_uniqueness_check",
+      "affected": ["PL-003", "PL-003-PRO"],
+      "summary": "Duplicate product_id PL-003 in source (Menthol Fresh + Menthol Fresh Pro)",
+      "detail": "Pro entry's own source note requires ID confirmation before use. Modeled as variant child PL-003-PRO (parent PL-003), status pending_confirmation, quarantined from generation. Ambiguous PL-003 references resolve to the confirmed base product.",
+      "resolution_queue": "data_clarification",
+      "resolution_path": "Client confirms Pro's product ID and market positioning; variant promoted or merged accordingly.",
+      "status": "mitigated",
+      "decision_ref": "D5"
+    },
+    {
+      "finding_id": "FND-002",
+      "severity": "blocker",
+      "detected_by": "rule_conflict_scan (conflict_with column + pattern run over claims)",
+      "affected": ["CLM-PL001-0", "RULE-EXCL-004"],
+      "summary": "PL-001 key claim 'clinically proven' violates RULE-EXCL-004 (clinical language)",
+      "detail": "Original claim quarantined (blocked_pending_signoff). Three candidate rewrites (CLM-PL001-R1/R2/R3) generated; R1 designated default. Outputs using rewrites grade yellow until client sign-off.",
+      "resolution_queue": "data_clarification",
+      "resolution_path": "Client selects/approves a rewrite; registry status flips; affected outputs re-grade green via re-render (no regeneration).",
+      "status": "mitigated",
+      "decision_ref": "D4"
+    },
+    {
+      "finding_id": "FND-003",
+      "severity": "high",
+      "detected_by": "RULE-COMP-004 (proposed age-consistency check)",
+      "affected": ["AUD-F", "PLAT-TIK", "PLAT-IGR"],
+      "summary": "18+-targeted AUD-F content accessible to 13+ users; age_gate_required:false suspected data error",
+      "detail": "RULE-EXCL-012 passes (age_min=18) but its source note documents the accessibility gap. Generation proceeds (content is delivery-independent); export gated yellow until age gating confirmed.",
+      "resolution_queue": "data_clarification",
+      "resolution_path": "Client/media team enables platform-native 18+ delivery restriction and flips age_gate_required to true; combos re-grade green.",
+      "status": "mitigated",
+      "decision_ref": "D6"
+    },
+    {
+      "finding_id": "FND-004",
+      "severity": "high",
+      "detected_by": "cross_check (product.visual_cues vs exclude-rule lexicons)",
+      "affected": ["PL-002", "RULE-EXCL-006"],
+      "summary": "PL-002 visual cue 'before-after texture' collides with hard block on before/after transformation imagery",
+      "detail": "Cue retained in normalized data as source fact; generation must not use it until resolved. Options: constrain to realistic texture comparison (definition needed) or strip the cue.",
+      "resolution_queue": "data_clarification",
+      "resolution_path": "Client decides: realistic-comparison constraint with definition, or cue removal.",
+      "status": "open",
+      "decision_ref": null
+    },
+    {
+      "finding_id": "FND-005",
+      "severity": "medium",
+      "detected_by": "rule_conflict_scan (conflict_with column)",
+      "affected": ["RULE-EXCL-001", "RULE-INCL-001"],
+      "summary": "Declared conflict: efficacy must be specific (required) while medical claim language is hard-blocked",
+      "detail": "Resolved mechanically by the claim registry: only registry claims with approved/default status can be bound, and the registry vocabulary is pre-screened against EXCL-001/004 lexicons. Specificity without clinical register.",
+      "resolution_queue": "none",
+      "resolution_path": "Mechanism in place; per-product safe vocabulary grows under client sign-off (D4 flow).",
+      "status": "mitigated",
+      "decision_ref": "D4"
+    },
+    {
+      "finding_id": "FND-006",
+      "severity": "medium",
+      "detected_by": "null_inventory",
+      "affected": ["PLAT-RET", "PLAT-OOH"],
+      "summary": "platform_min_age null (RET, OOH); max_duration_s null (RET)",
+      "detail": "Null policy must distinguish 'not applicable' (OOH is unaddressable — no age gating exists) from 'unknown' (RET in-app units may be addressable). Defaults: OOH => not_applicable; RET => unknown, age-sensitive content for RET flags yellow until clarified.",
+      "resolution_queue": "data_clarification",
+      "resolution_path": "Client confirms retail media network capabilities (age targeting, duration limits).",
+      "status": "open",
+      "decision_ref": null
+    },
+    {
+      "finding_id": "FND-007",
+      "severity": "info",
+      "detected_by": "internal_field_scan ('_'-prefix + TODO)",
+      "affected": ["_meta._internal_note", "_meta.TODO", "product_lines._note"],
+      "summary": "Internal fields leaked in source data; stripped at ingestion and logged",
+      "detail": "Source contained an internal TODO ('Remove internal fields before next client share — Valentina') and embedded notes. A real pipeline strips '_'-prefixed fields before anything client-facing; content preserved here in provenance, not in entity records.",
+      "resolution_queue": "none",
+      "resolution_path": "Ingestion step established; no client action needed.",
+      "status": "resolved",
+      "decision_ref": null
+    },
+    {
+      "finding_id": "FND-008",
+      "severity": "info",
+      "detected_by": "unknown_rule_handler",
+      "affected": ["RULE-404"],
+      "summary": "Informational rule with applies_to NONE encountered; handled gracefully",
+      "detail": "RULE-404 is a planted design lesson: unknown rule types, malformed rows, and unresolvable applies_to references generate findings instead of crashing or being silently skipped. Engine behavior implemented accordingly.",
+      "resolution_queue": "none",
+      "resolution_path": "None — acknowledged; lesson encoded as engine behavior.",
+      "status": "acknowledged",
+      "decision_ref": null
+    },
+    {
+      "finding_id": "FND-009",
+      "severity": "low",
+      "detected_by": "RULE-COMP-003 secondary (fuzzy semantic match)",
+      "affected": ["AUD-D", "RULE-COMP-003"],
+      "summary": "AUD-D pain point 'confidence through care' is a near-miss for the 'self-confidence' trigger (age_min 21 < 25)",
+      "detail": "Exact-match check does not fire; semantic proximity is real. Conservative default: AUD-D outputs touching the confidence pain point grade yellow.",
+      "resolution_queue": "content_review",
+      "resolution_path": "Reviewer judgment per output; optionally client clarifies whether AUD-D falls under COMP-003 intent.",
+      "status": "open",
+      "decision_ref": null
+    },
+    {
+      "finding_id": "FND-010",
+      "severity": "low",
+      "detected_by": "provenance_check",
+      "affected": ["RULE-COMP-003"],
+      "summary": "Rule provenance references 'Caspa Gate incident' lessons-learned doc not present in package",
+      "detail": "Institutional knowledge lives in a CSV comment; the referenced document would inform tone guardrails for AUD-F.",
+      "resolution_queue": "data_clarification",
+      "resolution_path": "Request lessons-learned doc from client (ask Valentina).",
+      "status": "open",
+      "decision_ref": null
+    },
+    {
+      "finding_id": "FND-011",
+      "severity": "info",
+      "detected_by": "id_charset_check",
+      "affected": ["BRD-HS-BR"],
+      "summary": "brand_id normalized: 'BRD-H&S-BR' => 'BRD-HS-BR'",
+      "detail": "'&' in identifiers is hostile to URLs, filenames, and query syntax. Display name unchanged.",
+      "resolution_queue": "none",
+      "resolution_path": "None — transform logged.",
+      "status": "resolved",
+      "decision_ref": null
+    },
+    {
+      "finding_id": "FND-012",
+      "severity": "low",
+      "detected_by": "claim_prescreen (RULE-COMP-001 secondary)",
+      "affected": ["CLM-PL003PRO-0", "RULE-COMP-001"],
+      "summary": "'Professional-grade' is a borderline quality-superiority assertion",
+      "detail": "Not on the literal superlative list; pre-logged as yellow-flag candidate. Moot while PL-003-PRO is quarantined (FND-001) but must not be lost on product activation.",
+      "resolution_queue": "content_review",
+      "resolution_path": "Re-evaluate on PL-003-PRO activation.",
+      "status": "open",
+      "decision_ref": "D5"
+    },
+    {
+      "finding_id": "FND-013",
+      "severity": "medium",
+      "detected_by": "content_provenance_audit (Decision D10)",
+      "affected": ["content_banks.pain_scene_pt", "content_banks.market_flavor_pt", "content_banks.product_sensory_pt", "content_banks.ooh_tagline_pt", "content_banks.cta_templates_pt"],
+      "summary": "pt-BR content authored by the pipeline to fill source gaps, not present in the briefing and not client-approved",
+      "detail": "The deterministic stub needs pre-written pt-BR strings the source never provided (sensory directions, market flavor, pain-point scene phrasings, OOH taglines, CTA templates). These were relocated from pipeline/content.py into content_banks with provenance 'authored_pending_signoff' (Decision D10). The live LLM path does NOT use them — it renders from canonical entity data — so the integrity exposure is limited to stub/raw_pipeline_output. Surfaced here so nothing authored is treated as canonical silently. Consumer-facing literal copy (ooh_tagline_pt) additionally soft-flags affected outputs via RULE-COMP-005; direction-level entries are finding-only to avoid an outage.",
+      "resolution_queue": "data_clarification",
+      "resolution_path": "Client confirms or replaces each authored entry; on sign-off the content_banks provenance flips to client_provided and any RULE-COMP-005 flags re-grade green (no regeneration). Localization entries (tone/cue) route to the pt-BR QA harness instead.",
+      "status": "open",
+      "decision_ref": "D10"
+    },
+    {
+      "finding_id": "FND-014",
+      "severity": "medium",
+      "detected_by": "manual_creative_review (Stage 0 hand pass; automated detector designed, not built)",
+      "affected": ["PL-001", "PL-001.visual_cues.white shirt no flakes"],
+      "summary": "Visual cue 'white shirt no flakes' cannot show the absence it depicts (white flakes have no contrast on a white garment)",
+      "detail": "Dandruff flakes are white, so against a white shirt there is no contrast to read them against. The cue is meant to prove clean shoulders, but white on white cannot show that absence, so the shot defeats its own message. No lexicon or structural rule catches this because the cue is linguistically clean and structurally valid; only a craft eye finds it. Likely a planted trap. This is the craft/art-direction review surface designed in the workflow doc (Review section), which is not implemented as an automated detector in this submission.",
+      "resolution_queue": "data_clarification",
+      "resolution_path": "Art-direction review confirms the intent, corrects the cue (for example a darker garment so clean shoulders read), or strips it the way the before-after texture cue (FND-004) is already withheld. Affected outputs generate and hold, then re-grade on confirmation.",
+      "status": "open",
+      "decision_ref": null
+    },
+    {
+      "finding_id": "FND-015",
+      "severity": "low",
+      "detected_by": "manual_creative_review (Stage 0 hand pass; automated detector designed, not built)",
+      "affected": ["PL-002", "PL-002.visual_cues.shiny hair", "PL-002.visual_cues.natural light"],
+      "summary": "Visual cues 'shiny hair' and 'natural light' conflict (commercial hair shine needs a controlled studio key, not ambient daylight)",
+      "detail": "Hair shine in commercial work is a moving specular highlight built with a controlled studio key light, not ambient daylight. The two cues on the same product pull against each other, so a literal natural-light render will not produce the shine the cue asks for. Like FND-014, no lexicon or structural rule can see this; it is a craft judgment, surfaced by the art-direction review surface designed in the workflow doc (Review section) and not implemented as an automated detector here.",
+      "resolution_queue": "data_clarification",
+      "resolution_path": "Art-direction review confirms which reading is intended (studio shine versus natural daylight) and corrects the cue so the two no longer contradict. Affected outputs generate and hold, then re-grade on confirmation.",
+      "status": "open",
+      "decision_ref": null
+    },
+    {
+      "finding_id": "FND-016",
+      "severity": "medium",
+      "detected_by": "content_provenance_audit (Decision D10, extended to the D9 entity-grounding registries)",
+      "affected": ["personas.description_pt", "personas.description_en", "product_lines.visual_description_pt", "product_lines.visual_description_en", "reference_assets"],
+      "summary": "Persona and product visual identities (and their reference assets) are authored by the pipeline, not provided by the source, and reach the creative model as canonical identity",
+      "detail": "The same provenance principle behind FND-013 (D10) applies to the entity-grounding data added in D9. The source briefing provides only persona names (audience.persona_names) and product names, focus_tags, and visual_cues. The persona visual descriptors (description_pt/_en across all 11 personas), the product visual_description_pt/_en pack descriptions, and the reference_assets (DAM pack shots and persona sheets, currently status 'placeholder' with non-real URIs) are all authored or placeholder data the client never supplied. This surface is sharper than content_banks: unlike the D10 banks (which were dropped from the live brief), these descriptors ARE passed to the live creative model as canonical identity, because cross-clip consistency (D9 entity grounding) needs them. They are therefore kept in the brief and surfaced here rather than treated as silent canon, the same posture as the default claim rewrite (D4). Direction-level identity is finding-only (no per-output flag): every video and feed output grounds in a persona, and most outputs ground in a product, so a per-output flag would outage the batch (the D10 / D4 reasoning again). Placeholder reference_assets are a data-not-yet-supplied issue on the same surface (descriptor-only emission until real assets land in the DAM).",
+      "resolution_queue": "data_clarification",
+      "resolution_path": "Client confirms or replaces the authored persona and product visual identities and supplies real reference assets to the DAM. On sign-off the descriptors lock and placeholder assets flip to @ref emission, with no regeneration (mirrors D4 / D10).",
+      "status": "open",
+      "decision_ref": "D10"
+    },
+    {
+      "finding_id": "FND-017",
+      "severity": "medium",
+      "detected_by": "rule_provenance_audit (the D10 provenance principle applied to authored rules)",
+      "affected": ["RULE-COMP-004", "RULE-COMP-005", "RULE-TECH-001", "RULE-TECH-002", "RULE-TECH-003"],
+      "summary": "Five rules are authored matrix extensions proposed by the pipeline, not part of the source rules_matrix, and they actively change output verdicts",
+      "detail": "The source rules_matrix is explicitly flagged 'Complete? Not certain.' To close the gaps it leaves open, the pipeline proposes five additional rules: RULE-COMP-004 (audience/platform age-consistency, Decision D6), RULE-COMP-005 (un-signed-off authored consumer copy, D10), and RULE-TECH-001/002/003 (meta-language leak, clip-segmentation integrity, technical-spec completeness, D9). All carry status 'proposed'. Unlike the source's own planted RULE-404 (surfaced as FND-008), these extensions had no ledger finding even though they actively drive verdicts: COMP-004 yellows the AUD-F age-gap combinations, COMP-005 yellows the OOH authored tagline, and TECH-003 reds any output missing a machine-readable technical_spec. Authored compliance policy that changes a traffic light is exactly what a client's legal and brand team must ratify, so it is surfaced here rather than applied as if it were the client's own rule. Each rule is already named in the compliance_notes trace of every output it touches; this finding is the matrix-level surface for ratification. Same provenance principle as authored content (FND-013) and authored identity (FND-016), applied to authored logic.",
+      "resolution_queue": "data_clarification",
+      "resolution_path": "Client compliance and brand team ratifies or rejects each proposed rule. On ratification, status flips proposed to active and the matrix is formally extended (verdicts unchanged, since the rule already applied). On rejection, the rule is removed and its affected outputs re-grade. Either way the authorship is explicit, not silent.",
+      "status": "open",
+      "decision_ref": null
+    }
+  ]
+}

@@ -1,0 +1,1595 @@
+{
+  "_meta": {
+    "generated_by": "pipeline/export.py",
+    "gate": "compliance_level == 'green' (auto-approvable); raw yellow held for review, red blocked",
+    "counts": {
+      "batch_total": 69,
+      "green_eligible": 32,
+      "exported_total": 32,
+      "requests_total": 67
+    },
+    "note": "Release-gated, generation-ready packages. Each video output is clip-compiled to <= the target model's max_clip_s with continuity references; the claim is a deterministic overlay, never model-rendered. reference_images are DAM uris. Fully deterministic, no LLM."
+  },
+  "exported": [
+    {
+      "prompt_id": "SP-A-IGR-003",
+      "status": "exported",
+      "platform_id": "PLAT-IGR",
+      "requests": [
+        {
+          "request_id": "SP-A-IGR-003--clip1",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing. shame-based body language or self-conscious gestures implying embarrassment in social or professional settings visual structure that implies comparison between two states of the same person clinical, sterile, or laboratory-style environments crowd or collegial scenes where the character is observed or evaluated by others competing hair care product packaging or brand-color references exaggerated slow-motion hair-reveal cinematography typical of legacy shampoo advertising imagery connoting medical use, pharmacy settings, or prescription contexts overly polished perfection that removes the authentic, active-lifestyle texture of the scene",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Lucas: homem de 28 anos, pele parda, cabelo escuro curto e bem cuidado, visual profissional urbano — camisa social leve ou blazer casual, postura confiante e natural. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nGANCHO (0–3s)\nCâmera rasante ao nível do asfalto molhado de São Paulo ao amanhecer — movimento acelerado, tênis batendo no concreto. Corte seco para o rosto de Lucas, olhos diretos na câmera: presença total, sem hesitação. Uma luz azul-gelo rasga o frame da direita para a esquerda e congela o quadro por um frame.\n\nCENA (3–15s)\nLucas termina uma corrida matinal pelas ruas do centro expandido paulistano, respiração controlada, postura aberta — o tipo de pessoa que já conquistou a manhã antes de todo mundo. A câmera o acompanha em handheld leve: energia real, sem pose. Ele entra num vestiário de linhas retas, concreto aparente e luz natural vinda de janelas altas. A sequência captura a transição fluida entre o ritmo da pista e a nitidez de quem tem o dia nas mãos — Lucas se movendo com calma e certeza, no controle de cada detalhe, inclusive da própria presença.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png"
+          ]
+        },
+        {
+          "request_id": "SP-A-IGR-003--clip2",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing. shame-based body language or self-conscious gestures implying embarrassment in social or professional settings visual structure that implies comparison between two states of the same person clinical, sterile, or laboratory-style environments crowd or collegial scenes where the character is observed or evaluated by others competing hair care product packaging or brand-color references exaggerated slow-motion hair-reveal cinematography typical of legacy shampoo advertising imagery connoting medical use, pharmacy settings, or prescription contexts overly polished perfection that removes the authentic, active-lifestyle texture of the scene",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Lucas: homem de 28 anos, pele parda, cabelo escuro curto e bem cuidado, visual profissional urbano — camisa social leve ou blazer casual, postura confiante e natural. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nMOMENTO DO PRODUTO (15–25s)\nLucas alcança o frasco de H&S Menthol Fresh no nicho do chuveiro. Close-up do produto sob o vapor d'água. A câmera converte a sensação do produto num evento visual: uma névoa azul-gelo se expande pelo vapor — fria, viva, nítida — tonalidades de azul intenso tomam o frame por um instante e se dissipam. Lucas fecha os olhos por um segundo de prazer genuíno; quando os abre, há uma quietude segura no olhar. Corte em close no cabelo molhado: luz recortando cada fio, definição e presença — sem distração alguma.\n\nENCERRAMENTO (25–30s)\nLucas já pronto para o dia, postura relaxada e aberta. Olha diretamente para a câmera com a naturalidade de quem fala de igual para igual — um aceno discreto com a cabeça, como quem divide um ritual que faz diferença. O frasco de H&S Menthol Fresh aparece em quadro ao seu lado, no mesmo tom de confiança calma.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png",
+            "{{SP-A-IGR-003--clip1.last_frame}}"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conta nos comentários: qual é o ritual que não pode faltar na sua manhã?",
+        "tags": [
+          "anti-dandruff",
+          "freshness",
+          "confidence",
+          "active-lifestyle",
+          "self-care"
+        ]
+      },
+      "claim_overlay": {
+        "text": "frescor gelado instantâneo e duradouro",
+        "claim_variant_id": "CLM-PL003-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "SP-A-IGR-004",
+      "status": "exported",
+      "platform_id": "PLAT-IGR",
+      "requests": [
+        {
+          "request_id": "SP-A-IGR-004--clip1",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing.",
+          "duration_s": 2,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Beatriz: mulher de 30 anos, pele clara, cabelo castanho na altura dos ombros, estilo executivo descontraído — blusa de trabalho moderna, expressão decidida e simpática. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nGANCHO (0–2s)\nAbertura visual imediata — cuidado simples para o cabelo que enfrenta a rotina intensa.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png"
+          ]
+        },
+        {
+          "request_id": "SP-A-IGR-004--clip2",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing.",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Beatriz: mulher de 30 anos, pele clara, cabelo castanho na altura dos ombros, estilo executivo descontraído — blusa de trabalho moderna, expressão decidida e simpática. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nCENA (2–17s)\nBeatriz no seu dia, com rotina urbana acelerada de São Paulo; momentos reais de uso, sem encenação exagerada.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png",
+            "{{SP-A-IGR-004--clip1.last_frame}}"
+          ]
+        },
+        {
+          "request_id": "SP-A-IGR-004--clip3",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing.",
+          "duration_s": 13,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Beatriz: mulher de 30 anos, pele clara, cabelo castanho na altura dos ombros, estilo executivo descontraído — blusa de trabalho moderna, expressão decidida e simpática. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nMOMENTO DO PRODUTO (17–26s)\nFrasco de H&S Menthol Fresh em destaque; atividade ao ar livre, pós-treino, espiral de mentol; sensação de frescor gelado de mentol que dura.\n\nENCERRAMENTO (26–30s)\nBeatriz segue o dia com naturalidade e confiança. Tom: direto, fresco, seguro de si, de igual para igual.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png",
+            "{{SP-A-IGR-004--clip2.last_frame}}"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conheça H&S Menthol Fresh — link na bio.",
+        "tags": [
+          "freshness",
+          "active-lifestyle",
+          "confidence"
+        ]
+      },
+      "claim_overlay": {
+        "text": "frescor gelado instantâneo e duradouro",
+        "claim_variant_id": "CLM-PL003-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "SP-A-TIK-003",
+      "status": "exported",
+      "platform_id": "PLAT-TIK",
+      "requests": [
+        {
+          "request_id": "SP-A-TIK-003--clip1",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing.",
+          "duration_s": 2,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Lucas: homem de 28 anos, pele parda, cabelo escuro curto e bem cuidado, visual profissional urbano — camisa social leve ou blazer casual, postura confiante e natural. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nGANCHO (0–2s)\nAbertura sonora e visual imediata — ombros impecáveis antes da reunião importante.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png"
+          ]
+        },
+        {
+          "request_id": "SP-A-TIK-003--clip2",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing.",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Lucas: homem de 28 anos, pele parda, cabelo escuro curto e bem cuidado, visual profissional urbano — camisa social leve ou blazer casual, postura confiante e natural. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nCENA (2–17s)\nLucas no seu dia, com rotina urbana acelerada de São Paulo; momentos reais de uso, sem encenação exagerada.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png",
+            "{{SP-A-TIK-003--clip1.last_frame}}"
+          ]
+        },
+        {
+          "request_id": "SP-A-TIK-003--clip3",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing.",
+          "duration_s": 13,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Lucas: homem de 28 anos, pele parda, cabelo escuro curto e bem cuidado, visual profissional urbano — camisa social leve ou blazer casual, postura confiante e natural. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nMOMENTO DO PRODUTO (17–26s)\nFrasco de H&S Menthol Fresh em destaque; atividade ao ar livre, pós-treino, espiral de mentol; sensação de frescor gelado de mentol que dura.\n\nENCERRAMENTO (26–30s)\nLucas segue o dia com naturalidade e confiança. Tom: direto, fresco, seguro de si, de igual para igual.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png",
+            "{{SP-A-TIK-003--clip2.last_frame}}"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conheça H&S Menthol Fresh — link na bio.",
+        "tags": [
+          "freshness",
+          "active-lifestyle",
+          "confidence"
+        ]
+      },
+      "claim_overlay": {
+        "text": "frescor gelado instantâneo e duradouro",
+        "claim_variant_id": "CLM-PL003-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "SP-A-TIK-004",
+      "status": "exported",
+      "platform_id": "PLAT-TIK",
+      "requests": [
+        {
+          "request_id": "SP-A-TIK-004--clip1",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing.",
+          "duration_s": 2,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Beatriz: mulher de 30 anos, pele clara, cabelo castanho na altura dos ombros, estilo executivo descontraído — blusa de trabalho moderna, expressão decidida e simpática. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nGANCHO (0–2s)\nAbertura sonora e visual imediata — cuidado simples para o cabelo que enfrenta a rotina intensa.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png"
+          ]
+        },
+        {
+          "request_id": "SP-A-TIK-004--clip2",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing.",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Beatriz: mulher de 30 anos, pele clara, cabelo castanho na altura dos ombros, estilo executivo descontraído — blusa de trabalho moderna, expressão decidida e simpática. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nCENA (2–17s)\nBeatriz no seu dia, com rotina urbana acelerada de São Paulo; momentos reais de uso, sem encenação exagerada.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png",
+            "{{SP-A-TIK-004--clip1.last_frame}}"
+          ]
+        },
+        {
+          "request_id": "SP-A-TIK-004--clip3",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing.",
+          "duration_s": 13,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Beatriz: mulher de 30 anos, pele clara, cabelo castanho na altura dos ombros, estilo executivo descontraído — blusa de trabalho moderna, expressão decidida e simpática. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nMOMENTO DO PRODUTO (17–26s)\nFrasco de H&S Menthol Fresh em destaque; atividade ao ar livre, pós-treino, espiral de mentol; sensação de frescor gelado de mentol que dura.\n\nENCERRAMENTO (26–30s)\nBeatriz segue o dia com naturalidade e confiança. Tom: direto, fresco, seguro de si, de igual para igual.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png",
+            "{{SP-A-TIK-004--clip2.last_frame}}"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conheça H&S Menthol Fresh — link na bio.",
+        "tags": [
+          "freshness",
+          "active-lifestyle",
+          "confidence"
+        ]
+      },
+      "claim_overlay": {
+        "text": "frescor gelado instantâneo e duradouro",
+        "claim_variant_id": "CLM-PL003-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "SP-A-YTS-003",
+      "status": "exported",
+      "platform_id": "PLAT-YTS",
+      "requests": [
+        {
+          "request_id": "SP-A-YTS-003--clip1",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing.",
+          "duration_s": 2,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Lucas: homem de 28 anos, pele parda, cabelo escuro curto e bem cuidado, visual profissional urbano — camisa social leve ou blazer casual, postura confiante e natural. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nGANCHO (0–2s)\nAbertura visual imediata — ombros impecáveis antes da reunião importante.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png"
+          ]
+        },
+        {
+          "request_id": "SP-A-YTS-003--clip2",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing.",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Lucas: homem de 28 anos, pele parda, cabelo escuro curto e bem cuidado, visual profissional urbano — camisa social leve ou blazer casual, postura confiante e natural. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nCENA (2–17s)\nLucas no seu dia, com rotina urbana acelerada de São Paulo; momentos reais de uso, sem encenação exagerada.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png",
+            "{{SP-A-YTS-003--clip1.last_frame}}"
+          ]
+        },
+        {
+          "request_id": "SP-A-YTS-003--clip3",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing.",
+          "duration_s": 13,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Lucas: homem de 28 anos, pele parda, cabelo escuro curto e bem cuidado, visual profissional urbano — camisa social leve ou blazer casual, postura confiante e natural. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nMOMENTO DO PRODUTO (17–26s)\nFrasco de H&S Menthol Fresh em destaque; atividade ao ar livre, pós-treino, espiral de mentol; sensação de frescor gelado de mentol que dura.\n\nENCERRAMENTO (26–30s)\nLucas segue o dia com naturalidade e confiança. Tom: direto, fresco, seguro de si, de igual para igual.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png",
+            "{{SP-A-YTS-003--clip2.last_frame}}"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conheça H&S Menthol Fresh — link na bio.",
+        "tags": [
+          "freshness",
+          "active-lifestyle",
+          "confidence"
+        ]
+      },
+      "claim_overlay": {
+        "text": "frescor gelado instantâneo e duradouro",
+        "claim_variant_id": "CLM-PL003-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "SP-A-YTS-004",
+      "status": "exported",
+      "platform_id": "PLAT-YTS",
+      "requests": [
+        {
+          "request_id": "SP-A-YTS-004--clip1",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing.",
+          "duration_s": 2,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Beatriz: mulher de 30 anos, pele clara, cabelo castanho na altura dos ombros, estilo executivo descontraído — blusa de trabalho moderna, expressão decidida e simpática. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nGANCHO (0–2s)\nAbertura visual imediata — cuidado simples para o cabelo que enfrenta a rotina intensa.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png"
+          ]
+        },
+        {
+          "request_id": "SP-A-YTS-004--clip2",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing.",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Beatriz: mulher de 30 anos, pele clara, cabelo castanho na altura dos ombros, estilo executivo descontraído — blusa de trabalho moderna, expressão decidida e simpática. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nCENA (2–17s)\nBeatriz no seu dia, com rotina urbana acelerada de São Paulo; momentos reais de uso, sem encenação exagerada.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png",
+            "{{SP-A-YTS-004--clip1.last_frame}}"
+          ]
+        },
+        {
+          "request_id": "SP-A-YTS-004--clip3",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing.",
+          "duration_s": 13,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Beatriz: mulher de 30 anos, pele clara, cabelo castanho na altura dos ombros, estilo executivo descontraído — blusa de trabalho moderna, expressão decidida e simpática. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nMOMENTO DO PRODUTO (17–26s)\nFrasco de H&S Menthol Fresh em destaque; atividade ao ar livre, pós-treino, espiral de mentol; sensação de frescor gelado de mentol que dura.\n\nENCERRAMENTO (26–30s)\nBeatriz segue o dia com naturalidade e confiança. Tom: direto, fresco, seguro de si, de igual para igual.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png",
+            "{{SP-A-YTS-004--clip2.last_frame}}"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conheça H&S Menthol Fresh — link na bio.",
+        "tags": [
+          "freshness",
+          "active-lifestyle",
+          "confidence"
+        ]
+      },
+      "claim_overlay": {
+        "text": "frescor gelado instantâneo e duradouro",
+        "claim_variant_id": "CLM-PL003-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "SP-B-META-003",
+      "status": "exported",
+      "platform_id": "PLAT-META",
+      "requests": [
+        {
+          "request_id": "SP-B-META-003--img",
+          "target_model": "MODEL-IMG-NANOBANANA-PRO",
+          "modality": "image",
+          "aspect_ratio": "4:5",
+          "resolution": "1080x1350",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004). Crianças ou menores de idade visíveis no quadro Iluminação de estúdio artificial e dura sem presença de luz natural Ambiente desordenado, bagunçado ou visivelmente caótico Expressões de desconforto, cansaço excessivo ou frustração em Camila Comparação visual entre dois estados distintos de cabelo no mesmo quadro Embalagens ou logotipos de marcas concorrentes visíveis em cena Cenário com aparência de consultório médico ou hospitalar Elementos visuais de oferta, preço ou promoção comercial Estética glamorosa artificialmente produzida que contradiga o realismo do cotidiano",
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Camila: mulher de 35 anos, pele morena, cabelo escuro liso ou levemente ondulado preso de forma prática, roupa casual de dia a dia em casa — camiseta limpa e confortável, presença acolhedora e organizada. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nTÍTULO\nA composição de abertura apresenta Camila em um banheiro iluminado pela luz matinal que entra pela janela. O frasco de H&S Hidratação está posicionado em destaque no primeiro plano. Uma headline em tipografia limpa e encorpada ancora o visual: 'O cuidado que a família toda merece.' A atmosfera é autêntica e cotidiana — o tipo de imagem que interrompe o scroll porque parece real, porque é real.\n\nCENA ESTÁTICA\nCamila está à bancada do banheiro em um momento tranquilo e organizado da manhã. O ambiente comunica o ritmo gentil de um dia familiar bem começado: toalhas dobradas, itens pessoais dispostos com cuidado, o frescor do dia entrando junto com a luz natural. Ela irradia a calma de quem encontrou uma rotina que funciona — para ela e para todos ao redor. A sensação geral é de maciez, nutrição e frescor vividos no cotidiano.\n\nPRESENÇA DO PRODUTO\nO frasco de H&S Hidratação ocupa posição de protagonismo na bancada, levemente à frente dos demais itens. A luz natural incide sobre ele de forma suave, evocando frescor e leveza. Sua presença na cena é orgânica — parte integrante da rotina diária da família, não um elemento isolado. O produto compartilha o espaço com naturalidade, como algo que já pertence àquela manhã.\n\nCOMPOSIÇÃO E LUZ\nEnquadramento limpo e equilibrado, com foco nítido na bancada e desfoque suave no fundo para direcionar a atenção sem perder a profundidade do ambiente. Paleta dominante em tons brancos, creme e azul-claro, evocando limpeza, leveza e cuidado. A luz natural entra lateralmente, criando reflexos suaves que valorizam o ambiente e o frasco de H&S Hidratação. Espaços negativos bem distribuídos permitem a sobreposição limpa da headline sem poluir a cena.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conta pra gente: como é a rotina de cuidados da sua família? Compartilha nos comentários.",
+        "tags": [
+          "moisture",
+          "care",
+          "family",
+          "freshness",
+          "self-care"
+        ]
+      },
+      "claim_overlay": {
+        "text": "cabelo visivelmente mais saudável desde a primeira lavagem",
+        "claim_variant_id": "CLM-PL002-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "SP-B-META-004",
+      "status": "exported",
+      "platform_id": "PLAT-META",
+      "requests": [
+        {
+          "request_id": "SP-B-META-004--img",
+          "target_model": "MODEL-IMG-NANOBANANA-PRO",
+          "modality": "image",
+          "aspect_ratio": "4:5",
+          "resolution": "1080x1350",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004).",
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Rodrigo: homem de 38 anos, pele clara, cabelo curto grisalho nas têmporas, visual de pai prático — polo ou camiseta lisa, jeito tranquilo e confiável. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nTÍTULO\nUma rotina capilar de confiança que se constrói lavagem a lavagem.\n\nCENA ESTÁTICA\nUm quadro só com Rodrigo, rotina urbana acelerada de São Paulo; benefício em primeiro plano.\n\nPRESENÇA DO PRODUTO\nH&S Hidratação integrado à cena; cabelo com brilho, movimento natural do cabelo, luz natural; hidratação e brilho visíveis, maciez ao toque.\n\nCOMPOSIÇÃO E LUZ\nLuz natural e difusa; paleta em branco, tons neutros claros e o azul da marca. Tom: confiável, prático, acolhedor, tranquilizador.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conheça H&S Hidratação — link na bio.",
+        "tags": [
+          "moisture",
+          "care",
+          "family"
+        ]
+      },
+      "claim_overlay": {
+        "text": "cabelo visivelmente mais saudável desde a primeira lavagem",
+        "claim_variant_id": "CLM-PL002-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "SP-B-YTL-003",
+      "status": "exported",
+      "platform_id": "PLAT-YTL",
+      "requests": [
+        {
+          "request_id": "SP-B-YTL-003--clip1",
+          "target_model": "MODEL-VID-GVO-1",
+          "modality": "video",
+          "aspect_ratio": "16:9",
+          "resolution": "1920x1080",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004).",
+          "duration_s": 6,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Camila: mulher de 35 anos, pele morena, cabelo escuro liso ou levemente ondulado preso de forma prática, roupa casual de dia a dia em casa — camiseta limpa e confortável, presença acolhedora e organizada. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nABERTURA FRIA (0–6s)\nMomento identificável — cuidado confiável para a família toda, todos os dias; sem introdução pulável.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png"
+          ]
+        },
+        {
+          "request_id": "SP-B-YTL-003--clip2",
+          "target_model": "MODEL-VID-GVO-1",
+          "modality": "video",
+          "aspect_ratio": "16:9",
+          "resolution": "1920x1080",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004).",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Camila: mulher de 35 anos, pele morena, cabelo escuro liso ou levemente ondulado preso de forma prática, roupa casual de dia a dia em casa — camiseta limpa e confortável, presença acolhedora e organizada. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nNARRATIVA — PARTE 1 (6–21s)\nA rotina de Camila com rotina urbana acelerada de São Paulo; a fricção aparece, a solução entra na rotina.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png",
+            "{{SP-B-YTL-003--clip1.last_frame}}"
+          ]
+        },
+        {
+          "request_id": "SP-B-YTL-003--clip3",
+          "target_model": "MODEL-VID-GVO-1",
+          "modality": "video",
+          "aspect_ratio": "16:9",
+          "resolution": "1920x1080",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004).",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Camila: mulher de 35 anos, pele morena, cabelo escuro liso ou levemente ondulado preso de forma prática, roupa casual de dia a dia em casa — camiseta limpa e confortável, presença acolhedora e organizada. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nNARRATIVA — PARTE 2 (21–36s)\nContinuação direta da cena anterior — manter cenário, figurino e luz.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png",
+            "{{SP-B-YTL-003--clip2.last_frame}}"
+          ]
+        },
+        {
+          "request_id": "SP-B-YTL-003--clip4",
+          "target_model": "MODEL-VID-GVO-1",
+          "modality": "video",
+          "aspect_ratio": "16:9",
+          "resolution": "1920x1080",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004).",
+          "duration_s": 14,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Camila: mulher de 35 anos, pele morena, cabelo escuro liso ou levemente ondulado preso de forma prática, roupa casual de dia a dia em casa — camiseta limpa e confortável, presença acolhedora e organizada. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nNARRATIVA — PARTE 3 (36–50s)\nContinuação direta da cena anterior — manter cenário, figurino e luz.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png",
+            "{{SP-B-YTL-003--clip3.last_frame}}"
+          ]
+        },
+        {
+          "request_id": "SP-B-YTL-003--clip5",
+          "target_model": "MODEL-VID-GVO-1",
+          "modality": "video",
+          "aspect_ratio": "16:9",
+          "resolution": "1920x1080",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004).",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Camila: mulher de 35 anos, pele morena, cabelo escuro liso ou levemente ondulado preso de forma prática, roupa casual de dia a dia em casa — camiseta limpa e confortável, presença acolhedora e organizada. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nINTEGRAÇÃO DO PRODUTO (50–65s)\nH&S Hidratação dentro da rotina real; cabelo com brilho, movimento natural do cabelo, luz natural; hidratação e brilho visíveis, maciez ao toque.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png",
+            "{{SP-B-YTL-003--clip4.last_frame}}"
+          ]
+        },
+        {
+          "request_id": "SP-B-YTL-003--clip6",
+          "target_model": "MODEL-VID-GVO-1",
+          "modality": "video",
+          "aspect_ratio": "16:9",
+          "resolution": "1920x1080",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004).",
+          "duration_s": 10,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Camila: mulher de 35 anos, pele morena, cabelo escuro liso ou levemente ondulado preso de forma prática, roupa casual de dia a dia em casa — camiseta limpa e confortável, presença acolhedora e organizada. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nRESOLUÇÃO (65–75s)\nA rotina se resolve; Camila segue confiante. Tom: confiável, prático, acolhedor, tranquilizador.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png",
+            "{{SP-B-YTL-003--clip5.last_frame}}"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conheça H&S Hidratação — link na bio.",
+        "tags": [
+          "moisture",
+          "care",
+          "family"
+        ]
+      },
+      "claim_overlay": {
+        "text": "cabelo visivelmente mais saudável desde a primeira lavagem",
+        "claim_variant_id": "CLM-PL002-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "SP-B-YTL-004",
+      "status": "exported",
+      "platform_id": "PLAT-YTL",
+      "requests": [
+        {
+          "request_id": "SP-B-YTL-004--clip1",
+          "target_model": "MODEL-VID-GVO-1",
+          "modality": "video",
+          "aspect_ratio": "16:9",
+          "resolution": "1920x1080",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004).",
+          "duration_s": 6,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Rodrigo: homem de 38 anos, pele clara, cabelo curto grisalho nas têmporas, visual de pai prático — polo ou camiseta lisa, jeito tranquilo e confiável. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nABERTURA FRIA (0–6s)\nMomento identificável — uma rotina capilar de confiança que se constrói lavagem a lavagem; sem introdução pulável.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png"
+          ]
+        },
+        {
+          "request_id": "SP-B-YTL-004--clip2",
+          "target_model": "MODEL-VID-GVO-1",
+          "modality": "video",
+          "aspect_ratio": "16:9",
+          "resolution": "1920x1080",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004).",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Rodrigo: homem de 38 anos, pele clara, cabelo curto grisalho nas têmporas, visual de pai prático — polo ou camiseta lisa, jeito tranquilo e confiável. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nNARRATIVA — PARTE 1 (6–21s)\nA rotina de Rodrigo com rotina urbana acelerada de São Paulo; a fricção aparece, a solução entra na rotina.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png",
+            "{{SP-B-YTL-004--clip1.last_frame}}"
+          ]
+        },
+        {
+          "request_id": "SP-B-YTL-004--clip3",
+          "target_model": "MODEL-VID-GVO-1",
+          "modality": "video",
+          "aspect_ratio": "16:9",
+          "resolution": "1920x1080",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004).",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Rodrigo: homem de 38 anos, pele clara, cabelo curto grisalho nas têmporas, visual de pai prático — polo ou camiseta lisa, jeito tranquilo e confiável. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nNARRATIVA — PARTE 2 (21–36s)\nContinuação direta da cena anterior — manter cenário, figurino e luz.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png",
+            "{{SP-B-YTL-004--clip2.last_frame}}"
+          ]
+        },
+        {
+          "request_id": "SP-B-YTL-004--clip4",
+          "target_model": "MODEL-VID-GVO-1",
+          "modality": "video",
+          "aspect_ratio": "16:9",
+          "resolution": "1920x1080",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004).",
+          "duration_s": 14,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Rodrigo: homem de 38 anos, pele clara, cabelo curto grisalho nas têmporas, visual de pai prático — polo ou camiseta lisa, jeito tranquilo e confiável. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nNARRATIVA — PARTE 3 (36–50s)\nContinuação direta da cena anterior — manter cenário, figurino e luz.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png",
+            "{{SP-B-YTL-004--clip3.last_frame}}"
+          ]
+        },
+        {
+          "request_id": "SP-B-YTL-004--clip5",
+          "target_model": "MODEL-VID-GVO-1",
+          "modality": "video",
+          "aspect_ratio": "16:9",
+          "resolution": "1920x1080",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004).",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Rodrigo: homem de 38 anos, pele clara, cabelo curto grisalho nas têmporas, visual de pai prático — polo ou camiseta lisa, jeito tranquilo e confiável. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nINTEGRAÇÃO DO PRODUTO (50–65s)\nH&S Hidratação dentro da rotina real; cabelo com brilho, movimento natural do cabelo, luz natural; hidratação e brilho visíveis, maciez ao toque.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png",
+            "{{SP-B-YTL-004--clip4.last_frame}}"
+          ]
+        },
+        {
+          "request_id": "SP-B-YTL-004--clip6",
+          "target_model": "MODEL-VID-GVO-1",
+          "modality": "video",
+          "aspect_ratio": "16:9",
+          "resolution": "1920x1080",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004).",
+          "duration_s": 10,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Rodrigo: homem de 38 anos, pele clara, cabelo curto grisalho nas têmporas, visual de pai prático — polo ou camiseta lisa, jeito tranquilo e confiável. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nRESOLUÇÃO (65–75s)\nA rotina se resolve; Rodrigo segue confiante. Tom: confiável, prático, acolhedor, tranquilizador.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png",
+            "{{SP-B-YTL-004--clip5.last_frame}}"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conheça H&S Hidratação — link na bio.",
+        "tags": [
+          "moisture",
+          "care",
+          "family"
+        ]
+      },
+      "claim_overlay": {
+        "text": "cabelo visivelmente mais saudável desde a primeira lavagem",
+        "claim_variant_id": "CLM-PL002-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "SP-B-RET-003",
+      "status": "exported",
+      "platform_id": "PLAT-RET",
+      "requests": [
+        {
+          "request_id": "SP-B-RET-003--img",
+          "target_model": "MODEL-IMG-GPTIMAGE-2",
+          "modality": "image",
+          "aspect_ratio": "1:1",
+          "resolution": "1080x1080",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004).",
+          "prompt": "REFERÊNCIAS VISUAIS\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nTÍTULO\nH&S Hidratação — hidratação e brilho visíveis, maciez ao toque.\n\nPRODUTO\nEmbalagem de H&S Hidratação em destaque, alto contraste, leitura à distância; cabelo com brilho, movimento natural do cabelo, luz natural.\n\nCOMPOSIÇÃO\nFundo limpo, hierarquia tipográfica clara, alto contraste. Tom: confiável, prático, acolhedor, tranquilizador.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Adicione H&S Hidratação ao carrinho agora.",
+        "tags": [
+          "moisture",
+          "care",
+          "family"
+        ]
+      },
+      "claim_overlay": {
+        "text": "cabelo visivelmente mais saudável desde a primeira lavagem",
+        "claim_variant_id": "CLM-PL002-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "SP-B-RET-004",
+      "status": "exported",
+      "platform_id": "PLAT-RET",
+      "requests": [
+        {
+          "request_id": "SP-B-RET-004--img",
+          "target_model": "MODEL-IMG-GPTIMAGE-2",
+          "modality": "image",
+          "aspect_ratio": "1:1",
+          "resolution": "1080x1080",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004).",
+          "prompt": "REFERÊNCIAS VISUAIS\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nTÍTULO\nH&S Hidratação — hidratação e brilho visíveis, maciez ao toque.\n\nPRODUTO\nEmbalagem de H&S Hidratação em destaque, alto contraste, leitura à distância; cabelo com brilho, movimento natural do cabelo, luz natural.\n\nCOMPOSIÇÃO\nFundo limpo, hierarquia tipográfica clara, alto contraste. Tom: confiável, prático, acolhedor, tranquilizador.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Adicione H&S Hidratação ao carrinho agora.",
+        "tags": [
+          "moisture",
+          "care",
+          "family"
+        ]
+      },
+      "claim_overlay": {
+        "text": "cabelo visivelmente mais saudável desde a primeira lavagem",
+        "claim_variant_id": "CLM-PL002-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "RJ-C-TIK-001",
+      "status": "exported",
+      "platform_id": "PLAT-TIK",
+      "requests": [
+        {
+          "request_id": "RJ-C-TIK-001--clip1",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing. imagery implying scalp conditions, visible flaking, or hair damage of any kind split-screen or side-by-side comparison framing of any type expressions of embarrassment, self-consciousness, or social discomfort clinical, medical, or laboratory environments — white coats, sterile settings, charts any character who could read as under 18 years of age competitor personal care or shampoo product packaging visible in frame entirely sedentary or enclosed indoor scenarios disconnected from active lifestyle overproduced CGI-only product effect sequences that feel disconnected from realistic shower usage dark, desaturated, heavy, or melancholic color grading slow-motion transformation reveals or dramatic before-state staging",
+          "duration_s": 13,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Gabriela: mulher de 27 anos, pele negra, cabelo cacheado volumoso, corpo ativo e atlético, roupa esportiva leve ou saída de praia, energia alta e sorriso aberto. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nGANCHO (0–3s)\nCorte brusco: estalo seco e nítido de uma bola de vôlei na areia quente — Gabriela aparece em close de rosto, suada, olhos arregalados de alegria pura, e solta um 'Êeee!' alto para as amigas fora de quadro. Som em primeiro plano desde o frame zero. Câmera instável, luz crua do sol carioca.\n\nCENA (3–13s)\nTarde de sol forte na orla — Gabriela disputa uma partida animada de vôlei de praia com amigas. Câmera shakycam acompanha cada salto, cada mergulho na areia, cada risada coletiva. O suor brilha na pele sob a luz de fim de tarde e ela está completamente no seu elemento: energia alta, presença total. Close no seu rosto enquanto ela faz um gesto de leque com a mão e fala com sorriso largo para a amiga ao lado — 'Gente, que calor!' — a vibe é festiva, coletiva, sem filtro nenhum.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png"
+          ]
+        },
+        {
+          "request_id": "RJ-C-TIK-001--clip2",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing. imagery implying scalp conditions, visible flaking, or hair damage of any kind split-screen or side-by-side comparison framing of any type expressions of embarrassment, self-consciousness, or social discomfort clinical, medical, or laboratory environments — white coats, sterile settings, charts any character who could read as under 18 years of age competitor personal care or shampoo product packaging visible in frame entirely sedentary or enclosed indoor scenarios disconnected from active lifestyle overproduced CGI-only product effect sequences that feel disconnected from realistic shower usage dark, desaturated, heavy, or melancholic color grading slow-motion transformation reveals or dramatic before-state staging",
+          "duration_s": 10,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Gabriela: mulher de 27 anos, pele negra, cabelo cacheado volumoso, corpo ativo e atlético, roupa esportiva leve ou saída de praia, energia alta e sorriso aberto. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nMOMENTO DO PRODUTO (13–23s)\nChuveiro ao ar livre da praia, luz filtrada e dourada do entardecer. Gabriela mergulha a mão na mochila e retira o frasco de H&S Menthol Fresh — abre com um clique e aplica generosamente no cabelo molhado. A câmera se aproxima devagar: espirais azuis e brancas de mentol se expandem visualmente ao redor dos seus cachos, evocando uma onda de frescor que parece atravessar a tela. Ela fecha os olhos, inclina levemente o rosto para cima — um longo e satisfeito 'ahhh' sai dos seus lábios. Os tons de azul saturam o frame com suavidade, como se o ar ao redor esfriasse.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png",
+            "{{RJ-C-TIK-001--clip1.last_frame}}"
+          ]
+        },
+        {
+          "request_id": "RJ-C-TIK-001--clip3",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing. imagery implying scalp conditions, visible flaking, or hair damage of any kind split-screen or side-by-side comparison framing of any type expressions of embarrassment, self-consciousness, or social discomfort clinical, medical, or laboratory environments — white coats, sterile settings, charts any character who could read as under 18 years of age competitor personal care or shampoo product packaging visible in frame entirely sedentary or enclosed indoor scenarios disconnected from active lifestyle overproduced CGI-only product effect sequences that feel disconnected from realistic shower usage dark, desaturated, heavy, or melancholic color grading slow-motion transformation reveals or dramatic before-state staging",
+          "duration_s": 7,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Gabriela: mulher de 27 anos, pele negra, cabelo cacheado volumoso, corpo ativo e atlético, roupa esportiva leve ou saída de praia, energia alta e sorriso aberto. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nENCERRAMENTO (23–30s)\nGabriela sai do chuveiro com os cachos definidos e saltando de vida, energia completamente renovada. Ela joga a mochila no ombro e caminha pela orla com leveza — um passo solto, um sorriso de quem está pronta para o próximo rolê. Dá uma última olhada para a câmera com aquele sorriso cumplice de quem sabe o que faz. O frasco de H&S Menthol Fresh aparece em destaque ao seu lado, em luz limpa e direta.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png",
+            "{{RJ-C-TIK-001--clip2.last_frame}}"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conta nos comentários: qual é o seu rolê favorito de verão?",
+        "tags": [
+          "freshness",
+          "active-lifestyle",
+          "confidence",
+          "self-care",
+          "care"
+        ]
+      },
+      "claim_overlay": {
+        "text": "frescor gelado instantâneo e duradouro",
+        "claim_variant_id": "CLM-PL003-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "RJ-C-TIK-002",
+      "status": "exported",
+      "platform_id": "PLAT-TIK",
+      "requests": [
+        {
+          "request_id": "RJ-C-TIK-002--clip1",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing.",
+          "duration_s": 2,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Felipe: homem de 30 anos, pele bronzeada, cabelo escuro médio com movimento, físico esportivo, camiseta regata ou camisa aberta de verão, jeito leve e festivo. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nGANCHO (0–2s)\nAbertura sonora e visual imediata — aquela sensação de frescor depois da praia ou da academia.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png"
+          ]
+        },
+        {
+          "request_id": "RJ-C-TIK-002--clip2",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing.",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Felipe: homem de 30 anos, pele bronzeada, cabelo escuro médio com movimento, físico esportivo, camiseta regata ou camisa aberta de verão, jeito leve e festivo. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nCENA (2–17s)\nFelipe no seu dia, com clima de praia e ar livre do Rio de Janeiro; momentos reais de uso, sem encenação exagerada.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png",
+            "{{RJ-C-TIK-002--clip1.last_frame}}"
+          ]
+        },
+        {
+          "request_id": "RJ-C-TIK-002--clip3",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing.",
+          "duration_s": 13,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Felipe: homem de 30 anos, pele bronzeada, cabelo escuro médio com movimento, físico esportivo, camiseta regata ou camisa aberta de verão, jeito leve e festivo. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nMOMENTO DO PRODUTO (17–26s)\nFrasco de H&S Menthol Fresh em destaque; atividade ao ar livre, pós-treino, espiral de mentol; sensação de frescor gelado de mentol que dura.\n\nENCERRAMENTO (26–30s)\nFelipe segue o dia com naturalidade e confiança. Tom: energético, leve, positivo, festivo.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png",
+            "{{RJ-C-TIK-002--clip2.last_frame}}"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conheça H&S Menthol Fresh — link na bio.",
+        "tags": [
+          "freshness",
+          "active-lifestyle",
+          "care"
+        ]
+      },
+      "claim_overlay": {
+        "text": "frescor gelado instantâneo e duradouro",
+        "claim_variant_id": "CLM-PL003-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "RJ-C-IGS-001",
+      "status": "exported",
+      "platform_id": "PLAT-IGS",
+      "requests": [
+        {
+          "request_id": "RJ-C-IGS-001--clip1",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing.",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Gabriela: mulher de 27 anos, pele negra, cabelo cacheado volumoso, corpo ativo e atlético, roupa esportiva leve ou saída de praia, energia alta e sorriso aberto. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nGANCHO (0–2s)\nAbertura visual imediata — suor do treino sem abrir mão do couro cabeludo cuidado.\n\nCENA (2–7s)\nGabriela no seu dia, com clima de praia e ar livre do Rio de Janeiro; momentos reais de uso, sem encenação exagerada.\n\nMOMENTO DO PRODUTO (7–12s)\nFrasco de H&S Menthol Fresh em destaque; atividade ao ar livre, pós-treino, espiral de mentol; sensação de frescor gelado de mentol que dura.\n\nENCERRAMENTO (12–15s)\nGabriela segue o dia com naturalidade e confiança. Tom: energético, leve, positivo, festivo.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conheça H&S Menthol Fresh — link na bio.",
+        "tags": [
+          "freshness",
+          "active-lifestyle",
+          "care"
+        ]
+      },
+      "claim_overlay": {
+        "text": "frescor gelado instantâneo e duradouro",
+        "claim_variant_id": "CLM-PL003-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "RJ-C-IGS-002",
+      "status": "exported",
+      "platform_id": "PLAT-IGS",
+      "requests": [
+        {
+          "request_id": "RJ-C-IGS-002--clip1",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No horizontal framing.",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Felipe: homem de 30 anos, pele bronzeada, cabelo escuro médio com movimento, físico esportivo, camiseta regata ou camisa aberta de verão, jeito leve e festivo. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Menthol Fresh (@ref1): frasco branco arredondado com tampa azul vibrante, grafismo de espiral de mentol em azul e branco, logotipo Head & Shoulders em azul, faixa 'Menthol Fresh' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nGANCHO (0–2s)\nAbertura visual imediata — aquela sensação de frescor depois da praia ou da academia.\n\nCENA (2–7s)\nFelipe no seu dia, com clima de praia e ar livre do Rio de Janeiro; momentos reais de uso, sem encenação exagerada.\n\nMOMENTO DO PRODUTO (7–12s)\nFrasco de H&S Menthol Fresh em destaque; atividade ao ar livre, pós-treino, espiral de mentol; sensação de frescor gelado de mentol que dura.\n\nENCERRAMENTO (12–15s)\nFelipe segue o dia com naturalidade e confiança. Tom: energético, leve, positivo, festivo.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl003_front.png"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conheça H&S Menthol Fresh — link na bio.",
+        "tags": [
+          "freshness",
+          "active-lifestyle",
+          "care"
+        ]
+      },
+      "claim_overlay": {
+        "text": "frescor gelado instantâneo e duradouro",
+        "claim_variant_id": "CLM-PL003-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "RJ-C-TIK-003",
+      "status": "exported",
+      "platform_id": "PLAT-TIK",
+      "requests": [
+        {
+          "request_id": "RJ-C-TIK-003--clip1",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004). No horizontal framing. cabelos com aparência ressecada, opaca ou achatada em qualquer momento da cena expressões de desconforto, mal-estar ou constrangimento relacionadas à transpiração ambientes fechados, assépticos ou estéreis que contradigam o contexto de atividade ao ar livre iluminação fria, acinzentada ou de baixo contraste que neutralize o tom quente e celebratório da cena composições de enquadramento lateral ou estrutura de díptico que sugira comparação visual rostos de crianças ou adolescentes em qualquer parte da cena textos sobrepostos com afirmações de desempenho ou eficácia do produto",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Gabriela: mulher de 27 anos, pele negra, cabelo cacheado volumoso, corpo ativo e atlético, roupa esportiva leve ou saída de praia, energia alta e sorriso aberto. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nGANCHO (0–3s)\nClose-up dinâmico dos cabelos cacheados de Gabriela em movimento — fios volumosos pegando o vento com o brilho intenso do sol carioca. Uma batida animada e reconhecível irrompe no início da cena, prendendo a atenção imediatamente e sinalizando energia pura.\n\nCENA (3–15s)\nGabriela aparece em uma quadra poliesportiva ao ar livre ou na areia dourada de uma praia carioca, logo após um momento de atividade intensa: levemente suada, sorridente e transbordando vitalidade. A câmera a acompanha em movimentos fluidos — ela estica os braços para o alto em gesto de celebração, cabelos cacheados sacudindo com vivacidade ao redor do rosto. A luz natural dourada do fim de tarde banha toda a cena, criando um brilho quente e envolvente. O ambiente ao redor pulsa com a energia vibrante do verão carioca — cores vivas, céu aberto, clima de festa e movimento.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png"
+          ]
+        },
+        {
+          "request_id": "RJ-C-TIK-003--clip2",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004). No horizontal framing. cabelos com aparência ressecada, opaca ou achatada em qualquer momento da cena expressões de desconforto, mal-estar ou constrangimento relacionadas à transpiração ambientes fechados, assépticos ou estéreis que contradigam o contexto de atividade ao ar livre iluminação fria, acinzentada ou de baixo contraste que neutralize o tom quente e celebratório da cena composições de enquadramento lateral ou estrutura de díptico que sugira comparação visual rostos de crianças ou adolescentes em qualquer parte da cena textos sobrepostos com afirmações de desempenho ou eficácia do produto",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Gabriela: mulher de 27 anos, pele negra, cabelo cacheado volumoso, corpo ativo e atlético, roupa esportiva leve ou saída de praia, energia alta e sorriso aberto. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nMOMENTO DO PRODUTO (15–23s)\nGabriela retira o frasco de H&S Hidratação da bolsa esportiva com naturalidade e familiaridade. Corte para um close do frasco com micro-gotas de água ao redor, transmitindo frescor e leveza. A cena volta para Gabriela aplicando o produto com gestos suaves; a luz natural realça o brilho e a vitalidade dos fios cacheados enquanto ela sorri com prazer genuíno — a expressão de quem se cuida de um jeito que conhece e confia.\n\nENCERRAMENTO (23–30s)\nGabriela vira diretamente para a câmera com um sorriso aberto e espontâneo, cabelos cacheados ao vento, brilhantes e cheios de volume. Ela levanta o polegar em aprovação com energia contagiante, convidando quem assiste a entrar na conversa. A cena fecha com o frasco de H&S Hidratação em destaque ao lado de Gabriela, sob a luz dourada do pôr do sol carioca.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png",
+            "{{RJ-C-TIK-003--clip1.last_frame}}"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conta pra gente: qual é o seu ritual de autocuidado favorito depois do treino? Comenta aqui!",
+        "tags": [
+          "freshness",
+          "moisture",
+          "care",
+          "active-lifestyle",
+          "self-care",
+          "confidence"
+        ]
+      },
+      "claim_overlay": {
+        "text": "cabelo visivelmente mais saudável desde a primeira lavagem",
+        "claim_variant_id": "CLM-PL002-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "RJ-C-TIK-004",
+      "status": "exported",
+      "platform_id": "PLAT-TIK",
+      "requests": [
+        {
+          "request_id": "RJ-C-TIK-004--clip1",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004). No horizontal framing.",
+          "duration_s": 2,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Felipe: homem de 30 anos, pele bronzeada, cabelo escuro médio com movimento, físico esportivo, camiseta regata ou camisa aberta de verão, jeito leve e festivo. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nGANCHO (0–2s)\nAbertura sonora e visual imediata — aquela sensação de frescor depois da praia ou da academia.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png"
+          ]
+        },
+        {
+          "request_id": "RJ-C-TIK-004--clip2",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004). No horizontal framing.",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Felipe: homem de 30 anos, pele bronzeada, cabelo escuro médio com movimento, físico esportivo, camiseta regata ou camisa aberta de verão, jeito leve e festivo. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nCENA (2–17s)\nFelipe no seu dia, com clima de praia e ar livre do Rio de Janeiro; momentos reais de uso, sem encenação exagerada.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png",
+            "{{RJ-C-TIK-004--clip1.last_frame}}"
+          ]
+        },
+        {
+          "request_id": "RJ-C-TIK-004--clip3",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004). No horizontal framing.",
+          "duration_s": 13,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Felipe: homem de 30 anos, pele bronzeada, cabelo escuro médio com movimento, físico esportivo, camiseta regata ou camisa aberta de verão, jeito leve e festivo. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nMOMENTO DO PRODUTO (17–26s)\nFrasco de H&S Hidratação em destaque; cabelo com brilho, movimento natural do cabelo, luz natural; hidratação e brilho visíveis, maciez ao toque.\n\nENCERRAMENTO (26–30s)\nFelipe segue o dia com naturalidade e confiança. Tom: energético, leve, positivo, festivo.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png",
+            "{{RJ-C-TIK-004--clip2.last_frame}}"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conheça H&S Hidratação — link na bio.",
+        "tags": [
+          "moisture",
+          "care",
+          "active-lifestyle"
+        ]
+      },
+      "claim_overlay": {
+        "text": "cabelo visivelmente mais saudável desde a primeira lavagem",
+        "claim_variant_id": "CLM-PL002-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "RJ-C-IGS-003",
+      "status": "exported",
+      "platform_id": "PLAT-IGS",
+      "requests": [
+        {
+          "request_id": "RJ-C-IGS-003--clip1",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004). No horizontal framing.",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Gabriela: mulher de 27 anos, pele negra, cabelo cacheado volumoso, corpo ativo e atlético, roupa esportiva leve ou saída de praia, energia alta e sorriso aberto. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nGANCHO (0–2s)\nAbertura visual imediata — suor do treino sem abrir mão do couro cabeludo cuidado.\n\nCENA (2–7s)\nGabriela no seu dia, com clima de praia e ar livre do Rio de Janeiro; momentos reais de uso, sem encenação exagerada.\n\nMOMENTO DO PRODUTO (7–12s)\nFrasco de H&S Hidratação em destaque; cabelo com brilho, movimento natural do cabelo, luz natural; hidratação e brilho visíveis, maciez ao toque.\n\nENCERRAMENTO (12–15s)\nGabriela segue o dia com naturalidade e confiança. Tom: energético, leve, positivo, festivo.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conheça H&S Hidratação — link na bio.",
+        "tags": [
+          "moisture",
+          "care",
+          "active-lifestyle"
+        ]
+      },
+      "claim_overlay": {
+        "text": "cabelo visivelmente mais saudável desde a primeira lavagem",
+        "claim_variant_id": "CLM-PL002-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "RJ-C-IGS-004",
+      "status": "exported",
+      "platform_id": "PLAT-IGS",
+      "requests": [
+        {
+          "request_id": "RJ-C-IGS-004--clip1",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004). No horizontal framing.",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Felipe: homem de 30 anos, pele bronzeada, cabelo escuro médio com movimento, físico esportivo, camiseta regata ou camisa aberta de verão, jeito leve e festivo. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nGANCHO (0–2s)\nAbertura visual imediata — aquela sensação de frescor depois da praia ou da academia.\n\nCENA (2–7s)\nFelipe no seu dia, com clima de praia e ar livre do Rio de Janeiro; momentos reais de uso, sem encenação exagerada.\n\nMOMENTO DO PRODUTO (7–12s)\nFrasco de H&S Hidratação em destaque; cabelo com brilho, movimento natural do cabelo, luz natural; hidratação e brilho visíveis, maciez ao toque.\n\nENCERRAMENTO (12–15s)\nFelipe segue o dia com naturalidade e confiança. Tom: energético, leve, positivo, festivo.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conheça H&S Hidratação — link na bio.",
+        "tags": [
+          "moisture",
+          "care",
+          "active-lifestyle"
+        ]
+      },
+      "claim_overlay": {
+        "text": "cabelo visivelmente mais saudável desde a primeira lavagem",
+        "claim_variant_id": "CLM-PL002-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "RJ-D-IGR-001",
+      "status": "exported",
+      "platform_id": "PLAT-IGR",
+      "requests": [
+        {
+          "request_id": "RJ-D-IGR-001--clip1",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004). No horizontal framing. visible dandruff or scalp flakes dull, limp, or lifeless hair appearance clinical or sterile bathroom setting dramatic artificial or harsh studio lighting before-and-after visual framing or comparative visual cues cluttered or distracting background elements rushed or purely functional product application gestures expressions of frustration, insecurity, or physical discomfort product packaging that appears damaged, obscured, or illegible competing hair-care products visible in the scene",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Isabela: mulher de 26 anos, pele clara levemente dourada, cabelo castanho longo, solto e brilhante, estética de criadora de conteúdo de beleza — peças modernas em tons neutros, gestos suaves e sensoriais. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nGANCHO (0–3s)\nPlano fechadíssimo: fios de cabelo de Isabela em câmera lenta, capturando a luz dourada da manhã — cada mecha reflete como seda viva ao vento. Som suave de água correndo ao fundo cria imediata sensação de frescor e convite sensorial.\n\nCENA (3–15s)\nIsabela está no banheiro iluminado pela manhã — luz natural branca e quente entra pela janela, criando um ambiente de ritual pessoal cheio de intenção. Com gestos suaves e prazerosos, ela distribui H&S Hidratação pelos fios, massageando com atenção e carinho. A espuma cremosa envolve cada mecha; ela fecha os olhos por um instante, absorta na textura e no aroma envolvente. A câmera alterna entre close-up das mãos nos fios úmidos e o rosto sereno de Isabela.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png"
+          ]
+        },
+        {
+          "request_id": "RJ-D-IGR-001--clip2",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004). No horizontal framing. visible dandruff or scalp flakes dull, limp, or lifeless hair appearance clinical or sterile bathroom setting dramatic artificial or harsh studio lighting before-and-after visual framing or comparative visual cues cluttered or distracting background elements rushed or purely functional product application gestures expressions of frustration, insecurity, or physical discomfort product packaging that appears damaged, obscured, or illegible competing hair-care products visible in the scene",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Isabela: mulher de 26 anos, pele clara levemente dourada, cabelo castanho longo, solto e brilhante, estética de criadora de conteúdo de beleza — peças modernas em tons neutros, gestos suaves e sensoriais. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nMOMENTO DO PRODUTO (15–25s)\nIsabela enxágua os cabelos — os fios escorregam entre seus dedos em câmera lenta, com luminosidade e fluidez expressivas. Corte para ela diante do espelho: com gesto espontâneo e prazeroso, passa as mãos pelos cabelos soltos, que balançam com vida e refletem a luz natural do ambiente. O frasco de H&S Hidratação repousa com elegância no balcão ao lado dela. Isabela sorri para o próprio reflexo — um momento de presença e bem-estar genuíno.\n\nENCERRAMENTO (25–30s)\nIsabela vira o olhar para a câmera com expressão confiante e sorriso leve e autêntico. Os cabelos se movem suavemente ao redor do rosto. O frasco de H&S Hidratação aparece ao seu lado. A cena encerra com presença de marca marcante e abertura natural para o call-to-action.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png",
+            "{{RJ-D-IGR-001--clip1.last_frame}}"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conta pra gente: qual é o seu ritual de cuidado favorito?",
+        "tags": [
+          "moisture",
+          "care",
+          "freshness",
+          "self-care",
+          "confidence"
+        ]
+      },
+      "claim_overlay": {
+        "text": "cabelo visivelmente mais saudável desde a primeira lavagem",
+        "claim_variant_id": "CLM-PL002-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "RJ-D-IGR-002",
+      "status": "exported",
+      "platform_id": "PLAT-IGR",
+      "requests": [
+        {
+          "request_id": "RJ-D-IGR-002--clip1",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004). No horizontal framing.",
+          "duration_s": 2,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Isabela: mulher de 26 anos, pele clara levemente dourada, cabelo castanho longo, solto e brilhante, estética de criadora de conteúdo de beleza — peças modernas em tons neutros, gestos suaves e sensoriais. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nGANCHO (0–2s)\nAbertura visual imediata — a fragrância como parte da experiência de cuidado.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png"
+          ]
+        },
+        {
+          "request_id": "RJ-D-IGR-002--clip2",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004). No horizontal framing.",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Isabela: mulher de 26 anos, pele clara levemente dourada, cabelo castanho longo, solto e brilhante, estética de criadora de conteúdo de beleza — peças modernas em tons neutros, gestos suaves e sensoriais. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nCENA (2–17s)\nIsabela no seu dia, com clima de praia e ar livre do Rio de Janeiro; momentos reais de uso, sem encenação exagerada.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png",
+            "{{RJ-D-IGR-002--clip1.last_frame}}"
+          ]
+        },
+        {
+          "request_id": "RJ-D-IGR-002--clip3",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004). No horizontal framing.",
+          "duration_s": 13,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Isabela: mulher de 26 anos, pele clara levemente dourada, cabelo castanho longo, solto e brilhante, estética de criadora de conteúdo de beleza — peças modernas em tons neutros, gestos suaves e sensoriais. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nMOMENTO DO PRODUTO (17–26s)\nFrasco de H&S Hidratação em destaque; cabelo com brilho, movimento natural do cabelo, luz natural; hidratação e brilho visíveis, maciez ao toque.\n\nENCERRAMENTO (26–30s)\nIsabela segue o dia com naturalidade e confiança. Tom: inspirador, sensorial, moderno, aspiracional.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png",
+            "{{RJ-D-IGR-002--clip2.last_frame}}"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conheça H&S Hidratação — link na bio.",
+        "tags": [
+          "moisture",
+          "care",
+          "self-care"
+        ]
+      },
+      "claim_overlay": {
+        "text": "cabelo visivelmente mais saudável desde a primeira lavagem",
+        "claim_variant_id": "CLM-PL002-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "RJ-D-PIN-001",
+      "status": "exported",
+      "platform_id": "PLAT-PIN",
+      "requests": [
+        {
+          "request_id": "RJ-D-PIN-001--img",
+          "target_model": "MODEL-IMG-NANOBANANA-PRO",
+          "modality": "image",
+          "aspect_ratio": "2:3",
+          "resolution": "1000x1500",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004).",
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Isabela: mulher de 26 anos, pele clara levemente dourada, cabelo castanho longo, solto e brilhante, estética de criadora de conteúdo de beleza — peças modernas em tons neutros, gestos suaves e sensoriais. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nTÍTULO\nCabelo com aparência saudável de verdade.\n\nCENA ESTÁTICA\nUm quadro só com Isabela, clima de praia e ar livre do Rio de Janeiro; benefício em primeiro plano.\n\nPRESENÇA DO PRODUTO\nH&S Hidratação integrado à cena; cabelo com brilho, movimento natural do cabelo, luz natural; hidratação e brilho visíveis, maciez ao toque.\n\nCOMPOSIÇÃO E LUZ\nLuz natural e difusa; paleta em branco, tons neutros claros e o azul da marca. Tom: inspirador, sensorial, moderno, aspiracional.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conheça H&S Hidratação — link na bio.",
+        "tags": [
+          "moisture",
+          "care",
+          "self-care"
+        ]
+      },
+      "claim_overlay": {
+        "text": "cabelo visivelmente mais saudável desde a primeira lavagem",
+        "claim_variant_id": "CLM-PL002-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "RJ-D-PIN-002",
+      "status": "exported",
+      "platform_id": "PLAT-PIN",
+      "requests": [
+        {
+          "request_id": "RJ-D-PIN-002--img",
+          "target_model": "MODEL-IMG-NANOBANANA-PRO",
+          "modality": "image",
+          "aspect_ratio": "2:3",
+          "resolution": "1000x1500",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004).",
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Isabela: mulher de 26 anos, pele clara levemente dourada, cabelo castanho longo, solto e brilhante, estética de criadora de conteúdo de beleza — peças modernas em tons neutros, gestos suaves e sensoriais. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nTÍTULO\nA fragrância como parte da experiência de cuidado.\n\nCENA ESTÁTICA\nUm quadro só com Isabela, clima de praia e ar livre do Rio de Janeiro; benefício em primeiro plano.\n\nPRESENÇA DO PRODUTO\nH&S Hidratação integrado à cena; cabelo com brilho, movimento natural do cabelo, luz natural; hidratação e brilho visíveis, maciez ao toque.\n\nCOMPOSIÇÃO E LUZ\nLuz natural e difusa; paleta em branco, tons neutros claros e o azul da marca. Tom: inspirador, sensorial, moderno, aspiracional.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conheça H&S Hidratação — link na bio.",
+        "tags": [
+          "moisture",
+          "care",
+          "self-care"
+        ]
+      },
+      "claim_overlay": {
+        "text": "cabelo visivelmente mais saudável desde a primeira lavagem",
+        "claim_variant_id": "CLM-PL002-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "RJ-D-YTS-001",
+      "status": "exported",
+      "platform_id": "PLAT-YTS",
+      "requests": [
+        {
+          "request_id": "RJ-D-YTS-001--clip1",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004). No horizontal framing.",
+          "duration_s": 2,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Isabela: mulher de 26 anos, pele clara levemente dourada, cabelo castanho longo, solto e brilhante, estética de criadora de conteúdo de beleza — peças modernas em tons neutros, gestos suaves e sensoriais. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nGANCHO (0–2s)\nAbertura visual imediata — cabelo com aparência saudável de verdade.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png"
+          ]
+        },
+        {
+          "request_id": "RJ-D-YTS-001--clip2",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004). No horizontal framing.",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Isabela: mulher de 26 anos, pele clara levemente dourada, cabelo castanho longo, solto e brilhante, estética de criadora de conteúdo de beleza — peças modernas em tons neutros, gestos suaves e sensoriais. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nCENA (2–17s)\nIsabela no seu dia, com clima de praia e ar livre do Rio de Janeiro; momentos reais de uso, sem encenação exagerada.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png",
+            "{{RJ-D-YTS-001--clip1.last_frame}}"
+          ]
+        },
+        {
+          "request_id": "RJ-D-YTS-001--clip3",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004). No horizontal framing.",
+          "duration_s": 13,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Isabela: mulher de 26 anos, pele clara levemente dourada, cabelo castanho longo, solto e brilhante, estética de criadora de conteúdo de beleza — peças modernas em tons neutros, gestos suaves e sensoriais. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nMOMENTO DO PRODUTO (17–26s)\nFrasco de H&S Hidratação em destaque; cabelo com brilho, movimento natural do cabelo, luz natural; hidratação e brilho visíveis, maciez ao toque.\n\nENCERRAMENTO (26–30s)\nIsabela segue o dia com naturalidade e confiança. Tom: inspirador, sensorial, moderno, aspiracional.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png",
+            "{{RJ-D-YTS-001--clip2.last_frame}}"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conheça H&S Hidratação — link na bio.",
+        "tags": [
+          "moisture",
+          "care",
+          "self-care"
+        ]
+      },
+      "claim_overlay": {
+        "text": "cabelo visivelmente mais saudável desde a primeira lavagem",
+        "claim_variant_id": "CLM-PL002-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "RJ-D-YTS-002",
+      "status": "exported",
+      "platform_id": "PLAT-YTS",
+      "requests": [
+        {
+          "request_id": "RJ-D-YTS-002--clip1",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004). No horizontal framing.",
+          "duration_s": 2,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Isabela: mulher de 26 anos, pele clara levemente dourada, cabelo castanho longo, solto e brilhante, estética de criadora de conteúdo de beleza — peças modernas em tons neutros, gestos suaves e sensoriais. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nGANCHO (0–2s)\nAbertura visual imediata — a fragrância como parte da experiência de cuidado.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png"
+          ]
+        },
+        {
+          "request_id": "RJ-D-YTS-002--clip2",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004). No horizontal framing.",
+          "duration_s": 15,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Isabela: mulher de 26 anos, pele clara levemente dourada, cabelo castanho longo, solto e brilhante, estética de criadora de conteúdo de beleza — peças modernas em tons neutros, gestos suaves e sensoriais. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nCENA (2–17s)\nIsabela no seu dia, com clima de praia e ar livre do Rio de Janeiro; momentos reais de uso, sem encenação exagerada.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png",
+            "{{RJ-D-YTS-002--clip1.last_frame}}"
+          ]
+        },
+        {
+          "request_id": "RJ-D-YTS-002--clip3",
+          "target_model": "MODEL-VID-SEEDANCE-2",
+          "modality": "video",
+          "aspect_ratio": "9:16",
+          "resolution": "1080x1920",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004). No horizontal framing.",
+          "duration_s": 13,
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Isabela: mulher de 26 anos, pele clara levemente dourada, cabelo castanho longo, solto e brilhante, estética de criadora de conteúdo de beleza — peças modernas em tons neutros, gestos suaves e sensoriais. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\nContinuação direta do clipe anterior — manter cenário, figurino e luz.\n\nMOMENTO DO PRODUTO (17–26s)\nFrasco de H&S Hidratação em destaque; cabelo com brilho, movimento natural do cabelo, luz natural; hidratação e brilho visíveis, maciez ao toque.\n\nENCERRAMENTO (26–30s)\nIsabela segue o dia com naturalidade e confiança. Tom: inspirador, sensorial, moderno, aspiracional.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png",
+            "{{RJ-D-YTS-002--clip2.last_frame}}"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conheça H&S Hidratação — link na bio.",
+        "tags": [
+          "moisture",
+          "care",
+          "self-care"
+        ]
+      },
+      "claim_overlay": {
+        "text": "cabelo visivelmente mais saudável desde a primeira lavagem",
+        "claim_variant_id": "CLM-PL002-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "REC-E-WA-003",
+      "status": "exported",
+      "platform_id": "PLAT-WA",
+      "requests": [
+        {
+          "request_id": "REC-E-WA-003--img",
+          "target_model": "MODEL-IMG-NANOBANANA-PRO",
+          "modality": "image",
+          "aspect_ratio": "1:1",
+          "resolution": "1080x1080",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004). Nothing that breaks chat-native authenticity (no studio gloss). overly staged high-production studio lighting or artificial key lights exaggerated or performative emotional reactions luxury, aspirational, or upscale home environments inconsistent with an everyday Northeast Brazilian household heavily processed or oversaturated color grading busy graphic text overlays or branded lower-third frames any clinical, sterile, or lab-adjacent visual setting dramatic spotlight or rim-light effects that feel non-naturalistic implied visual contrast between two different hair states within the same scene digital compositing effects on hair shine (must read as natural, camera-captured light) visible minors or children in frame",
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Dona Maria: mulher de 48 anos, pele morena, cabelo escuro com fios grisalhos preso em coque baixo, roupa simples e bem cuidada de uso diário, expressão firme e acolhedora de quem decide as compras da casa. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nABERTURA\nA luz da manhã entra pela janela de um banheiro simples e limpo. Dona Maria começa o dia no seu próprio ritmo — tranquila, presente, sem pressa. A câmera se aproxima devagar, capturando o aconchego de uma rotina construída com cuidado ao longo do tempo.\n\nMOMENTO\nDona Maria alcança o frasco de H&S Hidratação com o gesto seguro de quem já fez essa escolha muitas vezes. A água corre suavemente ao fundo, o vapor preenche o ambiente com leveza. Cada movimento carrega a sensação de frescor e nutrição — um momento só dela, antes de o dia chegar com tudo.\n\nPRESENÇA DO PRODUTO\nO frasco de H&S Hidratação em primeiro plano, banhado pela claridade natural que entra pela janela. Dona Maria ao fundo, num gesto cotidiano e confiante. A cena respira cuidado genuíno — a leveza dos fios captada pela luz suave da manhã, o brilho discreto que fala por si.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Compartilha com quem também cuida bem da família em casa!",
+        "tags": [
+          "moisture",
+          "care",
+          "value",
+          "family",
+          "self-care",
+          "freshness"
+        ]
+      },
+      "claim_overlay": {
+        "text": "cabelo visivelmente mais saudável desde a primeira lavagem",
+        "claim_variant_id": "CLM-PL002-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "REC-E-WA-004",
+      "status": "exported",
+      "platform_id": "PLAT-WA",
+      "requests": [
+        {
+          "request_id": "REC-E-WA-004--img",
+          "target_model": "MODEL-IMG-NANOBANANA-PRO",
+          "modality": "image",
+          "aspect_ratio": "1:1",
+          "resolution": "1080x1080",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004). Nothing that breaks chat-native authenticity (no studio gloss).",
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Seu Carlos: homem de 49 anos, pele parda, cabelo curto grisalho, camisa simples de botão, jeito direto e cordial de comerciante de bairro. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nABERTURA\nBenefício legível de imediato — render que vale cada lavagem.\n\nMOMENTO\nCena do cotidiano de Seu Carlos, o dia a dia vibrante de Recife, no Nordeste; estética de conversa, fácil de encaminhar.\n\nPRESENÇA DO PRODUTO\nH&S Hidratação de forma natural; cabelo com brilho, movimento natural do cabelo, luz natural; hidratação e brilho visíveis, maciez ao toque.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Compartilhe com quem faz parte do seu dia — H&S Hidratação na rotina de todos.",
+        "tags": [
+          "moisture",
+          "care",
+          "value"
+        ]
+      },
+      "claim_overlay": {
+        "text": "cabelo visivelmente mais saudável desde a primeira lavagem",
+        "claim_variant_id": "CLM-PL002-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "REC-E-META-003",
+      "status": "exported",
+      "platform_id": "PLAT-META",
+      "requests": [
+        {
+          "request_id": "REC-E-META-003--img",
+          "target_model": "MODEL-IMG-NANOBANANA-PRO",
+          "modality": "image",
+          "aspect_ratio": "4:5",
+          "resolution": "1080x1350",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004).",
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Dona Maria: mulher de 48 anos, pele morena, cabelo escuro com fios grisalhos preso em coque baixo, roupa simples e bem cuidada de uso diário, expressão firme e acolhedora de quem decide as compras da casa. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nTÍTULO\nEficácia de verdade, acessível para a sua família.\n\nCENA ESTÁTICA\nUm quadro só com Dona Maria, o dia a dia vibrante de Recife, no Nordeste; benefício em primeiro plano.\n\nPRESENÇA DO PRODUTO\nH&S Hidratação integrado à cena; cabelo com brilho, movimento natural do cabelo, luz natural; hidratação e brilho visíveis, maciez ao toque.\n\nCOMPOSIÇÃO E LUZ\nLuz natural e difusa; paleta em branco, tons neutros claros e o azul da marca. Tom: claro, focado no benefício, acessível, direto.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conheça H&S Hidratação — link na bio.",
+        "tags": [
+          "moisture",
+          "care",
+          "value"
+        ]
+      },
+      "claim_overlay": {
+        "text": "cabelo visivelmente mais saudável desde a primeira lavagem",
+        "claim_variant_id": "CLM-PL002-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "REC-E-META-004",
+      "status": "exported",
+      "platform_id": "PLAT-META",
+      "requests": [
+        {
+          "request_id": "REC-E-META-004--img",
+          "target_model": "MODEL-IMG-NANOBANANA-PRO",
+          "modality": "image",
+          "aspect_ratio": "4:5",
+          "resolution": "1080x1350",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004).",
+          "prompt": "REFERÊNCIAS VISUAIS\nPERSONAGEM — Seu Carlos: homem de 49 anos, pele parda, cabelo curto grisalho, camisa simples de botão, jeito direto e cordial de comerciante de bairro. Manter aparência consistente em todas as cenas.\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nTÍTULO\nRender que vale cada lavagem.\n\nCENA ESTÁTICA\nUm quadro só com Seu Carlos, o dia a dia vibrante de Recife, no Nordeste; benefício em primeiro plano.\n\nPRESENÇA DO PRODUTO\nH&S Hidratação integrado à cena; cabelo com brilho, movimento natural do cabelo, luz natural; hidratação e brilho visíveis, maciez ao toque.\n\nCOMPOSIÇÃO E LUZ\nLuz natural e difusa; paleta em branco, tons neutros claros e o azul da marca. Tom: claro, focado no benefício, acessível, direto.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Conheça H&S Hidratação — link na bio.",
+        "tags": [
+          "moisture",
+          "care",
+          "value"
+        ]
+      },
+      "claim_overlay": {
+        "text": "cabelo visivelmente mais saudável desde a primeira lavagem",
+        "claim_variant_id": "CLM-PL002-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "REC-E-RET-003",
+      "status": "exported",
+      "platform_id": "PLAT-RET",
+      "requests": [
+        {
+          "request_id": "REC-E-RET-003--img",
+          "target_model": "MODEL-IMG-GPTIMAGE-2",
+          "modality": "image",
+          "aspect_ratio": "1:1",
+          "resolution": "1080x1080",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004).",
+          "prompt": "REFERÊNCIAS VISUAIS\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nTÍTULO\nH&S Hidratação — hidratação e brilho visíveis, maciez ao toque.\n\nPRODUTO\nEmbalagem de H&S Hidratação em destaque, alto contraste, leitura à distância; cabelo com brilho, movimento natural do cabelo, luz natural.\n\nCOMPOSIÇÃO\nFundo limpo, hierarquia tipográfica clara, alto contraste. Tom: claro, focado no benefício, acessível, direto.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Adicione H&S Hidratação ao carrinho agora.",
+        "tags": [
+          "moisture",
+          "care",
+          "value"
+        ]
+      },
+      "claim_overlay": {
+        "text": "cabelo visivelmente mais saudável desde a primeira lavagem",
+        "claim_variant_id": "CLM-PL002-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    },
+    {
+      "prompt_id": "REC-E-RET-004",
+      "status": "exported",
+      "platform_id": "PLAT-RET",
+      "requests": [
+        {
+          "request_id": "REC-E-RET-004--img",
+          "target_model": "MODEL-IMG-GPTIMAGE-2",
+          "modality": "image",
+          "aspect_ratio": "1:1",
+          "resolution": "1080x1080",
+          "negative_prompt": "No medical or clinical wording (heals, treats, cures, eliminates, clinically proven). No competitor brands or implicit comparative superiority. No absolute guarantees. No pricing, discounts or promotions. No sexual or suggestive content. No visible minors. No superlatives (best, number one, most effective). No unrealistic transformation framing. No before/after framing of any kind (blocked visual cue, FND-004).",
+          "prompt": "REFERÊNCIAS VISUAIS\nPRODUTO — H&S Hidratação (@ref1): frasco branco arredondado com tampa azul-clara e detalhes em tom turquesa, logotipo Head & Shoulders em azul, faixa 'Hidratação' no rótulo. Usar @ref1 como referência exata da embalagem.\n\nTÍTULO\nH&S Hidratação — hidratação e brilho visíveis, maciez ao toque.\n\nPRODUTO\nEmbalagem de H&S Hidratação em destaque, alto contraste, leitura à distância; cabelo com brilho, movimento natural do cabelo, luz natural.\n\nCOMPOSIÇÃO\nFundo limpo, hierarquia tipográfica clara, alto contraste. Tom: claro, focado no benefício, acessível, direto.\n\n[reservar o terço inferior para a legenda sobreposta]",
+          "reference_images": [
+            "dam://hsbr/packshots/pl002_front.png"
+          ]
+        }
+      ],
+      "delivery_metadata": {
+        "caption": "Adicione H&S Hidratação ao carrinho agora.",
+        "tags": [
+          "moisture",
+          "care",
+          "value"
+        ]
+      },
+      "claim_overlay": {
+        "text": "cabelo visivelmente mais saudável desde a primeira lavagem",
+        "claim_variant_id": "CLM-PL002-0",
+        "position": "lower_third",
+        "render": "composited post-generation; not model-rendered (exact, re-composites on sign-off, no regeneration)"
+      }
+    }
+  ]
+}

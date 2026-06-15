@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1380" height="580" viewBox="0 0 1380 580" font-family="Segoe UI, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#555"/></marker>
+    <marker id="arrg" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#3C8A5A"/></marker>
+    <marker id="arrf" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#BC4A43"/></marker>
+  </defs>
+
+  <rect x="0" y="0" width="1380" height="580" fill="#ffffff"/>
+
+  <!-- title -->
+  <text x="28" y="32" font-size="20" font-weight="700" fill="#1d2330">Pipeline spine — raw data to generation-ready output</text>
+  <text x="28" y="52" font-size="12" fill="#5a6472">Deterministic stages own compliance; the LLM runs only where language judgment is irreplaceable (D7). Findings route to two human queues.</text>
+
+  <!-- spine arrows (y=120) -->
+  <g stroke="#555" stroke-width="1.6" marker-end="url(#arr)" fill="none">
+    <line x1="170" y1="120" x2="206" y2="120"/>
+    <line x1="360" y1="120" x2="396" y2="120"/>
+    <line x1="550" y1="120" x2="601" y2="120"/>
+    <line x1="765" y1="120" x2="826" y2="120"/>
+    <line x1="980" y1="120" x2="1016" y2="120"/>
+    <line x1="1170" y1="120" x2="1206" y2="120"/>
+  </g>
+
+  <!-- SOURCES (neutral) -->
+  <rect x="20" y="90" width="150" height="60" rx="6" fill="#EFEFEF" stroke="#999"/>
+  <text x="95" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#333">SOURCES</text>
+  <text x="95" y="128" text-anchor="middle" font-size="9.5" fill="#555">briefing.json · rules_matrix.csv</text>
+  <text x="95" y="140" text-anchor="middle" font-size="9.5" fill="#555">call / xlsx / whatsapp (messy)</text>
+
+  <!-- INGESTION (det) -->
+  <rect x="210" y="90" width="150" height="60" rx="6" fill="#E7EEF8" stroke="#3B5B92"/>
+  <text x="285" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#213a63">INGESTION</text>
+  <text x="285" y="130" text-anchor="middle" font-size="9.5" fill="#3a4a66">normalize + extract → dataset</text>
+  <text x="285" y="142" text-anchor="middle" font-size="9.5" fill="#3a4a66">(I1–I6; LLM only at I4)</text>
+
+  <!-- VALIDATION 1 (det) -->
+  <rect x="400" y="90" width="150" height="60" rx="6" fill="#E7EEF8" stroke="#3B5B92"/>
+  <text x="475" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#213a63">VALIDATION &#9312;</text>
+  <text x="475" y="130" text-anchor="middle" font-size="9.5" fill="#3a4a66">dataset-level rule check</text>
+  <text x="475" y="142" text-anchor="middle" font-size="9.5" fill="#3a4a66">structural · relational · compliance</text>
+
+  <!-- GENERATION (mixed, taller) -->
+  <rect x="605" y="60" width="160" height="120" rx="6" fill="#FAFBFD" stroke="#3B5B92"/>
+  <text x="685" y="78" text-anchor="middle" font-size="13" font-weight="700" fill="#213a63">GENERATION</text>
+  <rect x="615" y="86" width="140" height="24" rx="4" fill="#E7EEF8" stroke="#3B5B92"/>
+  <text x="685" y="102" text-anchor="middle" font-size="10.5" fill="#213a63">assemble &#183; code</text>
+  <rect x="615" y="114" width="140" height="24" rx="4" fill="#FCEAD6" stroke="#C77B2B"/>
+  <text x="685" y="130" text-anchor="middle" font-size="10.5" font-weight="700" fill="#6e3d10">generate &#183; LLM</text>
+  <rect x="615" y="142" width="140" height="24" rx="4" fill="#E7EEF8" stroke="#3B5B92"/>
+  <text x="685" y="158" text-anchor="middle" font-size="10.5" fill="#213a63">bind + render &#183; code</text>
+
+  <!-- VALIDATION 2 (det) -->
+  <rect x="830" y="90" width="150" height="60" rx="6" fill="#E7EEF8" stroke="#3B5B92"/>
+  <text x="905" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#213a63">VALIDATION &#9313;</text>
+  <text x="905" y="130" text-anchor="middle" font-size="9.5" fill="#3a4a66">per-output rule trace</text>
+  <text x="905" y="142" text-anchor="middle" font-size="9.5" fill="#3a4a66">→ derived traffic light</text>
+
+  <!-- REVIEW (human) -->
+  <rect x="1020" y="90" width="150" height="60" rx="6" fill="#E2F0E8" stroke="#3C8A5A"/>
+  <text x="1095" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4733">REVIEW</text>
+  <text x="1095" y="130" text-anchor="middle" font-size="9.5" fill="#2a5a3e">release gate +</text>
+  <text x="1095" y="142" text-anchor="middle" font-size="9.5" fill="#2a5a3e">two human queues</text>
+
+  <!-- EXPORT (det) -->
+  <rect x="1210" y="90" width="150" height="60" rx="6" fill="#E7EEF8" stroke="#3B5B92"/>
+  <text x="1285" y="112" text-anchor="middle" font-size="13" font-weight="700" fill="#213a63">EXPORT</text>
+  <text x="1285" y="130" text-anchor="middle" font-size="9.5" fill="#3a4a66">green-only →</text>
+  <text x="1285" y="142" text-anchor="middle" font-size="9.5" fill="#3a4a66">generation-ready package</text>
+
+  <!-- traffic light (gate decision) -->
+  <text x="1035" y="178" font-size="10" font-weight="700" fill="#555">traffic light</text>
+  <circle cx="1042" cy="192" r="6" fill="#3C8A5A"/><text x="1054" y="196" font-size="10.5" fill="#333">green &#8594; auto-export</text>
+  <circle cx="1042" cy="212" r="6" fill="#E0A92B"/><text x="1054" y="216" font-size="10.5" fill="#333">yellow &#8594; hold for review</text>
+  <circle cx="1042" cy="232" r="6" fill="#C0473F"/><text x="1054" y="236" font-size="10.5" fill="#333">red &#8594; blocked</text>
+
+  <!-- down arrows into findings bus -->
+  <g stroke="#BC4A43" stroke-width="1.4" marker-end="url(#arrf)" fill="none">
+    <line x1="285" y1="150" x2="285" y2="246"/>
+    <line x1="475" y1="150" x2="475" y2="246"/>
+    <line x1="905" y1="150" x2="905" y2="246"/>
+    <line x1="1095" y1="150" x2="1095" y2="246"/>
+  </g>
+
+  <!-- FINDINGS bus -->
+  <rect x="210" y="250" width="960" height="42" rx="6" fill="#FBE6E4" stroke="#BC4A43"/>
+  <text x="690" y="268" text-anchor="middle" font-size="13" font-weight="700" fill="#6a201c">FINDINGS</text>
+  <text x="690" y="284" text-anchor="middle" font-size="10" fill="#7a322c">problems as routable data — every transform, conflict, and soft-flag emits one; nothing is silently changed</text>
+
+  <!-- arrows findings -> queues -->
+  <g stroke="#BC4A43" stroke-width="1.4" marker-end="url(#arrf)" fill="none">
+    <line x1="425" y1="292" x2="425" y2="326"/>
+    <line x1="935" y1="292" x2="935" y2="326"/>
+  </g>
+
+  <!-- DATA-CLARIFICATION QUEUE -->
+  <rect x="210" y="330" width="430" height="64" rx="6" fill="#E2F0E8" stroke="#3C8A5A"/>
+  <text x="425" y="354" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4733">DATA-CLARIFICATION QUEUE</text>
+  <text x="425" y="372" text-anchor="middle" font-size="10" fill="#2a5a3e">client answers a data question → corrected data re-ingests</text>
+  <text x="425" y="385" text-anchor="middle" font-size="10" fill="#2a5a3e">entity (D5) · config (D6) · provenance (D10) · craft cue (designed)</text>
+
+  <!-- CONTENT-REVIEW QUEUE -->
+  <rect x="700" y="330" width="470" height="64" rx="6" fill="#E2F0E8" stroke="#3C8A5A"/>
+  <text x="935" y="354" text-anchor="middle" font-size="13" font-weight="700" fill="#1d4733">CONTENT-REVIEW QUEUE</text>
+  <text x="935" y="372" text-anchor="middle" font-size="10" fill="#2a5a3e">reviewer judges a generated output</text>
+  <text x="935" y="385" text-anchor="middle" font-size="10" fill="#2a5a3e">tone · claims-in-context · sensitive themes</text>
+
+  <!-- re-ingest loop -->
+  <path d="M210,362 H188 V135 H206" fill="none" stroke="#3C8A5A" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#arrg)"/>
+  <text x="180" y="250" font-size="10" fill="#2a5a3e" transform="rotate(-90 180 250)">re-ingest</text>
+
+  <!-- legend -->
+  <g font-size="11" fill="#333">
+    <rect x="210" y="430" width="18" height="18" rx="3" fill="#E7EEF8" stroke="#3B5B92"/><text x="236" y="443">deterministic code — free, reproducible, auditable</text>
+    <rect x="210" y="456" width="18" height="18" rx="3" fill="#FCEAD6" stroke="#C77B2B"/><text x="236" y="469">LLM — only where language judgment is irreplaceable</text>
+    <rect x="210" y="482" width="18" height="18" rx="3" fill="#E2F0E8" stroke="#3C8A5A"/><text x="236" y="495">human queue — a routed decision, never a silent guess</text>
+    <rect x="210" y="508" width="18" height="18" rx="3" fill="#FBE6E4" stroke="#BC4A43"/><text x="236" y="521">finding — surfaced as data; re-grades on sign-off</text>
+  </g>
+
+  <!-- footnotes -->
+  <text x="700" y="440" font-size="10" fill="#7a828e">Foundation (schema.json, design-time) precedes the spine and is not drawn.</text>
+  <text x="700" y="456" font-size="10" fill="#7a828e">Craft / art-direction review (designed, not built) is a third detection lane that also feeds the data-clarification queue.</text>
+  <text x="700" y="472" font-size="10" fill="#7a828e">Claims are bound at render time and composited as an overlay at export — the model never receives the claim (D4).</text>
+</svg>
