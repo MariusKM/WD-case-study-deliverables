@@ -1,0 +1,805 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>H&amp;S Brasil Pilot — Dataset Viewer</title>
+<style>
+  :root{
+    --bg:#fafbfc; --panel:#ffffff; --border:#e3e6ea; --text:#1f2937; --muted:#6b7280;
+    --accent:#1a73e8;
+    --ok-bg:#e6f4ea; --ok-fg:#137333;
+    --warn-bg:#fef7e0; --warn-fg:#9a6700;
+    --bad-bg:#fce8e6; --bad-fg:#c5221f;
+    --neut-bg:#f1f3f4; --neut-fg:#5f6368;
+    --blue-bg:#e8f0fe; --blue-fg:#1a73e8;
+    --purp-bg:#f3e8fd; --purp-fg:#7c3aed;
+    --teal-bg:#e0f2f1; --teal-fg:#0b6e62;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font:13px/1.45 -apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--text);background:var(--bg);height:100vh;display:flex;flex-direction:column;overflow:hidden}
+  header{flex:none;z-index:20;display:flex;align-items:center;gap:16px;padding:10px 18px;background:var(--panel);border-bottom:1px solid var(--border)}
+  header .title{font-size:15px;font-weight:650}
+  header .meta{color:var(--muted);font-size:12px}
+  header input{margin-left:auto;width:240px;padding:6px 10px;border:1px solid var(--border);border-radius:6px;font:inherit}
+  #btn-run{display:none;padding:6px 12px;border:1px solid var(--border);border-radius:6px;background:var(--blue-bg);color:var(--blue-fg);font:inherit;font-weight:600;cursor:pointer;white-space:nowrap}
+  #btn-run:disabled{opacity:.6;cursor:wait}
+  #live-badge{display:none;font-size:11px;font-weight:700;color:var(--ok-fg);background:var(--ok-bg);border-radius:10px;padding:1px 8px}
+  .layout{display:flex;flex:1;min-height:0}
+  nav{width:200px;flex:none;padding:12px 8px;border-right:1px solid var(--border);overflow-y:auto}
+  nav button{display:flex;justify-content:space-between;width:100%;padding:7px 10px;margin:1px 0;border:0;background:none;border-radius:6px;font:inherit;color:var(--text);cursor:pointer;text-align:left}
+  nav button:hover{background:#eef1f4}
+  nav button.active{background:var(--blue-bg);color:var(--blue-fg);font-weight:600}
+  nav .cnt{color:var(--muted);font-size:11px}
+  main{flex:1;padding:16px 18px;min-width:0;overflow:auto}
+  h2{font-size:14px;margin:4px 0 12px}
+  .filters{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+  .filters select{padding:4px 8px;border:1px solid var(--border);border-radius:6px;font:inherit;background:var(--panel)}
+  table{width:100%;border-collapse:collapse;background:var(--panel);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+  thead th{position:sticky;top:0;z-index:5;background:#f4f6f8;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);padding:8px 10px;border-bottom:1px solid var(--border)}
+  tbody td{padding:7px 10px;border-bottom:1px solid #f0f2f4;vertical-align:top}
+  tbody tr:hover{background:#f6f9ff;cursor:pointer}
+  td.id{font-family:ui-monospace,Consolas,monospace;font-size:12px;white-space:nowrap}
+  .trunc{max-width:420px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .wrap{max-width:340px}
+  .chip{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-weight:600;white-space:nowrap;margin:1px 2px 1px 0}
+  .c-ok{background:var(--ok-bg);color:var(--ok-fg)} .c-warn{background:var(--warn-bg);color:var(--warn-fg)}
+  .c-bad{background:var(--bad-bg);color:var(--bad-fg)} .c-neut{background:var(--neut-bg);color:var(--neut-fg)}
+  .c-blue{background:var(--blue-bg);color:var(--blue-fg)} .c-purp{background:var(--purp-bg);color:var(--purp-fg)}
+  .c-teal{background:var(--teal-bg);color:var(--teal-fg)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:12px 14px}
+  .card h3{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  .card .big{font-size:26px;font-weight:700;margin:2px 0 6px}
+  .card .sub{color:var(--muted);font-size:12px}
+  .card a{color:var(--accent);cursor:pointer;text-decoration:none}
+  .flow{max-width:840px}
+  .fbox{background:var(--blue-bg);color:var(--blue-fg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-weight:600;text-align:center}
+  .fbox.out{background:var(--ok-bg);color:var(--ok-fg)}
+  .gate{background:var(--panel);border:1px solid var(--border);border-radius:8px;padding:10px 14px}
+  .gbadge{display:inline-block;background:var(--neut-bg);color:var(--neut-fg);font-family:ui-monospace,Consolas,monospace;font-size:11px;font-weight:700;border-radius:6px;padding:1px 7px;margin-right:8px}
+  .gcheck{margin-top:4px}
+  .gbranch{margin-top:8px;padding-top:8px;border-top:1px dashed var(--border);font-size:12px;color:var(--muted)}
+  .gbranch .garrow{color:var(--bad-fg);font-weight:600;margin-right:6px}
+  .gconn{text-align:center;color:var(--muted);font-size:15px;line-height:1.7}
+  #detail{position:fixed;top:0;right:0;width:520px;max-width:92vw;height:100vh;background:var(--panel);border-left:1px solid var(--border);box-shadow:-8px 0 24px rgba(0,0,0,.08);z-index:30;display:none;flex-direction:column}
+  #detail.open{display:flex}
+  #detail .dhead{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--border)}
+  #detail .dhead .did{font-family:ui-monospace,Consolas,monospace;font-weight:700;font-size:14px}
+  #detail .dhead .dtype{color:var(--muted);font-size:12px}
+  #detail .dhead button{margin-left:auto;border:0;background:none;font-size:18px;cursor:pointer;color:var(--muted)}
+  #detail .dbody{overflow:auto;padding:12px 16px;flex:1}
+  #detail pre{background:#f6f8fa;border:1px solid var(--border);border-radius:8px;padding:12px;font:12px/1.5 ui-monospace,Consolas,monospace;white-space:pre-wrap;word-break:break-word}
+  #detail h4{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:14px 0 6px}
+  .vrow{margin:6px 0;padding:8px 10px;background:#f6f8fa;border:1px solid var(--border);border-radius:8px}
+  .vrow.muted{opacity:.75}
+  .vdetail{color:var(--muted);font-size:12px;margin-top:3px}
+  .vsum{color:var(--muted);font-size:11px;margin-top:8px}
+  .rechead{display:flex;align-items:center;justify-content:space-between;margin-top:14px}
+  .rechead h4{margin:0}
+  .seg{display:inline-flex;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+  .seg button{border:0;background:var(--panel);padding:3px 10px;font:inherit;font-size:11px;cursor:pointer;color:var(--muted)}
+  .seg button.active{background:var(--blue-bg);color:var(--blue-fg);font-weight:600}
+  .frow{display:flex;gap:10px;padding:6px 0;border-bottom:1px solid #f0f2f4;align-items:flex-start}
+  .fkey{flex:0 0 132px;font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--muted);padding-top:2px;word-break:break-all}
+  .fval{flex:1;min-width:0;word-break:break-word;font-size:12.5px}
+  .fval .longtext{background:#f6f8fa;border:1px solid var(--border);border-radius:6px;padding:8px 10px;white-space:pre-wrap}
+  .fsub{margin:4px 0;padding:2px 0 2px 10px;border-left:2px solid var(--border)}
+  .fsub .fkey{flex-basis:110px}
+  .trow{margin:4px 0;padding:6px 8px;background:#f6f8fa;border-radius:6px;font-size:12px}
+  a.xref{color:var(--accent);text-decoration:none;cursor:pointer}
+  a.xref:hover{text-decoration:underline}
+  .backrefs a.xref{display:inline-block;margin:2px 6px 2px 0;font-family:ui-monospace,Consolas,monospace;font-size:12px}
+  footer{flex:none;padding:10px 18px;color:var(--muted);font-size:11px;border-top:1px solid var(--border);background:var(--panel)}
+  .empty{color:var(--muted);padding:20px;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <div class="title">Head &amp; Shoulders Brasil — Normalized Dataset Viewer <span id="live-badge">live</span></div>
+    <div class="meta" id="meta"></div>
+  </div>
+  <input id="search" placeholder="Filter rows… (current section)">
+  <button id="btn-run" title="Regenerate prompt_outputs.json via pipeline/generate.py">&#9654; Run pipeline</button>
+</header>
+<div class="layout">
+  <nav id="nav"></nav>
+  <main id="main"></main>
+</div>
+<aside id="detail">
+  <div class="dhead">
+    <span class="did" id="d-id"></span><span class="dtype" id="d-type"></span>
+    <button id="d-close" title="Close (Esc)">×</button>
+  </div>
+  <div class="dbody">
+    <div id="d-chips"></div>
+    <div id="d-verdict"></div>
+    <div id="d-creative"></div>
+    <div class="rechead">
+      <h4>Record</h4>
+      <div class="seg">
+        <button id="d-view-fields" class="active">Fields</button>
+        <button id="d-view-json">JSON</button>
+      </div>
+    </div>
+    <div id="d-fields"></div>
+    <pre id="d-json" style="display:none"></pre>
+    <h4>Referenced by</h4>
+    <div class="backrefs" id="d-backrefs"></div>
+  </div>
+</aside>
+<footer>Presentation layer only — canonical data lives in <code>dataset.json</code> / <code>prompt_outputs.json</code>, contract in <code>schema.json</code> (Decision D1). Static rebuild: <code>tools/build_viewer.py</code> · live mode with pipeline runs: <code>tools/serve.py</code>.</footer>
+
+<script type="application/json" id="dataset-json">__DATASET_JSON__</script>
+<script type="application/json" id="outputs-json">__OUTPUTS_JSON__</script>
+<script type="application/json" id="exported-json">__EXPORTED_JSON__</script>
+<script>
+"use strict";
+
+/* ---------- state (rebuilt by initApp on data swap) ---------- */
+let DS = null, OUT = [], EXPORTED = [];
+let INDEX = {}, STR = {}, SECTIONS = null;
+let current = 'overview', filterState = {};
+
+const ID_RE = /\b(?:AUD-[A-F]|PERS-[A-Z]-\d{2}|MKT-[A-Z]{2,4}|PLAT-[A-Z]{2,4}|MODEL-(?:VID|IMG)-[A-Z0-9-]*[A-Z0-9]|AST-[A-Z0-9-]*[A-Z0-9]|PL-\d{3}(?:-[A-Z]+)?|CLM-[A-Z0-9]+-(?:0|R\d+)|RULE-(?:INCL|EXCL|COMP|TAG|TECH)-\d{3}|RULE-404|TPL-[A-Z0-9-]+|FND-\d{3}|BRD-[A-Z-]+|TAX-[A-Z0-9-]+|content_banks\.[a-z_]+|[A-Z]{2,4}-[A-F]-[A-Z]{2,4}-\d{3}(?:-c\d+)?)\b/g;
+
+function reg(id, type, rec){ INDEX[id] = {type, rec}; STR[id] = JSON.stringify(rec); }
+function regAll(){
+  INDEX = {}; STR = {};
+  reg(DS.brand.brand_id, 'brand', DS.brand);
+  DS.markets.forEach(r => reg(r.market_id, 'markets', r));
+  DS.audiences.forEach(r => reg(r.audience_id, 'audiences', r));
+  (DS.personas || []).forEach(r => reg(r.persona_id, 'personas', r));
+  DS.product_lines.forEach(r => reg(r.product_id, 'products', r));
+  DS.platforms.forEach(r => reg(r.platform_id, 'platforms', r));
+  (DS.generation_models || []).forEach(r => reg(r.model_id, 'models', r));
+  Object.entries(DS.content_banks || {}).forEach(([k, v]) => {
+    if (k !== '_meta') reg('content_banks.' + k, 'content_banks', v);
+  });
+  DS.claims.forEach(r => reg(r.claim_id, 'claims', r));
+  DS.rules.forEach(r => reg(r.rule_id, 'rules', r));
+  DS.prompt_templates.forEach(r => reg(r.template_id, 'templates', r));
+  DS.validation_findings.forEach(r => reg(r.finding_id, 'findings', r));
+  reg(DS.taxonomy.taxonomy_id, 'taxonomy', DS.taxonomy);
+  OUT.forEach(r => reg(r.prompt_id, 'outputs', r));
+  EXPORTED.forEach(p => reg('EXP:' + p.prompt_id, 'export', p));
+}
+function backrefs(id){
+  const re = new RegExp('\\b' + id.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + '(?![\\w-])');
+  return Object.keys(INDEX).filter(k => k !== id && re.test(STR[k]));
+}
+
+/* ---------- helpers ---------- */
+function esc(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+const STATUS_CLASS = {
+  active:'c-ok', approved:'c-ok', resolved:'c-ok', exported:'c-ok',
+  pending_confirmation:'c-warn', pending_signoff:'c-warn', mitigated:'c-warn', draft:'c-warn', proposed:'c-blue', in_review:'c-warn',
+  blocked:'c-bad', blocked_pending_signoff:'c-bad', open:'c-bad', rejected:'c-bad',
+  informational:'c-neut', acknowledged:'c-neut', generated:'c-neut'
+};
+const SEV_CLASS = { blocker:'c-bad', high:'c-warn', medium:'c-warn', low:'c-blue', info:'c-neut' };
+const ENF_CLASS = { hard_block:'c-bad', soft_flag:'c-warn', required:'c-blue', recommended:'c-neut', informational:'c-neut' };
+const PROV_CLASS = { client_provided:'c-ok', localization:'c-blue', authored_pending_signoff:'c-warn', derived:'c-teal' };
+const ENG_CLASS = { deterministic:'c-teal', 'deterministic+llm':'c-purp', llm:'c-purp', process:'c-blue', none:'c-neut' };
+const LEVEL_CLASS = { green:'c-ok', yellow:'c-warn', red:'c-bad' };
+const RESULT_CLASS = { hard_block:'c-bad', fail:'c-bad', soft_flag:'c-warn', note:'c-neut',
+                       pass:'c-ok', skipped_red:'c-neut', skipped_offline:'c-neut', not_applicable:'c-neut' };
+function flaggedNotes(r){
+  return (r.compliance_notes || []).filter(t => ['hard_block','fail','soft_flag'].includes(t.result));
+}
+function shortRule(id){ return id.replace('RULE-',''); }
+function verdictHtml(rec){
+  const notes = rec.compliance_notes || [];
+  if (!notes.length) return '';
+  const causes = flaggedNotes(rec);
+  const infos = notes.filter(t => t.result === 'note');
+  const counts = {};
+  notes.filter(t => ['pass','skipped_red','skipped_offline','not_applicable'].includes(t.result))
+       .forEach(t => { counts[t.result] = (counts[t.result] || 0) + 1; });
+  let h = '<h4>Why ' + esc(rec.compliance_level || '?') + '</h4>';
+  if (!causes.length) {
+    h += '<div class="vrow"><span class="chip c-ok">clean</span> no blocking issues, no review flags</div>';
+  }
+  causes.forEach(t => {
+    h += '<div class="vrow"><span class="chip ' + RESULT_CLASS[t.result] + '">' + esc(t.result) + '</span> ' +
+         '<a class="xref" data-id="' + t.rule_id + '">' + esc(t.rule_id) + '</a>' +
+         '<div class="vdetail">' + esc(t.detail || '') + '</div></div>';
+  });
+  infos.forEach(t => {
+    h += '<div class="vrow muted"><span class="chip c-neut">note</span> ' +
+         '<a class="xref" data-id="' + t.rule_id + '">' + esc(t.rule_id) + '</a>' +
+         '<div class="vdetail">' + esc(t.detail || '') + '</div></div>';
+  });
+  const sum = [['pass','passed'],['skipped_offline','skipped (offline)'],['skipped_red','skipped (red)'],['not_applicable','not applicable']]
+    .filter(([k]) => counts[k]).map(([k, lbl]) => counts[k] + ' ' + lbl).join(' · ');
+  if (sum) h += '<div class="vsum">' + sum + ' — full trace in the record below</div>';
+  return h;
+}
+function creativeBilingual(rec){
+  // Side-by-side review: pt-BR is what ships; the EN companion is written
+  // alongside by the bilingual seam for reviewers, NOT a literal translation (D8).
+  if (!rec || typeof rec.creative_prompt !== 'string') return '';
+  const col = (label, body, muted) =>
+    '<div style="flex:1;min-width:0">' +
+    '<div style="font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:4px">' + label + '</div>' +
+    (body
+      ? '<div class="longtext" style="white-space:pre-wrap;margin:0">' + esc(body) + '</div>'
+      : '<div style="color:var(--muted)">' + (muted || '—') + '</div>') + '</div>';
+  let h = '<h4>Creative <span style="font-weight:400;color:var(--muted)">— pt-BR ships · EN is a review companion, not a literal translation</span></h4>';
+  h += '<div style="display:flex;gap:16px;align-items:flex-start">' +
+       col('Portuguese (ships)', rec.creative_prompt) +
+       col('English (companion)', rec.creative_prompt_en, 'no EN companion (deterministic stub output)') +
+       '</div>';
+  if (rec.cta || rec.cta_en){
+    h += '<div style="display:flex;gap:16px;align-items:flex-start;margin-top:10px">' +
+         col('CTA (pt-BR)', rec.cta) + col('CTA (EN)', rec.cta_en) + '</div>';
+  }
+  return '<div class="vbox" style="margin-top:10px">' + h + '</div>';
+}
+function engineProfile(r){
+  if (r.check.engine === 'deterministic' && r.check.secondary && r.check.secondary.kind === 'llm_judgment') return 'deterministic+llm';
+  return r.check.engine;
+}
+function chip(v, cls){ return v == null ? '—' : '<span class="chip ' + (cls || 'c-neut') + '">' + esc(v) + '</span>'; }
+function chips(arr, clsMap){ return (arr || []).map(v => chip(v, clsMap ? clsMap[v] : 'c-neut')).join(''); }
+function txt(v){ return v == null ? '<span style="color:var(--muted)">—</span>' : esc(v); }
+function join(a){ return a && a.length ? esc(a.join(', ')) : '—'; }
+function linkify(escapedText){
+  return escapedText.replace(ID_RE, m => INDEX[m] ? '<a class="xref" data-id="' + m + '">' + m + '</a>' : m);
+}
+
+/* ---------- section definitions ---------- */
+function contentBankRows(){
+  const cb = DS.content_banks || {};
+  return Object.entries(cb).filter(([k]) => k !== '_meta').map(([k, v]) => ({
+    id: 'content_banks.' + k,
+    provenance: v.provenance,
+    consumer_facing: !!v.consumer_facing,
+    gated: v.provenance === 'authored_pending_signoff' && !!v.consumer_facing,
+    size: v.map ? Object.keys(v.map).length
+          : (v.values ? v.values.length : (v.text ? 1 : (v.product || v.audience ? '—' : 0))),
+    note: v.note, source: v.source
+  }));
+}
+function buildSections(){
+  return {
+  overview: { label:'Overview' },
+  flow: { label:'Ingestion flow', render: renderFlow },
+  findings: {
+    label:'Findings', rows: DS.validation_findings, id: r => r.finding_id,
+    filters: [
+      {key:'severity', label:'Severity', get:r=>r.severity},
+      {key:'status', label:'Status', get:r=>r.status},
+      {key:'resolution_queue', label:'Queue', get:r=>r.resolution_queue}
+    ],
+    cols: [
+      {h:'ID', c:'id', f:r=>esc(r.finding_id)},
+      {h:'Severity', f:r=>chip(r.severity, SEV_CLASS[r.severity])},
+      {h:'Status', f:r=>chip(r.status, STATUS_CLASS[r.status])},
+      {h:'Queue', f:r=>chip(r.resolution_queue, r.resolution_queue==='none'?'c-neut':'c-blue')},
+      {h:'Summary', c:'wrap', f:r=>esc(r.summary)},
+      {h:'Affected', f:r=>linkify(esc((r.affected||[]).join('  ')))},
+      {h:'Decision', f:r=>txt(r.decision_ref)}
+    ]
+  },
+  outputs: {
+    label:'Outputs', rows: OUT, id: r => r.prompt_id,
+    note: '<b>Two creative tiers (Decision D2).</b> <b>proof set</b> = 15 outputs generated live through the LLM seam — bilingual pt-BR + EN, hand-reviewable. <b>raw stub</b> = 54 deterministic-stub outputs (assembled from the content banks): structurally and compliance-wise real, creatively shallow by design. Filter <i>Curation → curated_proof_set</i> to review the LLM creative; open any output for the side-by-side pt-BR / EN companion.',
+    filters: [
+      {key:'compliance_level', label:'Level', get:r=>r.compliance_level},
+      {key:'audience_id', label:'Audience', get:r=>r.audience_id},
+      {key:'platform_id', label:'Platform', get:r=>r.platform_id},
+      {key:'product_id', label:'Product', get:r=>r.product_id},
+      {key:'curation', label:'Curation', get:r=>r.curation}
+    ],
+    cols: [
+      {h:'ID', c:'id', f:r=>esc(r.prompt_id)},
+      {h:'Level', f:r=>chip(r.compliance_level, LEVEL_CLASS[r.compliance_level])},
+      {h:'Status', f:r=>chip(r.status, STATUS_CLASS[r.status])},
+      {h:'Aud', c:'id', f:r=>linkify(esc(r.audience_id))},
+      {h:'Product', c:'id', f:r=>linkify(esc(r.product_id))},
+      {h:'Platform', c:'id', f:r=>linkify(esc(r.platform_id))},
+      {h:'Claim', c:'id', f:r=>r.claim_variant_id ? linkify(esc(r.claim_variant_id)) : chip('claim-free','c-neut')},
+      {h:'Why', c:'wrap', f:r=>{
+        const fl = flaggedNotes(r);
+        if (!fl.length) return chip('clean','c-ok');
+        const shown = fl.slice(0, 2).map(t =>
+          '<span class="chip ' + RESULT_CLASS[t.result] + '" title="' + esc(t.detail || '') + '">' +
+          esc(shortRule(t.rule_id)) + '</span>').join('');
+        return shown + (fl.length > 2 ? chip('+' + (fl.length - 2) + ' more', 'c-neut') : '');
+      }},
+      {h:'Spec', c:'wrap', f:r=>{
+        const s = r.technical_spec;
+        if (!s) return chip('missing','c-bad');
+        return chip(s.modality, s.modality === 'video' ? 'c-purp' : 'c-teal') + ' ' +
+               esc(s.aspect_ratio + (s.target_duration_s ? ' · ' + s.target_duration_s + 's' : ''));
+      }},
+      {h:'Persona', c:'id', f:r=>r.persona_id ? linkify(esc(r.persona_id)) : '—'},
+      {h:'Pain point', c:'trunc', f:r=>esc(r.pain_point_ref)},
+      {h:'Curation', f:r=>r.curation==='curated_proof_set' ? chip('proof set · LLM','c-blue') : chip('raw · stub','c-neut')}
+    ]
+  },
+  export: {
+    label:'Export', rows: EXPORTED, id: r => 'EXP:' + r.prompt_id,
+    filters: [
+      {key:'platform_id', label:'Platform', get:r=>r.platform_id},
+      {key:'modality', label:'Modality', get:r=>(r.requests && r.requests[0] && r.requests[0].modality) || '—'}
+    ],
+    cols: [
+      {h:'Output', c:'id', f:r=>linkify(esc(r.prompt_id))},
+      {h:'Platform', c:'id', f:r=>linkify(esc(r.platform_id))},
+      {h:'Modality', f:r=>{ const m = r.requests && r.requests[0] && r.requests[0].modality;
+        return m ? chip(m, m === 'video' ? 'c-purp' : 'c-teal') : '—'; }},
+      {h:'Requests', f:r=>chip((r.requests || []).length + (r.requests && r.requests.length === 1 ? ' request' : ' requests'), 'c-blue')},
+      {h:'Claim overlay', f:r=>r.claim_overlay ? chip('overlay', 'c-warn') : chip('none', 'c-neut')},
+      {h:'Caption', c:'trunc', f:r=>esc((r.delivery_metadata && r.delivery_metadata.caption) || '')},
+      {h:'Tags', f:r=>((r.delivery_metadata && r.delivery_metadata.tags) || []).slice(0, 3).map(t => chip(t, 'c-neut')).join('')}
+    ]
+  },
+  audiences: {
+    label:'Audiences', rows: DS.audiences, id: r => r.audience_id,
+    cols: [
+      {h:'ID', c:'id', f:r=>esc(r.audience_id)},
+      {h:'Label', f:r=>esc(r.label)},
+      {h:'Market', c:'id', f:r=>linkify(esc(r.market_id))},
+      {h:'Age', f:r=>r.age_min + '–' + r.age_max},
+      {h:'Tone', c:'wrap', f:r=>join(r.tone_attributes)},
+      {h:'Products', c:'id', f:r=>linkify(esc(r.preferred_product_ids.join('  ')))},
+      {h:'Platforms', c:'id', f:r=>linkify(esc(r.platform_ids.join('  ')))},
+      {h:'Status', f:r=>chip(r.status, STATUS_CLASS[r.status]) + (r.compliance_watch ? chip('watch','c-warn') : '')}
+    ]
+  },
+  personas: {
+    label:'Personas', rows: DS.personas || [], id: r => r.persona_id,
+    cols: [
+      {h:'ID', c:'id', f:r=>esc(r.persona_id)},
+      {h:'Name', f:r=>esc(r.name)},
+      {h:'Audience', c:'id', f:r=>linkify(esc(r.audience_id))},
+      {h:'Age', f:r=>txt(r.apparent_age)},
+      {h:'Locked descriptor (pt-BR)', c:'wrap', f:r=>esc(r.description_pt)},
+      {h:'Refs', f:r=>(r.reference_assets && r.reference_assets.length) ? chip(r.reference_assets.length + ' asset(s)','c-blue') : chip('descriptor-only','c-neut')},
+      {h:'Status', f:r=>chip(r.status, STATUS_CLASS[r.status])}
+    ]
+  },
+  products: {
+    label:'Products', rows: DS.product_lines, id: r => r.product_id,
+    cols: [
+      {h:'ID', c:'id', f:r=>esc(r.product_id)},
+      {h:'Name', f:r=>esc(r.name)},
+      {h:'Parent', c:'id', f:r=>r.parent_product_id ? linkify(esc(r.parent_product_id)) : '—'},
+      {h:'Status', f:r=>chip(r.status, STATUS_CLASS[r.status])},
+      {h:'Focus tags', c:'wrap', f:r=>join(r.focus_tags)},
+      {h:'Pain point', c:'wrap', f:r=>esc(r.target_pain_point)}
+    ]
+  },
+  claims: {
+    label:'Claims', rows: DS.claims, id: r => r.claim_id,
+    filters: [ {key:'status', label:'Status', get:r=>r.status} ],
+    cols: [
+      {h:'ID', c:'id', f:r=>esc(r.claim_id)},
+      {h:'Product', c:'id', f:r=>linkify(esc(r.product_id))},
+      {h:'Type', f:r=>chip(r.claim_type,'c-neut')},
+      {h:'Default', f:r=>r.is_default ? chip('default','c-blue') : ''},
+      {h:'Status', f:r=>chip(r.status, STATUS_CLASS[r.status])},
+      {h:'EN', c:'wrap', f:r=>txt(r.text_en)},
+      {h:'pt-BR', c:'wrap', f:r=>txt(r.text_pt_br)},
+      {h:'Risk', c:'trunc', f:r=>txt(r.residual_risk)}
+    ]
+  },
+  rules: {
+    label:'Rules', rows: DS.rules, id: r => r.rule_id,
+    filters: [
+      {key:'rule_class', label:'Class', get:r=>r.rule_class},
+      {key:'enforcement_level', label:'Enforcement', get:r=>r.enforcement_level},
+      {key:'engine', label:'Engine', get:r=>engineProfile(r)}
+    ],
+    cols: [
+      {h:'ID', c:'id', f:r=>esc(r.rule_id)},
+      {h:'Class', f:r=>chip(r.rule_class.replace('_rule',''),'c-neut')},
+      {h:'Enforcement', f:r=>chip(r.enforcement_level, ENF_CLASS[r.enforcement_level])},
+      {h:'Engine', f:r=>{
+        const prof = engineProfile(r);
+        if (prof === 'deterministic+llm') return chip('deterministic','c-teal') + chip('+llm 2nd','c-purp');
+        return chip(r.check.engine, ENG_CLASS[r.check.engine]) + (r.check.secondary ? chip('+2nd','c-neut') : '');
+      }},
+      {h:'Applies to', c:'id', f:r=>r.applies_to.length ? linkify(esc(r.applies_to.join('  '))) : 'NONE'},
+      {h:'Description', c:'trunc', f:r=>esc(r.description)},
+      {h:'Status', f:r=>chip(r.status, STATUS_CLASS[r.status])}
+    ]
+  },
+  platforms: {
+    label:'Platforms', rows: DS.platforms, id: r => r.platform_id,
+    cols: [
+      {h:'ID', c:'id', f:r=>esc(r.platform_id)},
+      {h:'Name', f:r=>esc(r.name)},
+      {h:'Format', c:'wrap', f:r=>esc(r.format)},
+      {h:'Aspect', f:r=>txt(r.aspect_ratio)},
+      {h:'Resolution', f:r=>txt(r.resolution)},
+      {h:'Min age', f:r=>r.platform_min_age == null ? chip('null','c-warn') : r.platform_min_age},
+      {h:'Max dur (s)', f:r=>r.max_duration_s == null ? chip('null','c-warn') : r.max_duration_s},
+      {h:'CTA', f:r=>chip(r.cta_category,'c-neut')},
+      {h:'Hook', c:'trunc', f:r=>esc(r.hook_requirement)}
+    ]
+  },
+  models: {
+    label:'Gen models', rows: DS.generation_models || [], id: r => r.model_id,
+    cols: [
+      {h:'ID', c:'id', f:r=>esc(r.model_id)},
+      {h:'Name', f:r=>esc(r.name)},
+      {h:'Modality', f:r=>chip(r.modality, r.modality === 'video' ? 'c-purp' : 'c-teal')},
+      {h:'Max clip (s)', f:r=>r.max_clip_s == null ? '—' : r.max_clip_s},
+      {h:'Ref images', f:r=>chip(String(r.supports_reference_images), r.supports_reference_images ? 'c-blue' : 'c-neut')},
+      {h:'Audio', f:r=>chip(String(r.native_audio), r.native_audio ? 'c-blue' : 'c-neut')},
+      {h:'Status', f:r=>chip(r.status, STATUS_CLASS[r.status])}
+    ]
+  },
+  content_banks: {
+    label:'Content banks', rows: contentBankRows(), id: r => r.id,
+    filters: [
+      {key:'provenance', label:'Provenance', get:r=>r.provenance},
+      {key:'consumer_facing', label:'Consumer-facing', get:r=>String(r.consumer_facing)}
+    ],
+    cols: [
+      {h:'Bank', c:'id', f:r=>esc(r.id)},
+      {h:'Provenance', f:r=>chip(r.provenance, PROV_CLASS[r.provenance])},
+      {h:'Consumer-facing', f:r=>chip(String(r.consumer_facing), r.consumer_facing ? 'c-warn' : 'c-neut')},
+      {h:'Gated', f:r=>r.gated ? chip('COMP-005','c-warn') : (r.provenance==='authored_pending_signoff' ? chip('FND-013 only','c-blue') : '')},
+      {h:'Entries', f:r=>r.size},
+      {h:'Note / source', c:'trunc', f:r=>esc(r.note || r.source || '')}
+    ]
+  },
+  markets: {
+    label:'Markets', rows: DS.markets, id: r => r.market_id,
+    cols: [
+      {h:'ID', c:'id', f:r=>esc(r.market_id)},
+      {h:'Name', f:r=>esc(r.name)},
+      {h:'Region', f:r=>esc(r.region)},
+      {h:'Classes', f:r=>join(r.socioeconomic_classes)},
+      {h:'Audiences', c:'id', f:r=>linkify(esc(r.audience_ids.join('  ')))},
+      {h:'Notes', c:'trunc', f:r=>esc(r.notes || '')}
+    ]
+  },
+  templates: {
+    label:'Templates', rows: DS.prompt_templates, id: r => r.template_id,
+    cols: [
+      {h:'ID', c:'id', f:r=>esc(r.template_id)},
+      {h:'Name', f:r=>esc(r.name)},
+      {h:'Status', f:r=>chip(r.status, STATUS_CLASS[r.status])},
+      {h:'Modality', f:r=>r.modality ? chip(r.modality, r.modality === 'video' ? 'c-purp' : 'c-teal') : '—'},
+      {h:'Model', c:'id', f:r=>r.default_model_id ? linkify(esc(r.default_model_id)) : '—'},
+      {h:'Target (s)', f:r=>r.target_duration_s == null ? '—' : r.target_duration_s},
+      {h:'Platforms', c:'id', f:r=>linkify(esc(r.platform_ids.join('  ')))},
+      {h:'Sections', c:'wrap', f:r=>r.sections ? join(r.sections.map(s=>s.key)) : join(r.slots.map(s=>s.slot))}
+    ]
+  },
+  brand: {
+    label:'Brand', rows: [DS.brand], id: r => r.brand_id,
+    cols: [
+      {h:'ID', c:'id', f:r=>esc(r.brand_id)},
+      {h:'Name', f:r=>esc(r.name)},
+      {h:'Parent', f:r=>esc(r.parent_company)},
+      {h:'Region', f:r=>esc(r.region)},
+      {h:'Languages', f:r=>esc(r.primary_language + ' / ' + r.secondary_language)},
+      {h:'Voice', c:'wrap', f:r=>chips(r.voice_attributes)},
+      {h:'Founded', f:r=>r.founded},
+      {h:'Status', f:r=>chip(r.status, STATUS_CLASS[r.status])}
+    ]
+  },
+  taxonomy: {
+    label:'Taxonomy', rows: [DS.taxonomy], id: r => r.taxonomy_id,
+    cols: [
+      {h:'ID', c:'id', f:r=>esc(r.taxonomy_id)},
+      {h:'Source rule', c:'id', f:r=>linkify(esc(r.source_rule))},
+      {h:'Tags', c:'wrap', f:r=>chips(r.tags)},
+      {h:'Min / output', f:r=>r.min_tags_per_output},
+      {h:'Levels', f:r=>chip('green','c-ok') + chip('yellow','c-warn') + chip('red','c-bad')}
+    ]
+  }
+  };
+}
+
+/* ---------- rendering ---------- */
+const $main = document.getElementById('main');
+const $nav = document.getElementById('nav');
+const $search = document.getElementById('search');
+
+function setMeta(extra){
+  document.getElementById('meta').textContent =
+    DS._meta.dataset_id + ' · v' + DS._meta.version + ' · ' + DS._meta.status +
+    ' · ' + OUT.length + ' outputs' + (extra ? ' · ' + extra : '');
+}
+
+function renderNav(){
+  $nav.innerHTML = Object.entries(SECTIONS).map(([key, s]) => {
+    const n = s.rows ? s.rows.length : '';
+    return '<button data-sec="' + key + '" class="' + (key === current ? 'active' : '') + '">' +
+      '<span>' + s.label + '</span><span class="cnt">' + n + '</span></button>';
+  }).join('');
+}
+$nav.addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  current = b.dataset.sec; filterState = {}; $search.value = ''; render();
+});
+
+function render(){
+  renderNav();
+  if (current === 'overview') return renderOverview();
+  const s = SECTIONS[current];
+  if (s.render) return s.render();
+  let rows = s.rows;
+  for (const [k, v] of Object.entries(filterState)) {
+    if (v) { const fdef = s.filters.find(f => f.key === k); rows = rows.filter(r => fdef.get(r) === v); }
+  }
+  const q = $search.value.trim().toLowerCase();
+  if (q) rows = rows.filter(r => JSON.stringify(r).toLowerCase().includes(q));
+
+  let html = '<h2>' + s.label + ' <span style="color:var(--muted);font-weight:400">(' + rows.length + (rows.length !== s.rows.length ? ' of ' + s.rows.length : '') + ')</span></h2>';
+  if (s.note) html += '<div style="color:var(--muted);max-width:900px;margin:-2px 0 12px;font-size:13px;line-height:1.5">' + s.note + '</div>';
+  if (s.filters) {
+    html += '<div class="filters">' + s.filters.map(f => {
+      const vals = [...new Set(s.rows.map(f.get))].sort();
+      return '<select data-fkey="' + f.key + '"><option value="">' + f.label + ': all</option>' +
+        vals.map(v => '<option' + (filterState[f.key] === v ? ' selected' : '') + '>' + esc(v) + '</option>').join('') + '</select>';
+    }).join('') + '</div>';
+  }
+  html += '<table><thead><tr>' + s.cols.map(c => '<th>' + c.h + '</th>').join('') + '</tr></thead><tbody>';
+  html += rows.map(r => '<tr data-id="' + s.id(r) + '">' +
+    s.cols.map(c => '<td class="' + (c.c || '') + '">' + c.f(r) + '</td>').join('') + '</tr>').join('');
+  html += '</tbody></table>';
+  if (!rows.length) html += '<div class="empty">No rows' + (current === 'outputs' ? ' — run the pipeline (tools/serve.py for in-UI runs, or python -m pipeline.generate)' : ' match') + '.</div>';
+  $main.innerHTML = html;
+}
+
+$main.addEventListener('change', e => {
+  if (e.target.dataset.fkey) { filterState[e.target.dataset.fkey] = e.target.value; render(); }
+});
+$main.addEventListener('click', e => {
+  const x = e.target.closest('a.xref'); if (x) { e.stopPropagation(); showEntity(x.dataset.id); return; }
+  const tr = e.target.closest('tr[data-id]'); if (tr) openDetail(tr.dataset.id);
+});
+$search.addEventListener('input', () => { if (current !== 'overview') render(); });
+
+/* ---------- overview ---------- */
+function count(arr, get){ const m = {}; arr.forEach(r => { const k = get(r); m[k] = (m[k] || 0) + 1; }); return m; }
+function renderOverview(){
+  const combos = DS.audiences.reduce((s, a) => s + a.preferred_product_ids.length * a.platform_ids.length, 0);
+  const sev = count(DS.validation_findings, r => r.severity);
+  const fstat = count(DS.validation_findings, r => r.status);
+  const queue = count(DS.validation_findings, r => r.resolution_queue);
+  const eng = count(DS.rules, r => engineProfile(r));
+  const cstat = count(DS.claims, r => r.status);
+  const sevOrder = ['blocker','high','medium','low','info'];
+  const levels = count(OUT, r => r.compliance_level);
+
+  $main.innerHTML = '<h2>Overview</h2><div class="cards">' +
+    '<div class="card"><h3>Entities</h3>' +
+      ['audiences','products','claims','rules','platforms','markets','templates'].map(k =>
+        '<a data-sec="' + k + '">' + SECTIONS[k].label + ' <b>' + SECTIONS[k].rows.length + '</b></a> &nbsp; '
+      ).join('') +
+      '<div class="sub" style="margin-top:6px">+ 1 brand · ' + DS.validation_findings.length + ' findings</div></div>' +
+
+    '<div class="card"><h3>Generated outputs</h3>' +
+      (OUT.length
+        ? '<div class="big">' + OUT.length + '</div><div>' +
+          ['green','yellow','red'].filter(k => levels[k]).map(k => chip(k + ' ' + levels[k], LEVEL_CLASS[k])).join(' ') +
+          '</div><div class="sub" style="margin-top:8px"><a data-sec="outputs">browse the batch →</a></div>'
+        : '<div class="sub">No batch yet — run the pipeline (tools/serve.py for in-UI runs).</div>') + '</div>' +
+
+    '<div class="card"><h3>Findings by severity</h3><div>' +
+      sevOrder.filter(k => sev[k]).map(k => chip(k + ' ' + sev[k], SEV_CLASS[k])).join(' ') + '</div>' +
+      '<div class="sub" style="margin-top:8px">' +
+      Object.entries(fstat).map(([k, v]) => chip(k + ' ' + v, STATUS_CLASS[k])).join(' ') + '</div>' +
+      '<div class="sub" style="margin-top:8px">Queues: ' +
+      Object.entries(queue).map(([k, v]) => esc(k) + ' <b>' + v + '</b>').join(' · ') + '</div></div>' +
+
+    '<div class="card"><h3>Rule engine split (D7)</h3><div>' +
+      Object.entries(eng).map(([k, v]) => chip(k + ' ' + v, ENG_CLASS[k])).join(' ') + '</div>' +
+      '<div class="sub" style="margin-top:8px">Deterministic checks are free and reproducible; LLM judgment is reserved for semantics; process gates live in workflow state. <b>deterministic+llm</b> = two-stage rules (free trigger, paid disambiguation on hit) — the cost-bottleneck candidates.</div></div>' +
+
+    '<div class="card"><h3>Base combinations</h3><div class="big">' + combos + '</div>' +
+      '<div class="sub">Σ audience (preferred products × platforms), before compliance filtering. PL-003 references resolve to the base product; PL-003-PRO is quarantined (D5). The briefing hints this number is "not arbitrary".</div></div>' +
+
+    '<div class="card"><h3>Claim registry</h3><div>' +
+      Object.entries(cstat).map(([k, v]) => chip(k + ' ' + v, STATUS_CLASS[k])).join(' ') + '</div>' +
+      '<div class="sub" style="margin-top:8px">Claims are first-class entities; prompts bind a claim variant at render time (D4). Sign-off flips status — outputs re-grade without regeneration.</div></div>' +
+
+    '<div class="card"><h3>Dataset</h3><div class="sub">' +
+      esc(DS._meta.dataset_id) + ' · v' + esc(DS._meta.version) + ' · ' + chip(DS._meta.status, 'c-blue') + '<br><br>' +
+      'Sources: ' + esc(DS._meta.source_provenance.join(', ')) + '<br><br>' +
+      esc(DS._meta.ingestion_notes) + '</div></div>' +
+    '</div>';
+
+  $main.querySelectorAll('a[data-sec]').forEach(a =>
+    a.addEventListener('click', () => { current = a.dataset.sec; filterState = {}; render(); }));
+}
+
+/* ---------- ingestion flow ---------- */
+const GATES = [
+  {n:1,  name:'Parse & decode', check:'Files must parse (JSON/CSV syntax, UTF-8). Nothing else runs on a broken file.',
+         fail:'reject file + finding', queue:null, fnds:[]},
+  {n:2,  name:'Internal-field scan', check:"Strip '_'-prefixed fields and TODOs before anything client-facing; content preserved in the provenance log, not in entity records.",
+         fail:'strip & log', queue:'none', fnds:['FND-007']},
+  {n:3,  name:'ID normalization', check:'Charset-safe identifiers, short-code map for prompt ID derivation; every transform logged.',
+         fail:'transform & log', queue:'none', fnds:['FND-011']},
+  {n:4,  name:'Structural normalization', check:'Comma strings to arrays; prose to enums (cta_category); key_claim strings extracted into the claim registry with status lifecycle.',
+         fail:'—', queue:null, fnds:[]},
+  {n:5,  name:'Schema validation', check:'Every record validates against schema.json: required fields, enums, ID patterns, age_min >= 18.',
+         fail:'quarantine record + finding', queue:'data_clarification', fnds:[]},
+  {n:6,  name:'ID uniqueness', check:'No two rows may share a primary key.',
+         fail:'variant-child or provisional ID, quarantined from generation', queue:'data_clarification', fnds:['FND-001']},
+  {n:7,  name:'Referential integrity & rule scope', check:'Every foreign key must resolve. Unknown rules and ghost applies_to references become findings — scope never silently widens or narrows.',
+         fail:'inert + finding (RULE-404 lesson)', queue:'none', fnds:['FND-008']},
+  {n:8,  name:'Cross-entity consistency', check:'market and audience lists must agree bidirectionally; audience vs platform age consistency (RULE-COMP-004 pre-scan).',
+         fail:'yellow pre-flag on affected combinations', queue:'data_clarification', fnds:['FND-003']},
+  {n:9,  name:'Rule-conflict scan', check:'conflict_with declarations + exclusion lexicons run over claims and visual cues — before any generation.',
+         fail:'quarantine claim / exclude cue from constraints, safe default applied', queue:'data_clarification', fnds:['FND-002','FND-004','FND-005','FND-012']},
+  {n:10, name:'Null inventory', check:"Every null classified by policy: 'not applicable' (pass + note) vs 'unknown' (conservative yellow until clarified).",
+         fail:'unknown null → yellow default', queue:'data_clarification', fnds:['FND-006']},
+  {n:11, name:'Semantic near-miss scan', check:'Fuzzy matching where exact triggers miss (COMP-003 vs "confidence through care"); provenance gaps (referenced docs not in package).',
+         fail:'conservative yellow / request artifact', queue:'content_review', fnds:['FND-009','FND-010']}
+];
+
+function renderFlow(){
+  const fndLink = id => '<a class="xref" data-id="' + id + '">' + id + '</a>';
+  let html = '<h2>Ingestion flow — validation gates</h2>' +
+    '<div style="color:var(--muted);margin-bottom:12px;max-width:820px">Raw files pass through ordered gates. Every gate passes data through, applies a documented safe default, or quarantines — and anything not cleanly passed leaves a <b>finding</b> routed to one of the two human queues. Click a finding to inspect it.</div>' +
+    '<div class="flow">' +
+    '<div class="fbox">RAW SOURCES &nbsp;·&nbsp; raw_briefing.json + rules_matrix.csv <span style="font-weight:400">(status: RAW_UNVALIDATED)</span></div>' +
+    '<div class="gconn">&#8595;</div>';
+  GATES.forEach(g => {
+    html += '<div class="gate"><div><span class="gbadge">G' + g.n + '</span><b>' + esc(g.name) + '</b></div>' +
+      '<div class="gcheck">' + esc(g.check) + '</div>' +
+      '<div class="gbranch"><span class="garrow">on issue &#10230;</span>' + esc(g.fail) +
+      (g.queue ? ' ' + chip(g.queue, g.queue === 'none' ? 'c-neut' : 'c-blue') : '') +
+      (g.fnds.length ? ' &nbsp;&middot;&nbsp; ' + g.fnds.map(fndLink).join(' ') : '') +
+      '</div></div><div class="gconn">&#8595;</div>';
+  });
+  html += '<div class="fbox out">NORMALIZED DATASET v' + esc(DS._meta.version) + ' + findings ledger &nbsp;&#8594;&nbsp; generation pipeline</div></div>';
+  $main.innerHTML = html;
+}
+
+/* ---------- record field renderer ---------- */
+const FIELD_CHIP_MAPS = {
+  status: STATUS_CLASS, compliance_level: LEVEL_CLASS, severity: SEV_CLASS,
+  enforcement_level: ENF_CLASS, result: RESULT_CLASS,
+  resolution_queue: {}, curation: {}, engine: ENG_CLASS, kind: {}, language: {},
+};
+function chipFor(key, val){
+  if (!(key in FIELD_CHIP_MAPS)) return null;
+  return chip(val, FIELD_CHIP_MAPS[key][val] || 'c-blue');
+}
+function isShortStr(v){ return typeof v === 'string' && v.length <= 28 && !v.includes('\n'); }
+
+function renderVal(key, val){
+  if (val === null || val === undefined) return '<span style="color:var(--muted)">—</span>';
+  if (typeof val === 'boolean') return chip(String(val), val ? 'c-blue' : 'c-neut');
+  if (typeof val === 'number') return esc(String(val));
+  if (typeof val === 'string'){
+    const c = chipFor(key, val);
+    if (c) return c;
+    if (val.length > 90) return '<div class="longtext">' + linkify(esc(val)) + '</div>';
+    return linkify(esc(val));
+  }
+  if (Array.isArray(val)){
+    if (!val.length) return '<span style="color:var(--muted)">[]</span>';
+    if (key === 'compliance_notes'){
+      return val.map(t =>
+        '<div class="trow"><span class="chip ' + (RESULT_CLASS[t.result] || 'c-neut') + '">' + esc(t.result) + '</span> ' +
+        linkify(esc(t.rule_id)) +
+        (t.detail ? '<div class="vdetail">' + esc(t.detail) + '</div>' : '') + '</div>').join('');
+    }
+    if (val.every(v => typeof v !== 'object')){
+      if (val.every(isShortStr)){
+        return val.map(v => INDEX[v]
+          ? '<a class="xref" data-id="' + v + '" style="margin-right:8px">' + esc(v) + '</a>'
+          : chip(v, 'c-neut')).join('');
+      }
+      return val.map(v => '<div>· ' + linkify(esc(String(v))) + '</div>').join('');
+    }
+    return val.map(v => '<div class="fsub">' + renderFields(v) + '</div>').join('');
+  }
+  return '<div class="fsub">' + renderFields(val) + '</div>';
+}
+function renderFields(rec){
+  return Object.entries(rec).map(([k, v]) =>
+    '<div class="frow"><div class="fkey">' + esc(k) + '</div><div class="fval">' + renderVal(k, v) + '</div></div>').join('');
+}
+
+let recordView = 'fields';
+function applyRecordView(){
+  document.getElementById('d-fields').style.display = recordView === 'fields' ? 'block' : 'none';
+  document.getElementById('d-json').style.display = recordView === 'json' ? 'block' : 'none';
+  document.getElementById('d-view-fields').classList.toggle('active', recordView === 'fields');
+  document.getElementById('d-view-json').classList.toggle('active', recordView === 'json');
+}
+document.getElementById('d-view-fields').addEventListener('click', () => { recordView = 'fields'; applyRecordView(); });
+document.getElementById('d-view-json').addEventListener('click', () => { recordView = 'json'; applyRecordView(); });
+
+/* ---------- detail panel ---------- */
+const $detail = document.getElementById('detail');
+function openDetail(id){
+  const e = INDEX[id]; if (!e) return;
+  document.getElementById('d-id').textContent = id;
+  document.getElementById('d-type').textContent = e.type;
+  const chipsHtml = [];
+  if (e.rec.status) chipsHtml.push(chip(e.rec.status, STATUS_CLASS[e.rec.status]));
+  if (e.rec.compliance_level) chipsHtml.push(chip(e.rec.compliance_level, LEVEL_CLASS[e.rec.compliance_level]));
+  if (e.rec.severity) chipsHtml.push(chip(e.rec.severity, SEV_CLASS[e.rec.severity]));
+  if (e.rec.enforcement_level) chipsHtml.push(chip(e.rec.enforcement_level, ENF_CLASS[e.rec.enforcement_level]));
+  if (e.rec.check) chipsHtml.push(chip('engine: ' + e.rec.check.engine, ENG_CLASS[e.rec.check.engine]));
+  if (e.rec.curation === 'curated_proof_set') chipsHtml.push(chip('proof set', 'c-blue'));
+  document.getElementById('d-chips').innerHTML = chipsHtml.join(' ');
+  document.getElementById('d-verdict').innerHTML = verdictHtml(e.rec);
+  document.getElementById('d-creative').innerHTML = creativeBilingual(e.rec);
+  document.getElementById('d-fields').innerHTML = renderFields(e.rec);
+  document.getElementById('d-json').innerHTML = linkify(esc(JSON.stringify(e.rec, null, 2)));
+  applyRecordView();
+  const brs = backrefs(id);
+  document.getElementById('d-backrefs').innerHTML = brs.length
+    ? brs.map(b => '<a class="xref" data-id="' + b + '">' + b + '</a>').join('')
+    : '<span style="color:var(--muted)">none</span>';
+  $detail.classList.add('open');
+}
+function showEntity(id){
+  const e = INDEX[id]; if (!e) return;
+  if (SECTIONS[e.type]) { current = e.type; filterState = {}; render(); }
+  openDetail(id);
+}
+$detail.addEventListener('click', e => {
+  const x = e.target.closest('a.xref'); if (x) showEntity(x.dataset.id);
+});
+document.getElementById('d-close').addEventListener('click', () => $detail.classList.remove('open'));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') $detail.classList.remove('open'); });
+
+/* ---------- bootstrap: embedded data, then optional live mode ---------- */
+function initApp(ds, outputsDoc, metaExtra){
+  DS = ds;
+  OUT = (outputsDoc && outputsDoc.prompt_outputs) || [];
+  regAll();
+  SECTIONS = buildSections();
+  if (!(current in SECTIONS)) current = 'overview';
+  $detail.classList.remove('open');
+  setMeta(metaExtra);
+  render();
+}
+
+const embeddedDS = JSON.parse(document.getElementById('dataset-json').textContent);
+const embeddedOUT = JSON.parse(document.getElementById('outputs-json').textContent);
+const embeddedEXP = JSON.parse(document.getElementById('exported-json').textContent);
+EXPORTED = embeddedEXP.exported || [];
+initApp(embeddedDS, embeddedOUT, 'embedded snapshot');
+
+async function fetchLive(){
+  const r = await fetch('/api/data', {cache: 'no-store'});
+  if (!r.ok) throw new Error('api/data ' + r.status);
+  return r.json();
+}
+(async () => {
+  try {
+    const live = await fetchLive();
+    document.getElementById('live-badge').style.display = 'inline-block';
+    document.getElementById('btn-run').style.display = 'inline-block';
+    initApp(live.dataset, live.outputs, 'live from disk');
+  } catch (e) { /* file:// or no server — embedded mode is fine */ }
+})();
+
+document.getElementById('btn-run').addEventListener('click', async () => {
+  const btn = document.getElementById('btn-run');
+  btn.disabled = true; btn.textContent = 'Running…';
+  try {
+    const r = await fetch('/api/run', {method: 'POST'});
+    const res = await r.json();
+    const live = await fetchLive();
+    const lastLine = (res.log || '').trim().split('\n').pop() || '';
+    initApp(live.dataset, live.outputs, (res.ok ? '' : 'RUN FAILED — ') + lastLine);
+    if (!res.ok) alert('Pipeline run failed:\n\n' + res.log);
+  } catch (e) {
+    alert('Pipeline run failed: ' + e);
+  } finally {
+    btn.disabled = false; btn.innerHTML = '&#9654; Run pipeline';
+  }
+});
+</script>
+</body>
+</html>
